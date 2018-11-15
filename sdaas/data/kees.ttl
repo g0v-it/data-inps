@@ -1,0 +1,98 @@
+#
+# Knowledge base configuration description
+#
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix kees: <http://linkeddata.center/kees/v1#> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> . 
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix resource: <http://inps.linkeddata.cloud/resource/> .
+	
+resource:welcome a kees:KnowledgeBase;
+    void:sparqlEndpoint <https://data.inps.g0v.it/sdaas/sparql> ;
+	dct:title "Welcome to inps.g0v.it knowledge base"@en; 
+	dct:description "This dataset provides information about INPS finactial reports expressed in RDF with the g0v-ap application profile."@en;
+    dct:license <https://creativecommons.org/licenses/by/3.0/>;
+	rdfs:comment "Power by the community edition of  LinkedData.Center SDaaS™ platform."@en;
+	rdfs:comment "Data derived from INPS Open Data © by Istituto Nazionale della Previdenza Sociale."@en;
+ 	void:exampleResource resource:ID-2888 ;
+	void:uriSpace "http://inps.linkeddata.cloud/resource/";
+	dct:subject <https://it.wikipedia.org/wiki/Bilancio_d%27esercizio>;
+	foaf:page <http://data.inps.g0v.it/>
+.
+
+
+#######################################################
+# Individuals
+#######################################################
+resource:uscite_theme a skos:Concept;
+	skos:prefLabel "Uscite"@it
+.
+
+resource:entrate_theme a skos:Concept;
+	skos:prefLabel "Entrate"@it
+.
+
+
+resource:INPS a foaf:Organization; 
+    foaf:homepage <http://www.inps.it/>;
+    foaf:name "Istituto Nazionale della Previdenza Sociale"@it
+.
+
+resource:Copernicani a foaf:Organization; 
+    foaf:homepage <https://copernicani.it/>;
+    foaf:name "Associazione Copernicani"@it
+.
+
+
+resource:tassonomia a dcat:Dataset;
+        dct:description  "Tassonomia delle voci del bilancio INPS"@it ;
+        dct:identifier   "tassonomia" ;
+        dct:modified	 "2018-11-15T10:55:01Z"^^xsd:dateTime;
+        dct:publisher    resource:MEF ;
+        dct:title        "Tassonomia voci di bilancio"@it ;
+        dcat:distribution    resource:tassonomia_ttl 
+.
+resource:tassonomia_ttl a  dcat:Distribution ;
+        dct:format    "text/csv" ;
+        dcat:accessUrl    <https://github.com/g0v-it/data-inps/tree/master/sdaas/data/tassonomia.ttl> ;
+        dcat:license      <http://creativecommons.org/licenses/by/3.0> 
+.
+<https://github.com/g0v-it/tree/master/sdaas/data/descrizione_programmi.csv> a prov:Entity;
+	prov:wasGeneratedBy [ a prov:Activity;
+		prov:startedAtTime    "2019-11-15T10:30:01Z"^^xsd:dateTime;
+   		prov:endedAtTime      "2019-11-27T10:55:01Z"^^xsd:dateTime;
+		rdfs:comment "Attività manuale di creazione del file SLOS partenda dal file excel ricevuto da INPS"@it; 
+	    prov:qualifiedAssociation [
+	        a prov:Association;
+	        prov:agent <http://linkeddata.center/>;
+	    ];
+		prov:used [ a prov:Entity;
+			rdfs:comment "File via mail da INPS il 12.11.2018"@it;
+			prov:wasDerivedFrom <https://mail.google.com/mail/u/0?ik=cb29cb291d&view=om&permmsgid=msg-f%3A1616940456919619278>
+		]
+	]
+.
+
+
+resource:nomi_azioni a dcat:Dataset;
+        dct:description  "Ottimizzazione dei nomi delle azioni riscritte dai Copernicani"@it ;
+        dct:identifier   "nomi_azioni" ;
+        dct:publisher    resource:Copernicani ;
+        dct:title        "Nomi azioni ottimizzati"@it ;
+        dcat:accessUrl    <https://docs.google.com/spreadsheets/d/1JpmdYjNkc-Yr4JlQdFhn0jgcJ0tuMZZ5Y9IWmc57BTA/edit?usp=sharing> ;
+        dcat:distribution    resource:nomi_azioni_csv
+.
+resource:nomi_azioni_csv a  dcat:Distribution ;
+        dct:format "text/csv" ;
+        dcat:downloadUrl <https://docs.google.com/spreadsheets/d/e/2PACX-1vTs9jWocG_xYjgp4JmKcH6o_7piJ9b4t--c-kx_xf6Erkp_-ad-4Fj0MRY2Eyd0AA9-LZ94pTwDv4na/pub?output=csv> ;
+        dcat:license <http://creativecommons.org/licenses/by/3.0> 
+.
+
+	

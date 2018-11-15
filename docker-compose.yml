@@ -1,0 +1,19 @@
+version: '3'
+services:
+  sdaas:
+    build: ./sdaas
+    ports:
+      - "$sdaasport:8080"
+  api:
+    build: ./apis
+    ports:
+      - "$apiport:80"
+    depends_on:
+      - "sdaas"
+  router:
+    build: ./router
+    ports:
+      - "$routerport:80"
+    depends_on:
+      - "sdaas"
+      - "api"
