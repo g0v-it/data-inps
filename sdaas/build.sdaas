@@ -1,41 +1,39 @@
 #!/usr/bin/env bash
 set -a
+GRAPH="http://inps.linkeddata.cloud/resource"
 
-SD_INCLUDE scripts/bdap.include
 
 ####################################################
-SD_LOG  "Starting booting window: configure knowledge base..."
+SD_LOG  "Loading external resources..."
 ####################################################
-SD_LOAD_RDF_FILE urn:sdaas:config "data/kees.ttl"
+SD_LEARN http://publications.europa.eu/mdr/resource/authority/currency/skos/currencies-skos.rdf
+SD_LEARN http://reference.data.gov.uk/id/gregorian-interval/2014-01-01T00:00:00/P1Y
+
 
 ####################################################
 SD_LOG  "Starting learning window: loading facts. This will take a while..."
 ####################################################
-
-# Learn currency description from dbpedia
-SD_LEARN "http://dbpedia.org/data/Euro.n3"
-
-SD_LEARN "http://reference.data.gov.uk/doc/gregorian-interval/2019-01-01T00:00:00/P1Y"
-SD_LEARN "http://reference.data.gov.uk/doc/gregorian-interval/2018-01-01T00:00:00/P1Y"
-SD_LEARN "http://reference.data.gov.uk/doc/gregorian-interval/2017-01-01T00:00:00/P1Y"
-
-G0V_LEARN_FROM_BDAP spd_dlb_spe_elb_cap_01_2019
-G0V_LEARN_FROM_BDAP spd_lbf_spe_elb_cap_01_2018
-G0V_LEARN_FROM_BDAP spd_lbf_spe_elb_cap_01_2017
-
-
-SD_LEARN urn:mef:programmi data/descrizione_programmi.csv "|||.ttl|php7 gateways/programmi.php spd_dlb_spe_elb_cap_01_2019"
-SD_LEARN urn:copernicani:nomi_azioni "https://docs.google.com/spreadsheets/d/e/2PACX-1vTs9jWocG_xYjgp4JmKcH6o_7piJ9b4t--c-kx_xf6Erkp_-ad-4Fj0MRY2Eyd0AA9-LZ94pTwDv4na/pub?output=csv" "|||.ttl|php7 gateways/account_names.php"
-
+SD_LOAD_RDF_FILE urn:sdaas:config "data/kees.ttl"
+SD_LOAD_RDF_FILE $GRAPH/tassonomia_gestionale "data/tassonomia_gestionale.ttl"
+SD_LEARN $GRAPH/ID-2888 "https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=924&scaricadataset=2" "|in|out|.ttl|iconv -f 'windows-1252' -t 'UTF-8' - |php7 gateways/gestionale.php ID_2888"
+SD_LEARN $GRAPH/ID-2889 "https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=925&scaricadataset=2" "|in|out|.ttl|iconv -f 'windows-1252' -t 'UTF-8' - |php7 gateways/gestionale.php ID_2889"
 
 
 ####################################################
 SD_LOG  "Starting reasoning window: computing axioms and rules..."
 ####################################################
-GRAPH="http://data.budget.g0v.it/resource/"
-for axiomFile in $(ls -v axioms/*construct); do
-	axiomGraph=$(basename $axiomFile)
-	SD_REASONING_BY SD_EVAL_CONSTRUCTOR "${GRAPH}${axiomGraph}" @$axiomFile
+SD_SPARQL_UPDATE @axioms/qb_axioms.sparql_update
+
+
+####################################################
+SD_LOG  "Testing..."
+####################################################
+for testFile in $(ls -v tests/*ask); do
+    echo -n "   $(basename $testFile)..."
+    case "$(SD_SPARQL_QUERY xml @$testFile)" in
+        *true* ) echo "OK";;
+        *false* ) echo "FAIL";;
+    esac
 done
 
 SD_THATS_ALL_FOLKS

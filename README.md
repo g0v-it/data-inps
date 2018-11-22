@@ -9,7 +9,7 @@ This project aims to create a general smart data management platform to feed a b
 **Public resources**
 
 - **api**: https://data.inps.g0v.it/api/v1
-- **SPARQL endpoint**: https://data.budget.g0v.it/sdaas
+- **SPARQL endpoint**: https://data.budget.g0v.it/sdaas/sparql
 
 
 ## Development
@@ -17,7 +17,7 @@ This project aims to create a general smart data management platform to feed a b
 The project contains the following logical components:
 
 - **sdaas** (smart data as a service):  the data management platform core providing a RDF store, a [SPARQL endpoint](https://www.w3.org/TR/sparql11-overview), a data ingestion engine, a set of gateways to transform raw data in linked data and a build script that populates the RDF store. See files and docs in [sdaas directory](sdaas/README.md)
-- a set of **apis** that query the SPARQL endpoint and produce json data with a schema suitable to be used with the [vue-budget component project](). See files and docs in [apis directory](apis/README.md)
+- a set of **apis** that query the SPARQL endpoint and produce json data with a schema suitable to be used with the [BubbleGraph Component](). See files and docs in [apis directory](apis/README.md)
 - a **router** that provides redirects and caching to the platform services.
  
 This picture shows the components interactions:
@@ -71,9 +71,10 @@ For answers you may not find in here or in the Wiki, avoid posting issues. Feel 
 ## Credits
 
 - data extracted from [INPS Open Data portal](https://www.inps.it/nuovoportaleinps/default.aspx?iIDLink=103) with [IODL](http://www.dati.gov.it/iodl/2.0/) open license
-- the RDF datastore and the SPARQL endpoint is based on the [Blazegraph community edition](https://www.blazegraph.com/
+- the RDF datastore and the SPARQL endpoint is based on the [Blazegraph community edition](https://www.blazegraph.com/)
 - the Smart Data Management Platform was developed by [Enrico Fagnoni](https://github.com/ecow) using the [SDaaS platform by LinkedData.Center](http://LinkedData.Center/)
-- API server was developed by [Yassine Ouahidi](https://github.com/YassineOuahidi)
+- the [g0v-ap]((https://github.com/g0v-it/ap) ontology and the  [LODMAP Bubble Graph Ontology](https://github.com/linkeddatacenter/LODMAP-ontologies/tree/master/BGO) was developed by Enrico Fagnoni @ LinkedData.Center
+- API server was developed by [Yassine Ouahidi](https://github.com/YassineOuahidi)  @ LinkedData.Center and DataChef.Cloud
 
 
 Thanks to all project contributors, to the [Copernicani community](https://copernicani.it/) and to the [g0v asia community](http://g0v.asia) for ideas and support.

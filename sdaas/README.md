@@ -1,10 +1,10 @@
-# Knowledge Base (smart data as a service)
+# Smart Data Management Platform
 
 This project contains all needed for setting up and update a knowledge base ready to be used by the inps.g0v.it application.
 
-The knowledge base is built around the [g0v application profile](https://github.com/g0v-it/ap)
+The knowledge base is built around the [g0v application profile](https://github.com/g0v-it/ap) and  [LODMAP Bubble Graph Ontology](https://github.com/linkeddatacenter/LODMAP-ontologies/tree/master/BGO)
 
-The data ingestion process is managed by the LinkedData.Center SDaaS platform (community edition).
+The data ingestion process is managed by the [LinkedData.Center SDaaS platform](https://linkeddata.center/p/sdaas) (community edition).
 
 
 ## updating the knowledge base

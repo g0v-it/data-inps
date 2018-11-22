@@ -1,0 +1,728 @@
+#
+# Tassonomia bilancio inps: generato manualmente dal file "CLASSIFICAZIONE DEI CAPITOLI.xlsx" e
+# dal programma tassonomia_gestionale.php nella directory data/src
+#
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> . 
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fr: <http://linkeddata.center/botk-fr/v1#> .
+@prefix sdmx-attribute:	<http://purl.org/linked-data/sdmx/2009/attribute#> .
+@prefix resource: <http://inps.linkeddata.cloud/resource/> .
+
+<> a prov:Entity;
+	dct:created "2018-11-22T13:24:25+00:00"^^xsd:dateTime;
+	foaf:primaryTopicOf resource:tassonomia_gestionale;
+	prov:wasGeneratedBy [ a prov:Activity;
+		prov:startedAtTime    "2018-11-22T13:24:25+00:00"^^xsd:dateTime;
+		rdfs:comment "Attività manuale di creazione del file SKOS partendo dal file excel ricevuto da INPS"@it; 
+	    prov:qualifiedAssociation [
+	        a prov:Association;
+	        prov:agent <http://linkeddata.center/>;
+	    ];
+		prov:used [ a prov:Entity;
+			rdfs:comment "File via mail da INPS il 12.11.2018"@it;
+			prov:wasDerivedFrom <https://mail.google.com/mail/u/0?ik=cb29cb291d&view=om&permmsgid=msg-f%3A1616940456919619278>
+		]
+	]
+.
+
+resource:tassonomia_gestionale a skos:ConceptScheme;
+	dct:title "Tassonomia per il bilancio gestionale INPS"@it ;
+	dct:description "Gerarchia dei concetti che descrivono i fatti nei bilanci gestionali di INPS"@it ;
+	dct:source <https://github.com/g0v-it/data-inps/tree/master/sdaas/data/src/CLASSIFICAZIONE_DEI_CAPITOLI.xlsx>;
+	dct:creator [ foaf:mbox <mailto:enrico@linkeddata.center> ] ;
+	dct:created "2018-11-21T10:55:15-08:00"^^xsd:dateTime ;
+	dct:modified "2018-11-21T10:55:15-08:00"^^xsd:dateTime ;
+.
+
+
+resource:concept_1 a skos:Concept ;skos:notation "1" ;skos:prefLabel "UPB Entrate"@it ;skos:inScheme resource:tassonomia_gestionale .
+resource:tassonomia_gestionale skos:hasTopConcept resource:concept_1 .
+resource:concept_1E11 a skos:Concept ;skos:notation "1E11" ;skos:prefLabel "ENTRATE CONTRIBUTIVE"@it ;skos:broader resource:concept_1 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1 skos:narrower resource:concept_1E11 .
+resource:concept_1E12 a skos:Concept ;skos:notation "1E12" ;skos:prefLabel "ENTRATE DERIVANTI DA TRASFERIMENTI CORRENTI"@it ;skos:broader resource:concept_1 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1 skos:narrower resource:concept_1E12 .
+resource:concept_1E13 a skos:Concept ;skos:notation "1E13" ;skos:prefLabel "ALTRE ENTRATE"@it ;skos:broader resource:concept_1 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1 skos:narrower resource:concept_1E13 .
+resource:concept_1E21 a skos:Concept ;skos:notation "1E21" ;skos:prefLabel "ENTRATE PER ALIENAZIONE DI BENI PATRIMONIALI E RISCOSSIONI DI CREDITI"@it ;skos:broader resource:concept_1 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1 skos:narrower resource:concept_1E21 .
+resource:concept_1E22 a skos:Concept ;skos:notation "1E22" ;skos:prefLabel "TRASFERIMENTI IN CONTO CAPITALE"@it ;skos:broader resource:concept_1 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1 skos:narrower resource:concept_1E22 .
+resource:concept_1E23 a skos:Concept ;skos:notation "1E23" ;skos:prefLabel "ACCENSIONE DI PRESTITI"@it ;skos:broader resource:concept_1 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1 skos:narrower resource:concept_1E23 .
+resource:concept_1E41 a skos:Concept ;skos:notation "1E41" ;skos:prefLabel "PARTITE DI GIRO"@it ;skos:broader resource:concept_1 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1 skos:narrower resource:concept_1E41 .
+resource:concept_1U11 a skos:Concept ;skos:notation "1U11" ;skos:prefLabel "FUNZIONAMENTO"@it ;skos:broader resource:concept_1 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1 skos:narrower resource:concept_1U11 .
+resource:concept_1U12 a skos:Concept ;skos:notation "1U12" ;skos:prefLabel "INTERVENTI DIVERSI"@it ;skos:broader resource:concept_1 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1 skos:narrower resource:concept_1U12 .
+resource:concept_1U14 a skos:Concept ;skos:notation "1U14" ;skos:prefLabel "TRATTAMENTI DI QUIESCENZA, INTEGRATIVI E SOSTITUTIVI"@it ;skos:broader resource:concept_1 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1 skos:narrower resource:concept_1U14 .
+resource:concept_1U21 a skos:Concept ;skos:notation "1U21" ;skos:prefLabel "INVESTIMENTI "@it ;skos:broader resource:concept_1 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1 skos:narrower resource:concept_1U21 .
+resource:concept_1U22 a skos:Concept ;skos:notation "1U22" ;skos:prefLabel "ONERI COMUNI"@it ;skos:broader resource:concept_1 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1 skos:narrower resource:concept_1U22 .
+resource:concept_1U41 a skos:Concept ;skos:notation "1U41" ;skos:prefLabel "PARTITE DI GIRO"@it ;skos:broader resource:concept_1 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1 skos:narrower resource:concept_1U41 .
+resource:concept_1E1101 a skos:Concept ;skos:notation "1E1101" ;skos:prefLabel "Aliquote contributive a carico dei datori di lavoro e/o degli iscritti"@it ;skos:broader resource:concept_1E11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E11 skos:narrower resource:concept_1E1101 .
+resource:concept_1E1102 a skos:Concept ;skos:notation "1E1102" ;skos:prefLabel "Quote di partecipazione degli iscritti all'onere di specifiche gestioni"@it ;skos:broader resource:concept_1E11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E11 skos:narrower resource:concept_1E1102 .
+resource:concept_1E1203 a skos:Concept ;skos:notation "1E1203" ;skos:prefLabel "Trasferimenti da parte dello Stato"@it ;skos:broader resource:concept_1E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E12 skos:narrower resource:concept_1E1203 .
+resource:concept_1E1204 a skos:Concept ;skos:notation "1E1204" ;skos:prefLabel "Trasferimenti da parte delle Regioni"@it ;skos:broader resource:concept_1E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E12 skos:narrower resource:concept_1E1204 .
+resource:concept_1E1205 a skos:Concept ;skos:notation "1E1205" ;skos:prefLabel "Trasferimenti da parte dei Comuni e delle Province"@it ;skos:broader resource:concept_1E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E12 skos:narrower resource:concept_1E1205 .
+resource:concept_1E1206 a skos:Concept ;skos:notation "1E1206" ;skos:prefLabel "Trasferimenti da parte di altri Enti del settore pubblico"@it ;skos:broader resource:concept_1E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E12 skos:narrower resource:concept_1E1206 .
+resource:concept_1E1307 a skos:Concept ;skos:notation "1E1307" ;skos:prefLabel "Entrate derivanti dalla vendita di beni e dalla prestazione di servizi"@it ;skos:broader resource:concept_1E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E13 skos:narrower resource:concept_1E1307 .
+resource:concept_1E1308 a skos:Concept ;skos:notation "1E1308" ;skos:prefLabel "Redditi e proventi patrimoniali"@it ;skos:broader resource:concept_1E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E13 skos:narrower resource:concept_1E1308 .
+resource:concept_1E1309 a skos:Concept ;skos:notation "1E1309" ;skos:prefLabel "Poste correttive e compensative di spese correnti"@it ;skos:broader resource:concept_1E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E13 skos:narrower resource:concept_1E1309 .
+resource:concept_1E1310 a skos:Concept ;skos:notation "1E1310" ;skos:prefLabel "Entrate non classificabili in altre voci"@it ;skos:broader resource:concept_1E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E13 skos:narrower resource:concept_1E1310 .
+resource:concept_1E2111 a skos:Concept ;skos:notation "1E2111" ;skos:prefLabel "Alienazione di immobili e diritti reali"@it ;skos:broader resource:concept_1E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E21 skos:narrower resource:concept_1E2111 .
+resource:concept_1E2112 a skos:Concept ;skos:notation "1E2112" ;skos:prefLabel "Alienazione di immobilizzazioni tecniche"@it ;skos:broader resource:concept_1E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E21 skos:narrower resource:concept_1E2112 .
+resource:concept_1E2113 a skos:Concept ;skos:notation "1E2113" ;skos:prefLabel "Realizzo di valori mobiliari"@it ;skos:broader resource:concept_1E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E21 skos:narrower resource:concept_1E2113 .
+resource:concept_1E2114 a skos:Concept ;skos:notation "1E2114" ;skos:prefLabel "Riscossione dei crediti"@it ;skos:broader resource:concept_1E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E21 skos:narrower resource:concept_1E2114 .
+resource:concept_1E2215 a skos:Concept ;skos:notation "1E2215" ;skos:prefLabel "Trasferimenti dallo Stato"@it ;skos:broader resource:concept_1E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E22 skos:narrower resource:concept_1E2215 .
+resource:concept_1E2216 a skos:Concept ;skos:notation "1E2216" ;skos:prefLabel "Trasferimenti dalle Regioni"@it ;skos:broader resource:concept_1E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E22 skos:narrower resource:concept_1E2216 .
+resource:concept_1E2217 a skos:Concept ;skos:notation "1E2217" ;skos:prefLabel "Trasferimenti da Comuni e Province"@it ;skos:broader resource:concept_1E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E22 skos:narrower resource:concept_1E2217 .
+resource:concept_1E2218 a skos:Concept ;skos:notation "1E2218" ;skos:prefLabel "Trasferimenti da altri Enti del settore pubblico"@it ;skos:broader resource:concept_1E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E22 skos:narrower resource:concept_1E2218 .
+resource:concept_1E2319 a skos:Concept ;skos:notation "1E2319" ;skos:prefLabel "Assunzione di mutui"@it ;skos:broader resource:concept_1E23 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E23 skos:narrower resource:concept_1E2319 .
+resource:concept_1E2320 a skos:Concept ;skos:notation "1E2320" ;skos:prefLabel "Assunzione di altri debiti finanziari"@it ;skos:broader resource:concept_1E23 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E23 skos:narrower resource:concept_1E2320 .
+resource:concept_1E2321 a skos:Concept ;skos:notation "1E2321" ;skos:prefLabel "Emissioni di obbligazioni"@it ;skos:broader resource:concept_1E23 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E23 skos:narrower resource:concept_1E2321 .
+resource:concept_1E4122 a skos:Concept ;skos:notation "1E4122" ;skos:prefLabel "Entrate aventi natura di partita di giro"@it ;skos:broader resource:concept_1E41 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1E41 skos:narrower resource:concept_1E4122 .
+resource:concept_1U1101 a skos:Concept ;skos:notation "1U1101" ;skos:prefLabel "Uscite per gli organi dell'Ente"@it ;skos:broader resource:concept_1U11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U11 skos:narrower resource:concept_1U1101 .
+resource:concept_1U1102 a skos:Concept ;skos:notation "1U1102" ;skos:prefLabel "Oneri per il personale in attività di servizio"@it ;skos:broader resource:concept_1U11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U11 skos:narrower resource:concept_1U1102 .
+resource:concept_1U1104 a skos:Concept ;skos:notation "1U1104" ;skos:prefLabel "Uscite per l'acquisto di beni di consumo e di servizio"@it ;skos:broader resource:concept_1U11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U11 skos:narrower resource:concept_1U1104 .
+resource:concept_1U1205 a skos:Concept ;skos:notation "1U1205" ;skos:prefLabel "Uscite per prestazioni istituzionali"@it ;skos:broader resource:concept_1U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U12 skos:narrower resource:concept_1U1205 .
+resource:concept_1U1206 a skos:Concept ;skos:notation "1U1206" ;skos:prefLabel "Trasferimenti passivi"@it ;skos:broader resource:concept_1U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U12 skos:narrower resource:concept_1U1206 .
+resource:concept_1U1207 a skos:Concept ;skos:notation "1U1207" ;skos:prefLabel "Oneri finanziari"@it ;skos:broader resource:concept_1U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U12 skos:narrower resource:concept_1U1207 .
+resource:concept_1U1208 a skos:Concept ;skos:notation "1U1208" ;skos:prefLabel "Oneri tributari"@it ;skos:broader resource:concept_1U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U12 skos:narrower resource:concept_1U1208 .
+resource:concept_1U1209 a skos:Concept ;skos:notation "1U1209" ;skos:prefLabel "Poste correttive e compensative di entrate correnti"@it ;skos:broader resource:concept_1U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U12 skos:narrower resource:concept_1U1209 .
+resource:concept_1U1210 a skos:Concept ;skos:notation "1U1210" ;skos:prefLabel "Uscite non classificabili in altre voci"@it ;skos:broader resource:concept_1U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U12 skos:narrower resource:concept_1U1210 .
+resource:concept_1U1403 a skos:Concept ;skos:notation "1U1403" ;skos:prefLabel "Oneri per il personale in quiescenza"@it ;skos:broader resource:concept_1U14 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U14 skos:narrower resource:concept_1U1403 .
+resource:concept_1U2111 a skos:Concept ;skos:notation "1U2111" ;skos:prefLabel "Acquisizione beni di uso durevole e opere immobiliari"@it ;skos:broader resource:concept_1U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U21 skos:narrower resource:concept_1U2111 .
+resource:concept_1U2112 a skos:Concept ;skos:notation "1U2112" ;skos:prefLabel "Acquisizione di immobilizzazioni tecniche"@it ;skos:broader resource:concept_1U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U21 skos:narrower resource:concept_1U2112 .
+resource:concept_1U2113 a skos:Concept ;skos:notation "1U2113" ;skos:prefLabel "Partecipazioni e acquisto di valori mobiliari"@it ;skos:broader resource:concept_1U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U21 skos:narrower resource:concept_1U2113 .
+resource:concept_1U2114 a skos:Concept ;skos:notation "1U2114" ;skos:prefLabel "Concessioni di crediti e anticipazioni"@it ;skos:broader resource:concept_1U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U21 skos:narrower resource:concept_1U2114 .
+resource:concept_1U2115 a skos:Concept ;skos:notation "1U2115" ;skos:prefLabel "Indennità di anzianità e similari al personale cessato dal servizio"@it ;skos:broader resource:concept_1U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U21 skos:narrower resource:concept_1U2115 .
+resource:concept_1U2216 a skos:Concept ;skos:notation "1U2216" ;skos:prefLabel "Rimborsi di mutui"@it ;skos:broader resource:concept_1U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U22 skos:narrower resource:concept_1U2216 .
+resource:concept_1U2217 a skos:Concept ;skos:notation "1U2217" ;skos:prefLabel "Rimborsi di anticipazioni passive"@it ;skos:broader resource:concept_1U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U22 skos:narrower resource:concept_1U2217 .
+resource:concept_1U2218 a skos:Concept ;skos:notation "1U2218" ;skos:prefLabel "Rimborsi di obbligazioni"@it ;skos:broader resource:concept_1U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U22 skos:narrower resource:concept_1U2218 .
+resource:concept_1U2219 a skos:Concept ;skos:notation "1U2219" ;skos:prefLabel "Restituzioni alle gestioni autonome di anticipazioni"@it ;skos:broader resource:concept_1U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U22 skos:narrower resource:concept_1U2219 .
+resource:concept_1U2220 a skos:Concept ;skos:notation "1U2220" ;skos:prefLabel "Estinzione debiti diversi"@it ;skos:broader resource:concept_1U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U22 skos:narrower resource:concept_1U2220 .
+resource:concept_1U4121 a skos:Concept ;skos:notation "1U4121" ;skos:prefLabel "Uscite aventi natura di partite di giro"@it ;skos:broader resource:concept_1U41 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_1U41 skos:narrower resource:concept_1U4121 .
+resource:concept_2 a skos:Concept ;skos:notation "2" ;skos:prefLabel "Pensioni"@it ;skos:inScheme resource:tassonomia_gestionale .
+resource:tassonomia_gestionale skos:hasTopConcept resource:concept_2 .
+resource:concept_2E11 a skos:Concept ;skos:notation "2E11" ;skos:prefLabel "ENTRATE CONTRIBUTIVE"@it ;skos:broader resource:concept_2 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2 skos:narrower resource:concept_2E11 .
+resource:concept_2E12 a skos:Concept ;skos:notation "2E12" ;skos:prefLabel "ENTRATE DERIVANTI DA TRASFERIMENTI CORRENTI"@it ;skos:broader resource:concept_2 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2 skos:narrower resource:concept_2E12 .
+resource:concept_2E13 a skos:Concept ;skos:notation "2E13" ;skos:prefLabel "ALTRE ENTRATE"@it ;skos:broader resource:concept_2 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2 skos:narrower resource:concept_2E13 .
+resource:concept_2E21 a skos:Concept ;skos:notation "2E21" ;skos:prefLabel "ENTRATE PER ALIENAZIONE DI BENI PATRIMONIALI E RISCOSSIONI DI CREDITI"@it ;skos:broader resource:concept_2 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2 skos:narrower resource:concept_2E21 .
+resource:concept_2E22 a skos:Concept ;skos:notation "2E22" ;skos:prefLabel "TRASFERIMENTI IN CONTO CAPITALE"@it ;skos:broader resource:concept_2 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2 skos:narrower resource:concept_2E22 .
+resource:concept_2E23 a skos:Concept ;skos:notation "2E23" ;skos:prefLabel "ACCENSIONE DI PRESTITI"@it ;skos:broader resource:concept_2 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2 skos:narrower resource:concept_2E23 .
+resource:concept_2E41 a skos:Concept ;skos:notation "2E41" ;skos:prefLabel "PARTITE DI GIRO"@it ;skos:broader resource:concept_2 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2 skos:narrower resource:concept_2E41 .
+resource:concept_2U11 a skos:Concept ;skos:notation "2U11" ;skos:prefLabel "FUNZIONAMENTO"@it ;skos:broader resource:concept_2 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2 skos:narrower resource:concept_2U11 .
+resource:concept_2U12 a skos:Concept ;skos:notation "2U12" ;skos:prefLabel "INTERVENTI DIVERSI"@it ;skos:broader resource:concept_2 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2 skos:narrower resource:concept_2U12 .
+resource:concept_2U14 a skos:Concept ;skos:notation "2U14" ;skos:prefLabel "TRATTAMENTI DI QUIESCENZA, INTEGRATIVI E SOSTITUTIVI"@it ;skos:broader resource:concept_2 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2 skos:narrower resource:concept_2U14 .
+resource:concept_2U21 a skos:Concept ;skos:notation "2U21" ;skos:prefLabel "INVESTIMENTI "@it ;skos:broader resource:concept_2 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2 skos:narrower resource:concept_2U21 .
+resource:concept_2U22 a skos:Concept ;skos:notation "2U22" ;skos:prefLabel "ONERI COMUNI"@it ;skos:broader resource:concept_2 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2 skos:narrower resource:concept_2U22 .
+resource:concept_2U41 a skos:Concept ;skos:notation "2U41" ;skos:prefLabel "PARTITE DI GIRO"@it ;skos:broader resource:concept_2 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2 skos:narrower resource:concept_2U41 .
+resource:concept_2E1101 a skos:Concept ;skos:notation "2E1101" ;skos:prefLabel "Aliquote contributive a carico dei datori di lavoro e/o degli iscritti"@it ;skos:broader resource:concept_2E11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E11 skos:narrower resource:concept_2E1101 .
+resource:concept_2E1102 a skos:Concept ;skos:notation "2E1102" ;skos:prefLabel "Quote di partecipazione degli iscritti all'onere di specifiche gestioni"@it ;skos:broader resource:concept_2E11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E11 skos:narrower resource:concept_2E1102 .
+resource:concept_2E1203 a skos:Concept ;skos:notation "2E1203" ;skos:prefLabel "Trasferimenti da parte dello Stato"@it ;skos:broader resource:concept_2E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E12 skos:narrower resource:concept_2E1203 .
+resource:concept_2E1204 a skos:Concept ;skos:notation "2E1204" ;skos:prefLabel "Trasferimenti da parte delle Regioni"@it ;skos:broader resource:concept_2E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E12 skos:narrower resource:concept_2E1204 .
+resource:concept_2E1205 a skos:Concept ;skos:notation "2E1205" ;skos:prefLabel "Trasferimenti da parte dei Comuni e delle Province"@it ;skos:broader resource:concept_2E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E12 skos:narrower resource:concept_2E1205 .
+resource:concept_2E1206 a skos:Concept ;skos:notation "2E1206" ;skos:prefLabel "Trasferimenti da parte di altri Enti del settore pubblico"@it ;skos:broader resource:concept_2E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E12 skos:narrower resource:concept_2E1206 .
+resource:concept_2E1307 a skos:Concept ;skos:notation "2E1307" ;skos:prefLabel "Entrate derivanti dalla vendita di beni e dalla prestazione di servizi"@it ;skos:broader resource:concept_2E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E13 skos:narrower resource:concept_2E1307 .
+resource:concept_2E1308 a skos:Concept ;skos:notation "2E1308" ;skos:prefLabel "Redditi e proventi patrimoniali"@it ;skos:broader resource:concept_2E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E13 skos:narrower resource:concept_2E1308 .
+resource:concept_2E1309 a skos:Concept ;skos:notation "2E1309" ;skos:prefLabel "Poste correttive e compensative di spese correnti"@it ;skos:broader resource:concept_2E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E13 skos:narrower resource:concept_2E1309 .
+resource:concept_2E1310 a skos:Concept ;skos:notation "2E1310" ;skos:prefLabel "Entrate non classificabili in altre voci"@it ;skos:broader resource:concept_2E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E13 skos:narrower resource:concept_2E1310 .
+resource:concept_2E2111 a skos:Concept ;skos:notation "2E2111" ;skos:prefLabel "Alienazione di immobili e diritti reali"@it ;skos:broader resource:concept_2E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E21 skos:narrower resource:concept_2E2111 .
+resource:concept_2E2112 a skos:Concept ;skos:notation "2E2112" ;skos:prefLabel "Alienazione di immobilizzazioni tecniche"@it ;skos:broader resource:concept_2E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E21 skos:narrower resource:concept_2E2112 .
+resource:concept_2E2113 a skos:Concept ;skos:notation "2E2113" ;skos:prefLabel "Realizzo di valori mobiliari"@it ;skos:broader resource:concept_2E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E21 skos:narrower resource:concept_2E2113 .
+resource:concept_2E2114 a skos:Concept ;skos:notation "2E2114" ;skos:prefLabel "Riscossione dei crediti"@it ;skos:broader resource:concept_2E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E21 skos:narrower resource:concept_2E2114 .
+resource:concept_2E2215 a skos:Concept ;skos:notation "2E2215" ;skos:prefLabel "Trasferimenti dallo Stato"@it ;skos:broader resource:concept_2E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E22 skos:narrower resource:concept_2E2215 .
+resource:concept_2E2216 a skos:Concept ;skos:notation "2E2216" ;skos:prefLabel "Trasferimenti dalle Regioni"@it ;skos:broader resource:concept_2E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E22 skos:narrower resource:concept_2E2216 .
+resource:concept_2E2217 a skos:Concept ;skos:notation "2E2217" ;skos:prefLabel "Trasferimenti da Comuni e Province"@it ;skos:broader resource:concept_2E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E22 skos:narrower resource:concept_2E2217 .
+resource:concept_2E2218 a skos:Concept ;skos:notation "2E2218" ;skos:prefLabel "Trasferimenti da altri Enti del settore pubblico"@it ;skos:broader resource:concept_2E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E22 skos:narrower resource:concept_2E2218 .
+resource:concept_2E2319 a skos:Concept ;skos:notation "2E2319" ;skos:prefLabel "Assunzione di mutui"@it ;skos:broader resource:concept_2E23 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E23 skos:narrower resource:concept_2E2319 .
+resource:concept_2E2320 a skos:Concept ;skos:notation "2E2320" ;skos:prefLabel "Assunzione di altri debiti finanziari"@it ;skos:broader resource:concept_2E23 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E23 skos:narrower resource:concept_2E2320 .
+resource:concept_2E2321 a skos:Concept ;skos:notation "2E2321" ;skos:prefLabel "Emissioni di obbligazioni"@it ;skos:broader resource:concept_2E23 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E23 skos:narrower resource:concept_2E2321 .
+resource:concept_2E4122 a skos:Concept ;skos:notation "2E4122" ;skos:prefLabel "Entrate aventi natura di partita di giro"@it ;skos:broader resource:concept_2E41 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2E41 skos:narrower resource:concept_2E4122 .
+resource:concept_2U1101 a skos:Concept ;skos:notation "2U1101" ;skos:prefLabel "Uscite per gli organi dell'Ente"@it ;skos:broader resource:concept_2U11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U11 skos:narrower resource:concept_2U1101 .
+resource:concept_2U1102 a skos:Concept ;skos:notation "2U1102" ;skos:prefLabel "Oneri per il personale in attività di servizio"@it ;skos:broader resource:concept_2U11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U11 skos:narrower resource:concept_2U1102 .
+resource:concept_2U1104 a skos:Concept ;skos:notation "2U1104" ;skos:prefLabel "Uscite per l'acquisto di beni di consumo e di servizio"@it ;skos:broader resource:concept_2U11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U11 skos:narrower resource:concept_2U1104 .
+resource:concept_2U1205 a skos:Concept ;skos:notation "2U1205" ;skos:prefLabel "Uscite per prestazioni istituzionali"@it ;skos:broader resource:concept_2U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U12 skos:narrower resource:concept_2U1205 .
+resource:concept_2U1206 a skos:Concept ;skos:notation "2U1206" ;skos:prefLabel "Trasferimenti passivi"@it ;skos:broader resource:concept_2U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U12 skos:narrower resource:concept_2U1206 .
+resource:concept_2U1207 a skos:Concept ;skos:notation "2U1207" ;skos:prefLabel "Oneri finanziari"@it ;skos:broader resource:concept_2U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U12 skos:narrower resource:concept_2U1207 .
+resource:concept_2U1208 a skos:Concept ;skos:notation "2U1208" ;skos:prefLabel "Oneri tributari"@it ;skos:broader resource:concept_2U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U12 skos:narrower resource:concept_2U1208 .
+resource:concept_2U1209 a skos:Concept ;skos:notation "2U1209" ;skos:prefLabel "Poste correttive e compensative di entrate correnti"@it ;skos:broader resource:concept_2U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U12 skos:narrower resource:concept_2U1209 .
+resource:concept_2U1210 a skos:Concept ;skos:notation "2U1210" ;skos:prefLabel "Uscite non classificabili in altre voci"@it ;skos:broader resource:concept_2U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U12 skos:narrower resource:concept_2U1210 .
+resource:concept_2U1403 a skos:Concept ;skos:notation "2U1403" ;skos:prefLabel "Oneri per il personale in quiescenza"@it ;skos:broader resource:concept_2U14 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U14 skos:narrower resource:concept_2U1403 .
+resource:concept_2U2111 a skos:Concept ;skos:notation "2U2111" ;skos:prefLabel "Acquisizione beni di uso durevole e opere immobiliari"@it ;skos:broader resource:concept_2U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U21 skos:narrower resource:concept_2U2111 .
+resource:concept_2U2112 a skos:Concept ;skos:notation "2U2112" ;skos:prefLabel "Acquisizione di immobilizzazioni tecniche"@it ;skos:broader resource:concept_2U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U21 skos:narrower resource:concept_2U2112 .
+resource:concept_2U2113 a skos:Concept ;skos:notation "2U2113" ;skos:prefLabel "Partecipazioni e acquisto di valori mobiliari"@it ;skos:broader resource:concept_2U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U21 skos:narrower resource:concept_2U2113 .
+resource:concept_2U2114 a skos:Concept ;skos:notation "2U2114" ;skos:prefLabel "Concessioni di crediti e anticipazioni"@it ;skos:broader resource:concept_2U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U21 skos:narrower resource:concept_2U2114 .
+resource:concept_2U2115 a skos:Concept ;skos:notation "2U2115" ;skos:prefLabel "Indennità di anzianità e similari al personale cessato dal servizio"@it ;skos:broader resource:concept_2U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U21 skos:narrower resource:concept_2U2115 .
+resource:concept_2U2216 a skos:Concept ;skos:notation "2U2216" ;skos:prefLabel "Rimborsi di mutui"@it ;skos:broader resource:concept_2U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U22 skos:narrower resource:concept_2U2216 .
+resource:concept_2U2217 a skos:Concept ;skos:notation "2U2217" ;skos:prefLabel "Rimborsi di anticipazioni passive"@it ;skos:broader resource:concept_2U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U22 skos:narrower resource:concept_2U2217 .
+resource:concept_2U2218 a skos:Concept ;skos:notation "2U2218" ;skos:prefLabel "Rimborsi di obbligazioni"@it ;skos:broader resource:concept_2U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U22 skos:narrower resource:concept_2U2218 .
+resource:concept_2U2219 a skos:Concept ;skos:notation "2U2219" ;skos:prefLabel "Restituzioni alle gestioni autonome di anticipazioni"@it ;skos:broader resource:concept_2U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U22 skos:narrower resource:concept_2U2219 .
+resource:concept_2U2220 a skos:Concept ;skos:notation "2U2220" ;skos:prefLabel "Estinzione debiti diversi"@it ;skos:broader resource:concept_2U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U22 skos:narrower resource:concept_2U2220 .
+resource:concept_2U4121 a skos:Concept ;skos:notation "2U4121" ;skos:prefLabel "Uscite aventi natura di partite di giro"@it ;skos:broader resource:concept_2U41 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_2U41 skos:narrower resource:concept_2U4121 .
+resource:concept_3 a skos:Concept ;skos:notation "3" ;skos:prefLabel "Prestazioni a sostegno del reddito"@it ;skos:inScheme resource:tassonomia_gestionale .
+resource:tassonomia_gestionale skos:hasTopConcept resource:concept_3 .
+resource:concept_3E11 a skos:Concept ;skos:notation "3E11" ;skos:prefLabel "ENTRATE CONTRIBUTIVE"@it ;skos:broader resource:concept_3 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3 skos:narrower resource:concept_3E11 .
+resource:concept_3E12 a skos:Concept ;skos:notation "3E12" ;skos:prefLabel "ENTRATE DERIVANTI DA TRASFERIMENTI CORRENTI"@it ;skos:broader resource:concept_3 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3 skos:narrower resource:concept_3E12 .
+resource:concept_3E13 a skos:Concept ;skos:notation "3E13" ;skos:prefLabel "ALTRE ENTRATE"@it ;skos:broader resource:concept_3 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3 skos:narrower resource:concept_3E13 .
+resource:concept_3E21 a skos:Concept ;skos:notation "3E21" ;skos:prefLabel "ENTRATE PER ALIENAZIONE DI BENI PATRIMONIALI E RISCOSSIONI DI CREDITI"@it ;skos:broader resource:concept_3 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3 skos:narrower resource:concept_3E21 .
+resource:concept_3E22 a skos:Concept ;skos:notation "3E22" ;skos:prefLabel "TRASFERIMENTI IN CONTO CAPITALE"@it ;skos:broader resource:concept_3 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3 skos:narrower resource:concept_3E22 .
+resource:concept_3E23 a skos:Concept ;skos:notation "3E23" ;skos:prefLabel "ACCENSIONE DI PRESTITI"@it ;skos:broader resource:concept_3 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3 skos:narrower resource:concept_3E23 .
+resource:concept_3E41 a skos:Concept ;skos:notation "3E41" ;skos:prefLabel "PARTITE DI GIRO"@it ;skos:broader resource:concept_3 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3 skos:narrower resource:concept_3E41 .
+resource:concept_3U11 a skos:Concept ;skos:notation "3U11" ;skos:prefLabel "FUNZIONAMENTO"@it ;skos:broader resource:concept_3 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3 skos:narrower resource:concept_3U11 .
+resource:concept_3U12 a skos:Concept ;skos:notation "3U12" ;skos:prefLabel "INTERVENTI DIVERSI"@it ;skos:broader resource:concept_3 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3 skos:narrower resource:concept_3U12 .
+resource:concept_3U14 a skos:Concept ;skos:notation "3U14" ;skos:prefLabel "TRATTAMENTI DI QUIESCENZA, INTEGRATIVI E SOSTITUTIVI"@it ;skos:broader resource:concept_3 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3 skos:narrower resource:concept_3U14 .
+resource:concept_3U21 a skos:Concept ;skos:notation "3U21" ;skos:prefLabel "INVESTIMENTI "@it ;skos:broader resource:concept_3 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3 skos:narrower resource:concept_3U21 .
+resource:concept_3U22 a skos:Concept ;skos:notation "3U22" ;skos:prefLabel "ONERI COMUNI"@it ;skos:broader resource:concept_3 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3 skos:narrower resource:concept_3U22 .
+resource:concept_3U41 a skos:Concept ;skos:notation "3U41" ;skos:prefLabel "PARTITE DI GIRO"@it ;skos:broader resource:concept_3 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3 skos:narrower resource:concept_3U41 .
+resource:concept_3E1101 a skos:Concept ;skos:notation "3E1101" ;skos:prefLabel "Aliquote contributive a carico dei datori di lavoro e/o degli iscritti"@it ;skos:broader resource:concept_3E11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E11 skos:narrower resource:concept_3E1101 .
+resource:concept_3E1102 a skos:Concept ;skos:notation "3E1102" ;skos:prefLabel "Quote di partecipazione degli iscritti all'onere di specifiche gestioni"@it ;skos:broader resource:concept_3E11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E11 skos:narrower resource:concept_3E1102 .
+resource:concept_3E1203 a skos:Concept ;skos:notation "3E1203" ;skos:prefLabel "Trasferimenti da parte dello Stato"@it ;skos:broader resource:concept_3E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E12 skos:narrower resource:concept_3E1203 .
+resource:concept_3E1204 a skos:Concept ;skos:notation "3E1204" ;skos:prefLabel "Trasferimenti da parte delle Regioni"@it ;skos:broader resource:concept_3E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E12 skos:narrower resource:concept_3E1204 .
+resource:concept_3E1205 a skos:Concept ;skos:notation "3E1205" ;skos:prefLabel "Trasferimenti da parte dei Comuni e delle Province"@it ;skos:broader resource:concept_3E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E12 skos:narrower resource:concept_3E1205 .
+resource:concept_3E1206 a skos:Concept ;skos:notation "3E1206" ;skos:prefLabel "Trasferimenti da parte di altri Enti del settore pubblico"@it ;skos:broader resource:concept_3E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E12 skos:narrower resource:concept_3E1206 .
+resource:concept_3E1307 a skos:Concept ;skos:notation "3E1307" ;skos:prefLabel "Entrate derivanti dalla vendita di beni e dalla prestazione di servizi"@it ;skos:broader resource:concept_3E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E13 skos:narrower resource:concept_3E1307 .
+resource:concept_3E1308 a skos:Concept ;skos:notation "3E1308" ;skos:prefLabel "Redditi e proventi patrimoniali"@it ;skos:broader resource:concept_3E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E13 skos:narrower resource:concept_3E1308 .
+resource:concept_3E1309 a skos:Concept ;skos:notation "3E1309" ;skos:prefLabel "Poste correttive e compensative di spese correnti"@it ;skos:broader resource:concept_3E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E13 skos:narrower resource:concept_3E1309 .
+resource:concept_3E1310 a skos:Concept ;skos:notation "3E1310" ;skos:prefLabel "Entrate non classificabili in altre voci"@it ;skos:broader resource:concept_3E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E13 skos:narrower resource:concept_3E1310 .
+resource:concept_3E2111 a skos:Concept ;skos:notation "3E2111" ;skos:prefLabel "Alienazione di immobili e diritti reali"@it ;skos:broader resource:concept_3E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E21 skos:narrower resource:concept_3E2111 .
+resource:concept_3E2112 a skos:Concept ;skos:notation "3E2112" ;skos:prefLabel "Alienazione di immobilizzazioni tecniche"@it ;skos:broader resource:concept_3E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E21 skos:narrower resource:concept_3E2112 .
+resource:concept_3E2113 a skos:Concept ;skos:notation "3E2113" ;skos:prefLabel "Realizzo di valori mobiliari"@it ;skos:broader resource:concept_3E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E21 skos:narrower resource:concept_3E2113 .
+resource:concept_3E2114 a skos:Concept ;skos:notation "3E2114" ;skos:prefLabel "Riscossione dei crediti"@it ;skos:broader resource:concept_3E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E21 skos:narrower resource:concept_3E2114 .
+resource:concept_3E2215 a skos:Concept ;skos:notation "3E2215" ;skos:prefLabel "Trasferimenti dallo Stato"@it ;skos:broader resource:concept_3E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E22 skos:narrower resource:concept_3E2215 .
+resource:concept_3E2216 a skos:Concept ;skos:notation "3E2216" ;skos:prefLabel "Trasferimenti dalle Regioni"@it ;skos:broader resource:concept_3E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E22 skos:narrower resource:concept_3E2216 .
+resource:concept_3E2217 a skos:Concept ;skos:notation "3E2217" ;skos:prefLabel "Trasferimenti da Comuni e Province"@it ;skos:broader resource:concept_3E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E22 skos:narrower resource:concept_3E2217 .
+resource:concept_3E2218 a skos:Concept ;skos:notation "3E2218" ;skos:prefLabel "Trasferimenti da altri Enti del settore pubblico"@it ;skos:broader resource:concept_3E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E22 skos:narrower resource:concept_3E2218 .
+resource:concept_3E2319 a skos:Concept ;skos:notation "3E2319" ;skos:prefLabel "Assunzione di mutui"@it ;skos:broader resource:concept_3E23 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E23 skos:narrower resource:concept_3E2319 .
+resource:concept_3E2320 a skos:Concept ;skos:notation "3E2320" ;skos:prefLabel "Assunzione di altri debiti finanziari"@it ;skos:broader resource:concept_3E23 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E23 skos:narrower resource:concept_3E2320 .
+resource:concept_3E2321 a skos:Concept ;skos:notation "3E2321" ;skos:prefLabel "Emissioni di obbligazioni"@it ;skos:broader resource:concept_3E23 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E23 skos:narrower resource:concept_3E2321 .
+resource:concept_3E4122 a skos:Concept ;skos:notation "3E4122" ;skos:prefLabel "Entrate aventi natura di partita di giro"@it ;skos:broader resource:concept_3E41 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3E41 skos:narrower resource:concept_3E4122 .
+resource:concept_3U1101 a skos:Concept ;skos:notation "3U1101" ;skos:prefLabel "Uscite per gli organi dell'Ente"@it ;skos:broader resource:concept_3U11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U11 skos:narrower resource:concept_3U1101 .
+resource:concept_3U1102 a skos:Concept ;skos:notation "3U1102" ;skos:prefLabel "Oneri per il personale in attività di servizio"@it ;skos:broader resource:concept_3U11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U11 skos:narrower resource:concept_3U1102 .
+resource:concept_3U1104 a skos:Concept ;skos:notation "3U1104" ;skos:prefLabel "Uscite per l'acquisto di beni di consumo e di servizio"@it ;skos:broader resource:concept_3U11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U11 skos:narrower resource:concept_3U1104 .
+resource:concept_3U1205 a skos:Concept ;skos:notation "3U1205" ;skos:prefLabel "Uscite per prestazioni istituzionali"@it ;skos:broader resource:concept_3U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U12 skos:narrower resource:concept_3U1205 .
+resource:concept_3U1206 a skos:Concept ;skos:notation "3U1206" ;skos:prefLabel "Trasferimenti passivi"@it ;skos:broader resource:concept_3U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U12 skos:narrower resource:concept_3U1206 .
+resource:concept_3U1207 a skos:Concept ;skos:notation "3U1207" ;skos:prefLabel "Oneri finanziari"@it ;skos:broader resource:concept_3U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U12 skos:narrower resource:concept_3U1207 .
+resource:concept_3U1208 a skos:Concept ;skos:notation "3U1208" ;skos:prefLabel "Oneri tributari"@it ;skos:broader resource:concept_3U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U12 skos:narrower resource:concept_3U1208 .
+resource:concept_3U1209 a skos:Concept ;skos:notation "3U1209" ;skos:prefLabel "Poste correttive e compensative di entrate correnti"@it ;skos:broader resource:concept_3U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U12 skos:narrower resource:concept_3U1209 .
+resource:concept_3U1210 a skos:Concept ;skos:notation "3U1210" ;skos:prefLabel "Uscite non classificabili in altre voci"@it ;skos:broader resource:concept_3U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U12 skos:narrower resource:concept_3U1210 .
+resource:concept_3U1403 a skos:Concept ;skos:notation "3U1403" ;skos:prefLabel "Oneri per il personale in quiescenza"@it ;skos:broader resource:concept_3U14 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U14 skos:narrower resource:concept_3U1403 .
+resource:concept_3U2111 a skos:Concept ;skos:notation "3U2111" ;skos:prefLabel "Acquisizione beni di uso durevole e opere immobiliari"@it ;skos:broader resource:concept_3U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U21 skos:narrower resource:concept_3U2111 .
+resource:concept_3U2112 a skos:Concept ;skos:notation "3U2112" ;skos:prefLabel "Acquisizione di immobilizzazioni tecniche"@it ;skos:broader resource:concept_3U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U21 skos:narrower resource:concept_3U2112 .
+resource:concept_3U2113 a skos:Concept ;skos:notation "3U2113" ;skos:prefLabel "Partecipazioni e acquisto di valori mobiliari"@it ;skos:broader resource:concept_3U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U21 skos:narrower resource:concept_3U2113 .
+resource:concept_3U2114 a skos:Concept ;skos:notation "3U2114" ;skos:prefLabel "Concessioni di crediti e anticipazioni"@it ;skos:broader resource:concept_3U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U21 skos:narrower resource:concept_3U2114 .
+resource:concept_3U2115 a skos:Concept ;skos:notation "3U2115" ;skos:prefLabel "Indennità di anzianità e similari al personale cessato dal servizio"@it ;skos:broader resource:concept_3U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U21 skos:narrower resource:concept_3U2115 .
+resource:concept_3U2216 a skos:Concept ;skos:notation "3U2216" ;skos:prefLabel "Rimborsi di mutui"@it ;skos:broader resource:concept_3U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U22 skos:narrower resource:concept_3U2216 .
+resource:concept_3U2217 a skos:Concept ;skos:notation "3U2217" ;skos:prefLabel "Rimborsi di anticipazioni passive"@it ;skos:broader resource:concept_3U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U22 skos:narrower resource:concept_3U2217 .
+resource:concept_3U2218 a skos:Concept ;skos:notation "3U2218" ;skos:prefLabel "Rimborsi di obbligazioni"@it ;skos:broader resource:concept_3U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U22 skos:narrower resource:concept_3U2218 .
+resource:concept_3U2219 a skos:Concept ;skos:notation "3U2219" ;skos:prefLabel "Restituzioni alle gestioni autonome di anticipazioni"@it ;skos:broader resource:concept_3U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U22 skos:narrower resource:concept_3U2219 .
+resource:concept_3U2220 a skos:Concept ;skos:notation "3U2220" ;skos:prefLabel "Estinzione debiti diversi"@it ;skos:broader resource:concept_3U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U22 skos:narrower resource:concept_3U2220 .
+resource:concept_3U4121 a skos:Concept ;skos:notation "3U4121" ;skos:prefLabel "Uscite aventi natura di partite di giro"@it ;skos:broader resource:concept_3U41 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_3U41 skos:narrower resource:concept_3U4121 .
+resource:concept_4 a skos:Concept ;skos:notation "4" ;skos:prefLabel "Risorse Umane"@it ;skos:inScheme resource:tassonomia_gestionale .
+resource:tassonomia_gestionale skos:hasTopConcept resource:concept_4 .
+resource:concept_4E11 a skos:Concept ;skos:notation "4E11" ;skos:prefLabel "ENTRATE CONTRIBUTIVE"@it ;skos:broader resource:concept_4 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4 skos:narrower resource:concept_4E11 .
+resource:concept_4E12 a skos:Concept ;skos:notation "4E12" ;skos:prefLabel "ENTRATE DERIVANTI DA TRASFERIMENTI CORRENTI"@it ;skos:broader resource:concept_4 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4 skos:narrower resource:concept_4E12 .
+resource:concept_4E13 a skos:Concept ;skos:notation "4E13" ;skos:prefLabel "ALTRE ENTRATE"@it ;skos:broader resource:concept_4 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4 skos:narrower resource:concept_4E13 .
+resource:concept_4E21 a skos:Concept ;skos:notation "4E21" ;skos:prefLabel "ENTRATE PER ALIENAZIONE DI BENI PATRIMONIALI E RISCOSSIONI DI CREDITI"@it ;skos:broader resource:concept_4 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4 skos:narrower resource:concept_4E21 .
+resource:concept_4E22 a skos:Concept ;skos:notation "4E22" ;skos:prefLabel "TRASFERIMENTI IN CONTO CAPITALE"@it ;skos:broader resource:concept_4 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4 skos:narrower resource:concept_4E22 .
+resource:concept_4E23 a skos:Concept ;skos:notation "4E23" ;skos:prefLabel "ACCENSIONE DI PRESTITI"@it ;skos:broader resource:concept_4 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4 skos:narrower resource:concept_4E23 .
+resource:concept_4E41 a skos:Concept ;skos:notation "4E41" ;skos:prefLabel "PARTITE DI GIRO"@it ;skos:broader resource:concept_4 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4 skos:narrower resource:concept_4E41 .
+resource:concept_4U11 a skos:Concept ;skos:notation "4U11" ;skos:prefLabel "FUNZIONAMENTO"@it ;skos:broader resource:concept_4 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4 skos:narrower resource:concept_4U11 .
+resource:concept_4U12 a skos:Concept ;skos:notation "4U12" ;skos:prefLabel "INTERVENTI DIVERSI"@it ;skos:broader resource:concept_4 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4 skos:narrower resource:concept_4U12 .
+resource:concept_4U14 a skos:Concept ;skos:notation "4U14" ;skos:prefLabel "TRATTAMENTI DI QUIESCENZA, INTEGRATIVI E SOSTITUTIVI"@it ;skos:broader resource:concept_4 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4 skos:narrower resource:concept_4U14 .
+resource:concept_4U21 a skos:Concept ;skos:notation "4U21" ;skos:prefLabel "INVESTIMENTI "@it ;skos:broader resource:concept_4 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4 skos:narrower resource:concept_4U21 .
+resource:concept_4U22 a skos:Concept ;skos:notation "4U22" ;skos:prefLabel "ONERI COMUNI"@it ;skos:broader resource:concept_4 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4 skos:narrower resource:concept_4U22 .
+resource:concept_4U41 a skos:Concept ;skos:notation "4U41" ;skos:prefLabel "PARTITE DI GIRO"@it ;skos:broader resource:concept_4 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4 skos:narrower resource:concept_4U41 .
+resource:concept_4E1101 a skos:Concept ;skos:notation "4E1101" ;skos:prefLabel "Aliquote contributive a carico dei datori di lavoro e/o degli iscritti"@it ;skos:broader resource:concept_4E11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E11 skos:narrower resource:concept_4E1101 .
+resource:concept_4E1102 a skos:Concept ;skos:notation "4E1102" ;skos:prefLabel "Quote di partecipazione degli iscritti all'onere di specifiche gestioni"@it ;skos:broader resource:concept_4E11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E11 skos:narrower resource:concept_4E1102 .
+resource:concept_4E1203 a skos:Concept ;skos:notation "4E1203" ;skos:prefLabel "Trasferimenti da parte dello Stato"@it ;skos:broader resource:concept_4E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E12 skos:narrower resource:concept_4E1203 .
+resource:concept_4E1204 a skos:Concept ;skos:notation "4E1204" ;skos:prefLabel "Trasferimenti da parte delle Regioni"@it ;skos:broader resource:concept_4E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E12 skos:narrower resource:concept_4E1204 .
+resource:concept_4E1205 a skos:Concept ;skos:notation "4E1205" ;skos:prefLabel "Trasferimenti da parte dei Comuni e delle Province"@it ;skos:broader resource:concept_4E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E12 skos:narrower resource:concept_4E1205 .
+resource:concept_4E1206 a skos:Concept ;skos:notation "4E1206" ;skos:prefLabel "Trasferimenti da parte di altri Enti del settore pubblico"@it ;skos:broader resource:concept_4E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E12 skos:narrower resource:concept_4E1206 .
+resource:concept_4E1307 a skos:Concept ;skos:notation "4E1307" ;skos:prefLabel "Entrate derivanti dalla vendita di beni e dalla prestazione di servizi"@it ;skos:broader resource:concept_4E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E13 skos:narrower resource:concept_4E1307 .
+resource:concept_4E1308 a skos:Concept ;skos:notation "4E1308" ;skos:prefLabel "Redditi e proventi patrimoniali"@it ;skos:broader resource:concept_4E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E13 skos:narrower resource:concept_4E1308 .
+resource:concept_4E1309 a skos:Concept ;skos:notation "4E1309" ;skos:prefLabel "Poste correttive e compensative di spese correnti"@it ;skos:broader resource:concept_4E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E13 skos:narrower resource:concept_4E1309 .
+resource:concept_4E1310 a skos:Concept ;skos:notation "4E1310" ;skos:prefLabel "Entrate non classificabili in altre voci"@it ;skos:broader resource:concept_4E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E13 skos:narrower resource:concept_4E1310 .
+resource:concept_4E2111 a skos:Concept ;skos:notation "4E2111" ;skos:prefLabel "Alienazione di immobili e diritti reali"@it ;skos:broader resource:concept_4E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E21 skos:narrower resource:concept_4E2111 .
+resource:concept_4E2112 a skos:Concept ;skos:notation "4E2112" ;skos:prefLabel "Alienazione di immobilizzazioni tecniche"@it ;skos:broader resource:concept_4E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E21 skos:narrower resource:concept_4E2112 .
+resource:concept_4E2113 a skos:Concept ;skos:notation "4E2113" ;skos:prefLabel "Realizzo di valori mobiliari"@it ;skos:broader resource:concept_4E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E21 skos:narrower resource:concept_4E2113 .
+resource:concept_4E2114 a skos:Concept ;skos:notation "4E2114" ;skos:prefLabel "Riscossione dei crediti"@it ;skos:broader resource:concept_4E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E21 skos:narrower resource:concept_4E2114 .
+resource:concept_4E2215 a skos:Concept ;skos:notation "4E2215" ;skos:prefLabel "Trasferimenti dallo Stato"@it ;skos:broader resource:concept_4E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E22 skos:narrower resource:concept_4E2215 .
+resource:concept_4E2216 a skos:Concept ;skos:notation "4E2216" ;skos:prefLabel "Trasferimenti dalle Regioni"@it ;skos:broader resource:concept_4E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E22 skos:narrower resource:concept_4E2216 .
+resource:concept_4E2217 a skos:Concept ;skos:notation "4E2217" ;skos:prefLabel "Trasferimenti da Comuni e Province"@it ;skos:broader resource:concept_4E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E22 skos:narrower resource:concept_4E2217 .
+resource:concept_4E2218 a skos:Concept ;skos:notation "4E2218" ;skos:prefLabel "Trasferimenti da altri Enti del settore pubblico"@it ;skos:broader resource:concept_4E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E22 skos:narrower resource:concept_4E2218 .
+resource:concept_4E2319 a skos:Concept ;skos:notation "4E2319" ;skos:prefLabel "Assunzione di mutui"@it ;skos:broader resource:concept_4E23 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E23 skos:narrower resource:concept_4E2319 .
+resource:concept_4E2320 a skos:Concept ;skos:notation "4E2320" ;skos:prefLabel "Assunzione di altri debiti finanziari"@it ;skos:broader resource:concept_4E23 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E23 skos:narrower resource:concept_4E2320 .
+resource:concept_4E2321 a skos:Concept ;skos:notation "4E2321" ;skos:prefLabel "Emissioni di obbligazioni"@it ;skos:broader resource:concept_4E23 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E23 skos:narrower resource:concept_4E2321 .
+resource:concept_4E4122 a skos:Concept ;skos:notation "4E4122" ;skos:prefLabel "Entrate aventi natura di partita di giro"@it ;skos:broader resource:concept_4E41 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4E41 skos:narrower resource:concept_4E4122 .
+resource:concept_4U1101 a skos:Concept ;skos:notation "4U1101" ;skos:prefLabel "Uscite per gli organi dell'Ente"@it ;skos:broader resource:concept_4U11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U11 skos:narrower resource:concept_4U1101 .
+resource:concept_4U1102 a skos:Concept ;skos:notation "4U1102" ;skos:prefLabel "Oneri per il personale in attività di servizio"@it ;skos:broader resource:concept_4U11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U11 skos:narrower resource:concept_4U1102 .
+resource:concept_4U1104 a skos:Concept ;skos:notation "4U1104" ;skos:prefLabel "Uscite per l'acquisto di beni di consumo e di servizio"@it ;skos:broader resource:concept_4U11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U11 skos:narrower resource:concept_4U1104 .
+resource:concept_4U1205 a skos:Concept ;skos:notation "4U1205" ;skos:prefLabel "Uscite per prestazioni istituzionali"@it ;skos:broader resource:concept_4U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U12 skos:narrower resource:concept_4U1205 .
+resource:concept_4U1206 a skos:Concept ;skos:notation "4U1206" ;skos:prefLabel "Trasferimenti passivi"@it ;skos:broader resource:concept_4U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U12 skos:narrower resource:concept_4U1206 .
+resource:concept_4U1207 a skos:Concept ;skos:notation "4U1207" ;skos:prefLabel "Oneri finanziari"@it ;skos:broader resource:concept_4U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U12 skos:narrower resource:concept_4U1207 .
+resource:concept_4U1208 a skos:Concept ;skos:notation "4U1208" ;skos:prefLabel "Oneri tributari"@it ;skos:broader resource:concept_4U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U12 skos:narrower resource:concept_4U1208 .
+resource:concept_4U1209 a skos:Concept ;skos:notation "4U1209" ;skos:prefLabel "Poste correttive e compensative di entrate correnti"@it ;skos:broader resource:concept_4U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U12 skos:narrower resource:concept_4U1209 .
+resource:concept_4U1210 a skos:Concept ;skos:notation "4U1210" ;skos:prefLabel "Uscite non classificabili in altre voci"@it ;skos:broader resource:concept_4U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U12 skos:narrower resource:concept_4U1210 .
+resource:concept_4U1403 a skos:Concept ;skos:notation "4U1403" ;skos:prefLabel "Oneri per il personale in quiescenza"@it ;skos:broader resource:concept_4U14 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U14 skos:narrower resource:concept_4U1403 .
+resource:concept_4U2111 a skos:Concept ;skos:notation "4U2111" ;skos:prefLabel "Acquisizione beni di uso durevole e opere immobiliari"@it ;skos:broader resource:concept_4U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U21 skos:narrower resource:concept_4U2111 .
+resource:concept_4U2112 a skos:Concept ;skos:notation "4U2112" ;skos:prefLabel "Acquisizione di immobilizzazioni tecniche"@it ;skos:broader resource:concept_4U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U21 skos:narrower resource:concept_4U2112 .
+resource:concept_4U2113 a skos:Concept ;skos:notation "4U2113" ;skos:prefLabel "Partecipazioni e acquisto di valori mobiliari"@it ;skos:broader resource:concept_4U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U21 skos:narrower resource:concept_4U2113 .
+resource:concept_4U2114 a skos:Concept ;skos:notation "4U2114" ;skos:prefLabel "Concessioni di crediti e anticipazioni"@it ;skos:broader resource:concept_4U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U21 skos:narrower resource:concept_4U2114 .
+resource:concept_4U2115 a skos:Concept ;skos:notation "4U2115" ;skos:prefLabel "Indennità di anzianità e similari al personale cessato dal servizio"@it ;skos:broader resource:concept_4U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U21 skos:narrower resource:concept_4U2115 .
+resource:concept_4U2216 a skos:Concept ;skos:notation "4U2216" ;skos:prefLabel "Rimborsi di mutui"@it ;skos:broader resource:concept_4U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U22 skos:narrower resource:concept_4U2216 .
+resource:concept_4U2217 a skos:Concept ;skos:notation "4U2217" ;skos:prefLabel "Rimborsi di anticipazioni passive"@it ;skos:broader resource:concept_4U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U22 skos:narrower resource:concept_4U2217 .
+resource:concept_4U2218 a skos:Concept ;skos:notation "4U2218" ;skos:prefLabel "Rimborsi di obbligazioni"@it ;skos:broader resource:concept_4U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U22 skos:narrower resource:concept_4U2218 .
+resource:concept_4U2219 a skos:Concept ;skos:notation "4U2219" ;skos:prefLabel "Restituzioni alle gestioni autonome di anticipazioni"@it ;skos:broader resource:concept_4U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U22 skos:narrower resource:concept_4U2219 .
+resource:concept_4U2220 a skos:Concept ;skos:notation "4U2220" ;skos:prefLabel "Estinzione debiti diversi"@it ;skos:broader resource:concept_4U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U22 skos:narrower resource:concept_4U2220 .
+resource:concept_4U4121 a skos:Concept ;skos:notation "4U4121" ;skos:prefLabel "Uscite aventi natura di partite di giro"@it ;skos:broader resource:concept_4U41 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_4U41 skos:narrower resource:concept_4U4121 .
+resource:concept_5 a skos:Concept ;skos:notation "5" ;skos:prefLabel "Risorse Strumentali"@it ;skos:inScheme resource:tassonomia_gestionale .
+resource:tassonomia_gestionale skos:hasTopConcept resource:concept_5 .
+resource:concept_5E11 a skos:Concept ;skos:notation "5E11" ;skos:prefLabel "ENTRATE CONTRIBUTIVE"@it ;skos:broader resource:concept_5 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5 skos:narrower resource:concept_5E11 .
+resource:concept_5E12 a skos:Concept ;skos:notation "5E12" ;skos:prefLabel "ENTRATE DERIVANTI DA TRASFERIMENTI CORRENTI"@it ;skos:broader resource:concept_5 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5 skos:narrower resource:concept_5E12 .
+resource:concept_5E13 a skos:Concept ;skos:notation "5E13" ;skos:prefLabel "ALTRE ENTRATE"@it ;skos:broader resource:concept_5 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5 skos:narrower resource:concept_5E13 .
+resource:concept_5E21 a skos:Concept ;skos:notation "5E21" ;skos:prefLabel "ENTRATE PER ALIENAZIONE DI BENI PATRIMONIALI E RISCOSSIONI DI CREDITI"@it ;skos:broader resource:concept_5 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5 skos:narrower resource:concept_5E21 .
+resource:concept_5E22 a skos:Concept ;skos:notation "5E22" ;skos:prefLabel "TRASFERIMENTI IN CONTO CAPITALE"@it ;skos:broader resource:concept_5 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5 skos:narrower resource:concept_5E22 .
+resource:concept_5E23 a skos:Concept ;skos:notation "5E23" ;skos:prefLabel "ACCENSIONE DI PRESTITI"@it ;skos:broader resource:concept_5 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5 skos:narrower resource:concept_5E23 .
+resource:concept_5E41 a skos:Concept ;skos:notation "5E41" ;skos:prefLabel "PARTITE DI GIRO"@it ;skos:broader resource:concept_5 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5 skos:narrower resource:concept_5E41 .
+resource:concept_5U11 a skos:Concept ;skos:notation "5U11" ;skos:prefLabel "FUNZIONAMENTO"@it ;skos:broader resource:concept_5 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5 skos:narrower resource:concept_5U11 .
+resource:concept_5U12 a skos:Concept ;skos:notation "5U12" ;skos:prefLabel "INTERVENTI DIVERSI"@it ;skos:broader resource:concept_5 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5 skos:narrower resource:concept_5U12 .
+resource:concept_5U14 a skos:Concept ;skos:notation "5U14" ;skos:prefLabel "TRATTAMENTI DI QUIESCENZA, INTEGRATIVI E SOSTITUTIVI"@it ;skos:broader resource:concept_5 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5 skos:narrower resource:concept_5U14 .
+resource:concept_5U21 a skos:Concept ;skos:notation "5U21" ;skos:prefLabel "INVESTIMENTI "@it ;skos:broader resource:concept_5 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5 skos:narrower resource:concept_5U21 .
+resource:concept_5U22 a skos:Concept ;skos:notation "5U22" ;skos:prefLabel "ONERI COMUNI"@it ;skos:broader resource:concept_5 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5 skos:narrower resource:concept_5U22 .
+resource:concept_5U41 a skos:Concept ;skos:notation "5U41" ;skos:prefLabel "PARTITE DI GIRO"@it ;skos:broader resource:concept_5 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5 skos:narrower resource:concept_5U41 .
+resource:concept_5E1101 a skos:Concept ;skos:notation "5E1101" ;skos:prefLabel "Aliquote contributive a carico dei datori di lavoro e/o degli iscritti"@it ;skos:broader resource:concept_5E11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E11 skos:narrower resource:concept_5E1101 .
+resource:concept_5E1102 a skos:Concept ;skos:notation "5E1102" ;skos:prefLabel "Quote di partecipazione degli iscritti all'onere di specifiche gestioni"@it ;skos:broader resource:concept_5E11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E11 skos:narrower resource:concept_5E1102 .
+resource:concept_5E1203 a skos:Concept ;skos:notation "5E1203" ;skos:prefLabel "Trasferimenti da parte dello Stato"@it ;skos:broader resource:concept_5E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E12 skos:narrower resource:concept_5E1203 .
+resource:concept_5E1204 a skos:Concept ;skos:notation "5E1204" ;skos:prefLabel "Trasferimenti da parte delle Regioni"@it ;skos:broader resource:concept_5E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E12 skos:narrower resource:concept_5E1204 .
+resource:concept_5E1205 a skos:Concept ;skos:notation "5E1205" ;skos:prefLabel "Trasferimenti da parte dei Comuni e delle Province"@it ;skos:broader resource:concept_5E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E12 skos:narrower resource:concept_5E1205 .
+resource:concept_5E1206 a skos:Concept ;skos:notation "5E1206" ;skos:prefLabel "Trasferimenti da parte di altri Enti del settore pubblico"@it ;skos:broader resource:concept_5E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E12 skos:narrower resource:concept_5E1206 .
+resource:concept_5E1307 a skos:Concept ;skos:notation "5E1307" ;skos:prefLabel "Entrate derivanti dalla vendita di beni e dalla prestazione di servizi"@it ;skos:broader resource:concept_5E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E13 skos:narrower resource:concept_5E1307 .
+resource:concept_5E1308 a skos:Concept ;skos:notation "5E1308" ;skos:prefLabel "Redditi e proventi patrimoniali"@it ;skos:broader resource:concept_5E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E13 skos:narrower resource:concept_5E1308 .
+resource:concept_5E1309 a skos:Concept ;skos:notation "5E1309" ;skos:prefLabel "Poste correttive e compensative di spese correnti"@it ;skos:broader resource:concept_5E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E13 skos:narrower resource:concept_5E1309 .
+resource:concept_5E1310 a skos:Concept ;skos:notation "5E1310" ;skos:prefLabel "Entrate non classificabili in altre voci"@it ;skos:broader resource:concept_5E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E13 skos:narrower resource:concept_5E1310 .
+resource:concept_5E2111 a skos:Concept ;skos:notation "5E2111" ;skos:prefLabel "Alienazione di immobili e diritti reali"@it ;skos:broader resource:concept_5E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E21 skos:narrower resource:concept_5E2111 .
+resource:concept_5E2112 a skos:Concept ;skos:notation "5E2112" ;skos:prefLabel "Alienazione di immobilizzazioni tecniche"@it ;skos:broader resource:concept_5E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E21 skos:narrower resource:concept_5E2112 .
+resource:concept_5E2113 a skos:Concept ;skos:notation "5E2113" ;skos:prefLabel "Realizzo di valori mobiliari"@it ;skos:broader resource:concept_5E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E21 skos:narrower resource:concept_5E2113 .
+resource:concept_5E2114 a skos:Concept ;skos:notation "5E2114" ;skos:prefLabel "Riscossione dei crediti"@it ;skos:broader resource:concept_5E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E21 skos:narrower resource:concept_5E2114 .
+resource:concept_5E2215 a skos:Concept ;skos:notation "5E2215" ;skos:prefLabel "Trasferimenti dallo Stato"@it ;skos:broader resource:concept_5E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E22 skos:narrower resource:concept_5E2215 .
+resource:concept_5E2216 a skos:Concept ;skos:notation "5E2216" ;skos:prefLabel "Trasferimenti dalle Regioni"@it ;skos:broader resource:concept_5E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E22 skos:narrower resource:concept_5E2216 .
+resource:concept_5E2217 a skos:Concept ;skos:notation "5E2217" ;skos:prefLabel "Trasferimenti da Comuni e Province"@it ;skos:broader resource:concept_5E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E22 skos:narrower resource:concept_5E2217 .
+resource:concept_5E2218 a skos:Concept ;skos:notation "5E2218" ;skos:prefLabel "Trasferimenti da altri Enti del settore pubblico"@it ;skos:broader resource:concept_5E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E22 skos:narrower resource:concept_5E2218 .
+resource:concept_5E2319 a skos:Concept ;skos:notation "5E2319" ;skos:prefLabel "Assunzione di mutui"@it ;skos:broader resource:concept_5E23 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E23 skos:narrower resource:concept_5E2319 .
+resource:concept_5E2320 a skos:Concept ;skos:notation "5E2320" ;skos:prefLabel "Assunzione di altri debiti finanziari"@it ;skos:broader resource:concept_5E23 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E23 skos:narrower resource:concept_5E2320 .
+resource:concept_5E2321 a skos:Concept ;skos:notation "5E2321" ;skos:prefLabel "Emissioni di obbligazioni"@it ;skos:broader resource:concept_5E23 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E23 skos:narrower resource:concept_5E2321 .
+resource:concept_5E4122 a skos:Concept ;skos:notation "5E4122" ;skos:prefLabel "Entrate aventi natura di partita di giro"@it ;skos:broader resource:concept_5E41 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5E41 skos:narrower resource:concept_5E4122 .
+resource:concept_5U1101 a skos:Concept ;skos:notation "5U1101" ;skos:prefLabel "Uscite per gli organi dell'Ente"@it ;skos:broader resource:concept_5U11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U11 skos:narrower resource:concept_5U1101 .
+resource:concept_5U1102 a skos:Concept ;skos:notation "5U1102" ;skos:prefLabel "Oneri per il personale in attività di servizio"@it ;skos:broader resource:concept_5U11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U11 skos:narrower resource:concept_5U1102 .
+resource:concept_5U1104 a skos:Concept ;skos:notation "5U1104" ;skos:prefLabel "Uscite per l'acquisto di beni di consumo e di servizio"@it ;skos:broader resource:concept_5U11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U11 skos:narrower resource:concept_5U1104 .
+resource:concept_5U1205 a skos:Concept ;skos:notation "5U1205" ;skos:prefLabel "Uscite per prestazioni istituzionali"@it ;skos:broader resource:concept_5U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U12 skos:narrower resource:concept_5U1205 .
+resource:concept_5U1206 a skos:Concept ;skos:notation "5U1206" ;skos:prefLabel "Trasferimenti passivi"@it ;skos:broader resource:concept_5U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U12 skos:narrower resource:concept_5U1206 .
+resource:concept_5U1207 a skos:Concept ;skos:notation "5U1207" ;skos:prefLabel "Oneri finanziari"@it ;skos:broader resource:concept_5U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U12 skos:narrower resource:concept_5U1207 .
+resource:concept_5U1208 a skos:Concept ;skos:notation "5U1208" ;skos:prefLabel "Oneri tributari"@it ;skos:broader resource:concept_5U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U12 skos:narrower resource:concept_5U1208 .
+resource:concept_5U1209 a skos:Concept ;skos:notation "5U1209" ;skos:prefLabel "Poste correttive e compensative di entrate correnti"@it ;skos:broader resource:concept_5U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U12 skos:narrower resource:concept_5U1209 .
+resource:concept_5U1210 a skos:Concept ;skos:notation "5U1210" ;skos:prefLabel "Uscite non classificabili in altre voci"@it ;skos:broader resource:concept_5U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U12 skos:narrower resource:concept_5U1210 .
+resource:concept_5U1403 a skos:Concept ;skos:notation "5U1403" ;skos:prefLabel "Oneri per il personale in quiescenza"@it ;skos:broader resource:concept_5U14 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U14 skos:narrower resource:concept_5U1403 .
+resource:concept_5U2111 a skos:Concept ;skos:notation "5U2111" ;skos:prefLabel "Acquisizione beni di uso durevole e opere immobiliari"@it ;skos:broader resource:concept_5U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U21 skos:narrower resource:concept_5U2111 .
+resource:concept_5U2112 a skos:Concept ;skos:notation "5U2112" ;skos:prefLabel "Acquisizione di immobilizzazioni tecniche"@it ;skos:broader resource:concept_5U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U21 skos:narrower resource:concept_5U2112 .
+resource:concept_5U2113 a skos:Concept ;skos:notation "5U2113" ;skos:prefLabel "Partecipazioni e acquisto di valori mobiliari"@it ;skos:broader resource:concept_5U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U21 skos:narrower resource:concept_5U2113 .
+resource:concept_5U2114 a skos:Concept ;skos:notation "5U2114" ;skos:prefLabel "Concessioni di crediti e anticipazioni"@it ;skos:broader resource:concept_5U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U21 skos:narrower resource:concept_5U2114 .
+resource:concept_5U2115 a skos:Concept ;skos:notation "5U2115" ;skos:prefLabel "Indennità di anzianità e similari al personale cessato dal servizio"@it ;skos:broader resource:concept_5U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U21 skos:narrower resource:concept_5U2115 .
+resource:concept_5U2216 a skos:Concept ;skos:notation "5U2216" ;skos:prefLabel "Rimborsi di mutui"@it ;skos:broader resource:concept_5U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U22 skos:narrower resource:concept_5U2216 .
+resource:concept_5U2217 a skos:Concept ;skos:notation "5U2217" ;skos:prefLabel "Rimborsi di anticipazioni passive"@it ;skos:broader resource:concept_5U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U22 skos:narrower resource:concept_5U2217 .
+resource:concept_5U2218 a skos:Concept ;skos:notation "5U2218" ;skos:prefLabel "Rimborsi di obbligazioni"@it ;skos:broader resource:concept_5U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U22 skos:narrower resource:concept_5U2218 .
+resource:concept_5U2219 a skos:Concept ;skos:notation "5U2219" ;skos:prefLabel "Restituzioni alle gestioni autonome di anticipazioni"@it ;skos:broader resource:concept_5U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U22 skos:narrower resource:concept_5U2219 .
+resource:concept_5U2220 a skos:Concept ;skos:notation "5U2220" ;skos:prefLabel "Estinzione debiti diversi"@it ;skos:broader resource:concept_5U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U22 skos:narrower resource:concept_5U2220 .
+resource:concept_5U4121 a skos:Concept ;skos:notation "5U4121" ;skos:prefLabel "Uscite aventi natura di partite di giro"@it ;skos:broader resource:concept_5U41 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_5U41 skos:narrower resource:concept_5U4121 .
+resource:concept_8 a skos:Concept ;skos:notation "8" ;skos:prefLabel "Altre strutture di Direzione Generale"@it ;skos:inScheme resource:tassonomia_gestionale .
+resource:tassonomia_gestionale skos:hasTopConcept resource:concept_8 .
+resource:concept_8E11 a skos:Concept ;skos:notation "8E11" ;skos:prefLabel "ENTRATE CONTRIBUTIVE"@it ;skos:broader resource:concept_8 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8 skos:narrower resource:concept_8E11 .
+resource:concept_8E12 a skos:Concept ;skos:notation "8E12" ;skos:prefLabel "ENTRATE DERIVANTI DA TRASFERIMENTI CORRENTI"@it ;skos:broader resource:concept_8 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8 skos:narrower resource:concept_8E12 .
+resource:concept_8E13 a skos:Concept ;skos:notation "8E13" ;skos:prefLabel "ALTRE ENTRATE"@it ;skos:broader resource:concept_8 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8 skos:narrower resource:concept_8E13 .
+resource:concept_8E21 a skos:Concept ;skos:notation "8E21" ;skos:prefLabel "ENTRATE PER ALIENAZIONE DI BENI PATRIMONIALI E RISCOSSIONI DI CREDITI"@it ;skos:broader resource:concept_8 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8 skos:narrower resource:concept_8E21 .
+resource:concept_8E22 a skos:Concept ;skos:notation "8E22" ;skos:prefLabel "TRASFERIMENTI IN CONTO CAPITALE"@it ;skos:broader resource:concept_8 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8 skos:narrower resource:concept_8E22 .
+resource:concept_8E23 a skos:Concept ;skos:notation "8E23" ;skos:prefLabel "ACCENSIONE DI PRESTITI"@it ;skos:broader resource:concept_8 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8 skos:narrower resource:concept_8E23 .
+resource:concept_8E41 a skos:Concept ;skos:notation "8E41" ;skos:prefLabel "PARTITE DI GIRO"@it ;skos:broader resource:concept_8 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8 skos:narrower resource:concept_8E41 .
+resource:concept_8U11 a skos:Concept ;skos:notation "8U11" ;skos:prefLabel "FUNZIONAMENTO"@it ;skos:broader resource:concept_8 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8 skos:narrower resource:concept_8U11 .
+resource:concept_8U12 a skos:Concept ;skos:notation "8U12" ;skos:prefLabel "INTERVENTI DIVERSI"@it ;skos:broader resource:concept_8 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8 skos:narrower resource:concept_8U12 .
+resource:concept_8U14 a skos:Concept ;skos:notation "8U14" ;skos:prefLabel "TRATTAMENTI DI QUIESCENZA, INTEGRATIVI E SOSTITUTIVI"@it ;skos:broader resource:concept_8 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8 skos:narrower resource:concept_8U14 .
+resource:concept_8U21 a skos:Concept ;skos:notation "8U21" ;skos:prefLabel "INVESTIMENTI "@it ;skos:broader resource:concept_8 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8 skos:narrower resource:concept_8U21 .
+resource:concept_8U22 a skos:Concept ;skos:notation "8U22" ;skos:prefLabel "ONERI COMUNI"@it ;skos:broader resource:concept_8 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8 skos:narrower resource:concept_8U22 .
+resource:concept_8U41 a skos:Concept ;skos:notation "8U41" ;skos:prefLabel "PARTITE DI GIRO"@it ;skos:broader resource:concept_8 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8 skos:narrower resource:concept_8U41 .
+resource:concept_8E1101 a skos:Concept ;skos:notation "8E1101" ;skos:prefLabel "Aliquote contributive a carico dei datori di lavoro e/o degli iscritti"@it ;skos:broader resource:concept_8E11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E11 skos:narrower resource:concept_8E1101 .
+resource:concept_8E1102 a skos:Concept ;skos:notation "8E1102" ;skos:prefLabel "Quote di partecipazione degli iscritti all'onere di specifiche gestioni"@it ;skos:broader resource:concept_8E11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E11 skos:narrower resource:concept_8E1102 .
+resource:concept_8E1203 a skos:Concept ;skos:notation "8E1203" ;skos:prefLabel "Trasferimenti da parte dello Stato"@it ;skos:broader resource:concept_8E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E12 skos:narrower resource:concept_8E1203 .
+resource:concept_8E1204 a skos:Concept ;skos:notation "8E1204" ;skos:prefLabel "Trasferimenti da parte delle Regioni"@it ;skos:broader resource:concept_8E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E12 skos:narrower resource:concept_8E1204 .
+resource:concept_8E1205 a skos:Concept ;skos:notation "8E1205" ;skos:prefLabel "Trasferimenti da parte dei Comuni e delle Province"@it ;skos:broader resource:concept_8E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E12 skos:narrower resource:concept_8E1205 .
+resource:concept_8E1206 a skos:Concept ;skos:notation "8E1206" ;skos:prefLabel "Trasferimenti da parte di altri Enti del settore pubblico"@it ;skos:broader resource:concept_8E12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E12 skos:narrower resource:concept_8E1206 .
+resource:concept_8E1307 a skos:Concept ;skos:notation "8E1307" ;skos:prefLabel "Entrate derivanti dalla vendita di beni e dalla prestazione di servizi"@it ;skos:broader resource:concept_8E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E13 skos:narrower resource:concept_8E1307 .
+resource:concept_8E1308 a skos:Concept ;skos:notation "8E1308" ;skos:prefLabel "Redditi e proventi patrimoniali"@it ;skos:broader resource:concept_8E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E13 skos:narrower resource:concept_8E1308 .
+resource:concept_8E1309 a skos:Concept ;skos:notation "8E1309" ;skos:prefLabel "Poste correttive e compensative di spese correnti"@it ;skos:broader resource:concept_8E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E13 skos:narrower resource:concept_8E1309 .
+resource:concept_8E1310 a skos:Concept ;skos:notation "8E1310" ;skos:prefLabel "Entrate non classificabili in altre voci"@it ;skos:broader resource:concept_8E13 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E13 skos:narrower resource:concept_8E1310 .
+resource:concept_8E2111 a skos:Concept ;skos:notation "8E2111" ;skos:prefLabel "Alienazione di immobili e diritti reali"@it ;skos:broader resource:concept_8E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E21 skos:narrower resource:concept_8E2111 .
+resource:concept_8E2112 a skos:Concept ;skos:notation "8E2112" ;skos:prefLabel "Alienazione di immobilizzazioni tecniche"@it ;skos:broader resource:concept_8E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E21 skos:narrower resource:concept_8E2112 .
+resource:concept_8E2113 a skos:Concept ;skos:notation "8E2113" ;skos:prefLabel "Realizzo di valori mobiliari"@it ;skos:broader resource:concept_8E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E21 skos:narrower resource:concept_8E2113 .
+resource:concept_8E2114 a skos:Concept ;skos:notation "8E2114" ;skos:prefLabel "Riscossione dei crediti"@it ;skos:broader resource:concept_8E21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E21 skos:narrower resource:concept_8E2114 .
+resource:concept_8E2215 a skos:Concept ;skos:notation "8E2215" ;skos:prefLabel "Trasferimenti dallo Stato"@it ;skos:broader resource:concept_8E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E22 skos:narrower resource:concept_8E2215 .
+resource:concept_8E2216 a skos:Concept ;skos:notation "8E2216" ;skos:prefLabel "Trasferimenti dalle Regioni"@it ;skos:broader resource:concept_8E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E22 skos:narrower resource:concept_8E2216 .
+resource:concept_8E2217 a skos:Concept ;skos:notation "8E2217" ;skos:prefLabel "Trasferimenti da Comuni e Province"@it ;skos:broader resource:concept_8E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E22 skos:narrower resource:concept_8E2217 .
+resource:concept_8E2218 a skos:Concept ;skos:notation "8E2218" ;skos:prefLabel "Trasferimenti da altri Enti del settore pubblico"@it ;skos:broader resource:concept_8E22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E22 skos:narrower resource:concept_8E2218 .
+resource:concept_8E2319 a skos:Concept ;skos:notation "8E2319" ;skos:prefLabel "Assunzione di mutui"@it ;skos:broader resource:concept_8E23 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E23 skos:narrower resource:concept_8E2319 .
+resource:concept_8E2320 a skos:Concept ;skos:notation "8E2320" ;skos:prefLabel "Assunzione di altri debiti finanziari"@it ;skos:broader resource:concept_8E23 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E23 skos:narrower resource:concept_8E2320 .
+resource:concept_8E2321 a skos:Concept ;skos:notation "8E2321" ;skos:prefLabel "Emissioni di obbligazioni"@it ;skos:broader resource:concept_8E23 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E23 skos:narrower resource:concept_8E2321 .
+resource:concept_8E4122 a skos:Concept ;skos:notation "8E4122" ;skos:prefLabel "Entrate aventi natura di partita di giro"@it ;skos:broader resource:concept_8E41 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8E41 skos:narrower resource:concept_8E4122 .
+resource:concept_8U1101 a skos:Concept ;skos:notation "8U1101" ;skos:prefLabel "Uscite per gli organi dell'Ente"@it ;skos:broader resource:concept_8U11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U11 skos:narrower resource:concept_8U1101 .
+resource:concept_8U1102 a skos:Concept ;skos:notation "8U1102" ;skos:prefLabel "Oneri per il personale in attività di servizio"@it ;skos:broader resource:concept_8U11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U11 skos:narrower resource:concept_8U1102 .
+resource:concept_8U1104 a skos:Concept ;skos:notation "8U1104" ;skos:prefLabel "Uscite per l'acquisto di beni di consumo e di servizio"@it ;skos:broader resource:concept_8U11 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U11 skos:narrower resource:concept_8U1104 .
+resource:concept_8U1205 a skos:Concept ;skos:notation "8U1205" ;skos:prefLabel "Uscite per prestazioni istituzionali"@it ;skos:broader resource:concept_8U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U12 skos:narrower resource:concept_8U1205 .
+resource:concept_8U1206 a skos:Concept ;skos:notation "8U1206" ;skos:prefLabel "Trasferimenti passivi"@it ;skos:broader resource:concept_8U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U12 skos:narrower resource:concept_8U1206 .
+resource:concept_8U1207 a skos:Concept ;skos:notation "8U1207" ;skos:prefLabel "Oneri finanziari"@it ;skos:broader resource:concept_8U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U12 skos:narrower resource:concept_8U1207 .
+resource:concept_8U1208 a skos:Concept ;skos:notation "8U1208" ;skos:prefLabel "Oneri tributari"@it ;skos:broader resource:concept_8U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U12 skos:narrower resource:concept_8U1208 .
+resource:concept_8U1209 a skos:Concept ;skos:notation "8U1209" ;skos:prefLabel "Poste correttive e compensative di entrate correnti"@it ;skos:broader resource:concept_8U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U12 skos:narrower resource:concept_8U1209 .
+resource:concept_8U1210 a skos:Concept ;skos:notation "8U1210" ;skos:prefLabel "Uscite non classificabili in altre voci"@it ;skos:broader resource:concept_8U12 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U12 skos:narrower resource:concept_8U1210 .
+resource:concept_8U1403 a skos:Concept ;skos:notation "8U1403" ;skos:prefLabel "Oneri per il personale in quiescenza"@it ;skos:broader resource:concept_8U14 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U14 skos:narrower resource:concept_8U1403 .
+resource:concept_8U2111 a skos:Concept ;skos:notation "8U2111" ;skos:prefLabel "Acquisizione beni di uso durevole e opere immobiliari"@it ;skos:broader resource:concept_8U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U21 skos:narrower resource:concept_8U2111 .
+resource:concept_8U2112 a skos:Concept ;skos:notation "8U2112" ;skos:prefLabel "Acquisizione di immobilizzazioni tecniche"@it ;skos:broader resource:concept_8U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U21 skos:narrower resource:concept_8U2112 .
+resource:concept_8U2113 a skos:Concept ;skos:notation "8U2113" ;skos:prefLabel "Partecipazioni e acquisto di valori mobiliari"@it ;skos:broader resource:concept_8U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U21 skos:narrower resource:concept_8U2113 .
+resource:concept_8U2114 a skos:Concept ;skos:notation "8U2114" ;skos:prefLabel "Concessioni di crediti e anticipazioni"@it ;skos:broader resource:concept_8U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U21 skos:narrower resource:concept_8U2114 .
+resource:concept_8U2115 a skos:Concept ;skos:notation "8U2115" ;skos:prefLabel "Indennità di anzianità e similari al personale cessato dal servizio"@it ;skos:broader resource:concept_8U21 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U21 skos:narrower resource:concept_8U2115 .
+resource:concept_8U2216 a skos:Concept ;skos:notation "8U2216" ;skos:prefLabel "Rimborsi di mutui"@it ;skos:broader resource:concept_8U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U22 skos:narrower resource:concept_8U2216 .
+resource:concept_8U2217 a skos:Concept ;skos:notation "8U2217" ;skos:prefLabel "Rimborsi di anticipazioni passive"@it ;skos:broader resource:concept_8U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U22 skos:narrower resource:concept_8U2217 .
+resource:concept_8U2218 a skos:Concept ;skos:notation "8U2218" ;skos:prefLabel "Rimborsi di obbligazioni"@it ;skos:broader resource:concept_8U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U22 skos:narrower resource:concept_8U2218 .
+resource:concept_8U2219 a skos:Concept ;skos:notation "8U2219" ;skos:prefLabel "Restituzioni alle gestioni autonome di anticipazioni"@it ;skos:broader resource:concept_8U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U22 skos:narrower resource:concept_8U2219 .
+resource:concept_8U2220 a skos:Concept ;skos:notation "8U2220" ;skos:prefLabel "Estinzione debiti diversi"@it ;skos:broader resource:concept_8U22 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U22 skos:narrower resource:concept_8U2220 .
+resource:concept_8U4121 a skos:Concept ;skos:notation "8U4121" ;skos:prefLabel "Uscite aventi natura di partite di giro"@it ;skos:broader resource:concept_8U41 ;skos:inScheme resource:tassonomia_gestionale .
+resource:concept_8U41 skos:narrower resource:concept_8U4121 .

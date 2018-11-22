@@ -1,0 +1,28 @@
+##
+## AXIOM: inherit the reference period attribute in Fact from the dataset, if missing
+##
+PREFIX fr: <http://linkeddata.center/botk-fr/v1#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX sdmx-attribute:	<http://purl.org/linked-data/sdmx/2009/attribute#>
+
+INSERT { ?fact fr:refPeriod ?ref_period} 
+WHERE {  
+	?fact a fr:Fact; qb:dataSet/fr:refPeriod ?ref_period.
+	
+	FILTER NOT EXISTS {?fact fr:refPeriod []}
+}
+
+;
+
+
+##
+## AXIOM: inherit the unit attribute in Fact from the dataset, if missing
+##
+
+INSERT { ?fact fr:unit ?unit} 
+WHERE {  
+	?fact a fr:Fact; qb:dataSet/sdmx-attribute:unitMeasure ?unit.
+	
+	FILTER NOT EXISTS {?fact fr:unit []}
+}
+

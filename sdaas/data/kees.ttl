@@ -9,15 +9,17 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> . 
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix owl:   <http://www.w3.org/2002/07/owl#> .
-@prefix dcat:  <http://www.w3.org/ns/dcat#> .
-@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fr: <http://linkeddata.center/botk-fr/v1#> .
+@prefix sdmx-attribute:	<http://purl.org/linked-data/sdmx/2009/attribute#> .
 @prefix resource: <http://inps.linkeddata.cloud/resource/> .
 	
 resource:welcome a kees:KnowledgeBase;
     void:sparqlEndpoint <https://data.inps.g0v.it/sdaas/sparql> ;
 	dct:title "Welcome to inps.g0v.it knowledge base"@en; 
-	dct:description "This dataset provides information about INPS finactial reports expressed in RDF with the g0v-ap application profile."@en;
+	dct:description "This dataset provides information about INPS financial reports expressed in RDF with the g0v-ap application profile."@en;
     dct:license <https://creativecommons.org/licenses/by/3.0/>;
 	rdfs:comment "Power by the community edition of  LinkedData.Center SDaaS™ platform."@en;
 	rdfs:comment "Data derived from INPS Open Data © by Istituto Nazionale della Previdenza Sociale."@en;
@@ -51,48 +53,54 @@ resource:Copernicani a foaf:Organization;
 .
 
 
-resource:tassonomia a dcat:Dataset;
+#######################################################
+# Catalog
+#######################################################
+resource:ID_2888 a fr:FinancialReport;
+    dct:identifier "ID-2888" ;
+	dct:title       "Bilancio gestionale entrate 2014"@it ;
+	dct:publisher   resource:INPS ;
+	dct:modified      "2017-03-04"^^xsd:date ;
+	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2014-01-01T00:00:00/P1Y> ;
+	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
+	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:accessURL <https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=924> ;
+	dcat:distribution resource:ID_2888_csv
+.
+resource:ID_2888_csv a dcat:Distribution ;
+	dcat:downloadURL <https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=924&scaricadataset=2> ;
+	dcat:license <https://www.dati.gov.it/content/italian-open-data-license-v20>
+.
+	
+resource:ID_2889 a fr:FinancialReport;
+    dct:identifier "ID-2889" ;
+	dct:title       "Bilancio gestionale uscite 2014"@it ;
+	dct:publisher   resource:INPS ;
+	dct:modified      "2017-03-04"^^xsd:date ;
+	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2014-01-01T00:00:00/P1Y> ;
+	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
+	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:distribution resource:ID_2889_csv ;
+	dcat:accessURL <https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=925> 
+.
+resource:ID_2889_csv a dcat:Distribution ;	
+	dcat:downloadURL <https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=925&scaricadataset=2> ;
+	dcat:license <https://www.dati.gov.it/content/italian-open-data-license-v20>
+.
+
+resource:ds_tassonomia_gestionale a dcat:Dataset;
         dct:description  "Tassonomia delle voci del bilancio INPS"@it ;
         dct:identifier   "tassonomia" ;
         dct:modified	 "2018-11-15T10:55:01Z"^^xsd:dateTime;
         dct:publisher    resource:MEF ;
         dct:title        "Tassonomia voci di bilancio"@it ;
-        dcat:distribution    resource:tassonomia_ttl 
+        dcat:distribution    resource:tassonomia_gestionale_ttl 
 .
-resource:tassonomia_ttl a  dcat:Distribution ;
+resource:tassonomia_gestionale_ttl a  dcat:Distribution ;
         dct:format    "text/csv" ;
-        dcat:accessUrl    <https://github.com/g0v-it/data-inps/tree/master/sdaas/data/tassonomia.ttl> ;
+        dcat:downloadURL <https://github.com/g0v-it/data-inps/tree/master/sdaas/data/tassonomia.ttl> ;
         dcat:license      <http://creativecommons.org/licenses/by/3.0> 
 .
-<https://github.com/g0v-it/tree/master/sdaas/data/descrizione_programmi.csv> a prov:Entity;
-	prov:wasGeneratedBy [ a prov:Activity;
-		prov:startedAtTime    "2019-11-15T10:30:01Z"^^xsd:dateTime;
-   		prov:endedAtTime      "2019-11-27T10:55:01Z"^^xsd:dateTime;
-		rdfs:comment "Attività manuale di creazione del file SLOS partenda dal file excel ricevuto da INPS"@it; 
-	    prov:qualifiedAssociation [
-	        a prov:Association;
-	        prov:agent <http://linkeddata.center/>;
-	    ];
-		prov:used [ a prov:Entity;
-			rdfs:comment "File via mail da INPS il 12.11.2018"@it;
-			prov:wasDerivedFrom <https://mail.google.com/mail/u/0?ik=cb29cb291d&view=om&permmsgid=msg-f%3A1616940456919619278>
-		]
-	]
-.
 
 
-resource:nomi_azioni a dcat:Dataset;
-        dct:description  "Ottimizzazione dei nomi delle azioni riscritte dai Copernicani"@it ;
-        dct:identifier   "nomi_azioni" ;
-        dct:publisher    resource:Copernicani ;
-        dct:title        "Nomi azioni ottimizzati"@it ;
-        dcat:accessUrl    <https://docs.google.com/spreadsheets/d/1JpmdYjNkc-Yr4JlQdFhn0jgcJ0tuMZZ5Y9IWmc57BTA/edit?usp=sharing> ;
-        dcat:distribution    resource:nomi_azioni_csv
-.
-resource:nomi_azioni_csv a  dcat:Distribution ;
-        dct:format "text/csv" ;
-        dcat:downloadUrl <https://docs.google.com/spreadsheets/d/e/2PACX-1vTs9jWocG_xYjgp4JmKcH6o_7piJ9b4t--c-kx_xf6Erkp_-ad-4Fj0MRY2Eyd0AA9-LZ94pTwDv4na/pub?output=csv> ;
-        dcat:license <http://creativecommons.org/licenses/by/3.0> 
-.
 
-	
