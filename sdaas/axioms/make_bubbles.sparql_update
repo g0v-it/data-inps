@@ -1,0 +1,61 @@
+#
+# Create a bubble (without previousValue)
+#
+PREFIX fr: <http://linkeddata.center/botk-fr/v1#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX interval: <http://reference.data.gov.uk/def/intervals/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX bgo: <http://linkeddata.center/lodmap-bgo/v1#>
+
+INSERT { 
+   ?bubbleUri a bgo:Account ;
+		bgo:inBubbleGraph <https://data.inps.g0v.it/api/v2/accounts#bubbleGraph>;
+		bgo:code ?code ;
+		dct:title ?title ;
+		dct:subject ?subject ;
+		dct:source ?fact ;
+		bgo:amount ?amount ;
+		bgo:time ?year;
+		bgo:partitionLabel ?partitionLabel1, ?partitionLabel2
+} WHERE {
+  ?fact a fr:Fact ;
+          fr:concept ?fact_concept ;
+          fr:refPeriod/time:hasBeginning/interval:ordinalYear ?year ;
+          fr:amount ?amount 
+  .
+  
+  ?fact_concept 
+  	skos:broader ?categoria ; 
+  	skos:notation ?notation; 
+  	skos:prefLabel ?title 
+  .
+  ?categoria skos:broader ?capitolo .
+  
+  ?capitolo skos:broader ?upb .
+  
+  ?upb skos:prefLabel ?partitionLabel1.
+  
+  BIND( IF( CONTAINS(?notation, "E"),"ENTRATE","USCITE") AS ?partitionLabel2)
+  BIND( MD5(str(?fact)) AS ?code)
+  BIND( IRI( CONCAT("https://data.inps.g0v.it/api/v2/account/",?code,"#data")) AS ?bubbleUri)
+  BIND( CONCAT(?partitionLabel1," (",  ?partitionLabel2,")") AS ?subject)
+}
+
+;
+
+#
+# Create history rec
+#
+
+INSERT {
+  ?account bgo:isVersionOf [ bgo:date ?year; bgo:amount ?amount ]
+} WHERE {
+	?account a bgo:Account; dct:source ?fact1 .
+    ?fact1 fr:concept/skos:notation ?notation .
+    ?fact2 fr:concept/skos:notation ?notation .
+    FILTER( ?fact1 != ?fact2 )
+    ?fact2 fr:amount ?amount; fr:refPeriod/time:hasBeginning/interval:ordinalYear ?year ;
+}
+   

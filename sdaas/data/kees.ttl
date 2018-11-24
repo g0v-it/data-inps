@@ -19,16 +19,16 @@
 resource:welcome a kees:KnowledgeBase;
     void:sparqlEndpoint <https://data.inps.g0v.it/sdaas/sparql> ;
 	dct:title "Welcome to inps.g0v.it knowledge base"@en; 
-	dct:description "This dataset provides information about INPS financial reports expressed in RDF with the g0v-ap application profile."@en;
+	dct:description "This dataset provides information about INPS financial reports expressed in RDF with the g0v fr-ap application profile."@en;
     dct:license <https://creativecommons.org/licenses/by/3.0/>;
 	rdfs:comment "Power by the community edition of  LinkedData.Center SDaaS™ platform."@en;
 	rdfs:comment "Data derived from INPS Open Data © by Istituto Nazionale della Previdenza Sociale."@en;
  	void:exampleResource resource:ID-2888 ;
+ 	void:exampleResource resource:ID-2889 ;
 	void:uriSpace "http://inps.linkeddata.cloud/resource/";
 	dct:subject <https://it.wikipedia.org/wiki/Bilancio_d%27esercizio>;
 	foaf:page <http://data.inps.g0v.it/>
 .
-
 
 #######################################################
 # Individuals
@@ -56,6 +56,8 @@ resource:Copernicani a foaf:Organization;
 #######################################################
 # Catalog
 #######################################################
+
+
 resource:ID_2888 a fr:FinancialReport;
     dct:identifier "ID-2888" ;
 	dct:title       "Bilancio gestionale entrate 2014"@it ;

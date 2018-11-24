@@ -2,16 +2,14 @@
 
 This project contains all needed for setting up and update a knowledge base ready to be used by the inps.g0v.it application.
 
-The knowledge base is built around the [g0v application profile](https://github.com/g0v-it/ap) and  [LODMAP Bubble Graph Ontology](https://github.com/linkeddatacenter/LODMAP-ontologies/tree/master/BGO)
+The knowledge base is built around the [g0v application profile](https://github.com/g0v-it/ontologies/tree/master/fr-ap) and  [LODMAP Bubble Graph Ontology](https://github.com/linkeddatacenter/LODMAP-ontologies/tree/master/BGO)
 
 The data ingestion process is managed by the [LinkedData.Center SDaaS platform](https://linkeddata.center/p/sdaas) (community edition).
 
 
-## updating the knowledge base
+## knowledge base build process:
 
-knowledge base build process requires:
-
-- to edit files in the *data* directory
+- to edit local rdf files in the *data* directory
 - to develop the *gateways* for transforming web resources in linked data. See [gateways doc.](gateways/README.md)
 - to write *axioms* and rules to generate new data. See [axioms doc.](axioms/README.md)
 - to edit the *build script* that drives the data ingestion process.

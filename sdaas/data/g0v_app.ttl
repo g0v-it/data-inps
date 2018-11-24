@@ -1,0 +1,36 @@
+#
+# Inps application configuration
+#
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bgo: <http://linkeddata.center/lodmap-bgo/v1#> .
+@prefix resource: <http://inps.linkeddata.cloud/resource/> .
+@base <https://data.inps.g0v.it/api/v2/> .
+
+
+<accounts#bubbleGraph> a bgo:BubbleGraph ;
+    dct:title "Bilancio INPS"@it ;
+    dct:description "Ultimo bilancio gestionale entrate/uscite pubblicato"@it ;
+    dct:source resource:ID_2888, resource:ID_2889 ;
+    bgo:um "EUR" ;
+    bgo:partitionOrderedList ( 
+        <accounts#partizione_totale>
+        <accounts#entrate_uscite>
+        <accounts#upb>
+    )
+.
+
+<accounts#partizione_totale>
+	bgo:partitionSchemeId "partizione_totale" ;
+	dct:title "2017"@it
+.
+	
+<accounts#entrate_uscite>
+	bgo:partitionSchemeId "entrate_uscite" ;
+	dct:title "ENTRATE/USCITE"@it
+.
+
+<accounts#upb>
+	bgo:partitionSchemeId "per_upb" ;
+	dct:title "per UPB"
+.

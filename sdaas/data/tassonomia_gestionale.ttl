@@ -21,9 +21,9 @@
 	prov:wasGeneratedBy [ a prov:Activity;
 		prov:startedAtTime    "2018-11-22T13:24:25+00:00"^^xsd:dateTime;
 		rdfs:comment "Attività manuale di creazione del file SKOS partendo dal file excel ricevuto da INPS"@it; 
-	    prov:qualifiedAssociation [
-	        a prov:Association;
-	        prov:agent <http://linkeddata.center/>;
+	    prov:wasAssociatedWith [ a prov:SoftwareAgent ;
+        	rdfs:label "tassonomia_gestionale.php"^^xsd:string;
+        	rdfs:comment "programma che crea la tassonomia gestionale (da lanciarsi solo se cambia di quest'ultima)"@it
 	    ];
 		prov:used [ a prov:Entity;
 			rdfs:comment "File via mail da INPS il 12.11.2018"@it;

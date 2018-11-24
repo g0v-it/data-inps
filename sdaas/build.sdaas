@@ -13,8 +13,9 @@ SD_LEARN http://reference.data.gov.uk/id/gregorian-interval/2014-01-01T00:00:00/
 ####################################################
 SD_LOG  "Starting learning window: loading facts. This will take a while..."
 ####################################################
-SD_LOAD_RDF_FILE urn:sdaas:config "data/kees.ttl"
-SD_LOAD_RDF_FILE $GRAPH/tassonomia_gestionale "data/tassonomia_gestionale.ttl"
+SD_LEARN urn:sdaas:config "data/kees.ttl"
+SD_LEARN $GRAPH/g0v_app "data/g0v_app.ttl"
+SD_LEARN $GRAPH/tassonomia_gestionale "data/tassonomia_gestionale.ttl"
 SD_LEARN $GRAPH/ID-2888 "https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=924&scaricadataset=2" "|in|out|.ttl|iconv -f 'windows-1252' -t 'UTF-8' - |php7 gateways/gestionale.php ID_2888"
 SD_LEARN $GRAPH/ID-2889 "https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=925&scaricadataset=2" "|in|out|.ttl|iconv -f 'windows-1252' -t 'UTF-8' - |php7 gateways/gestionale.php ID_2889"
 
@@ -23,6 +24,7 @@ SD_LEARN $GRAPH/ID-2889 "https://www.inps.it/NuovoportaleINPS/default.aspx?itemd
 SD_LOG  "Starting reasoning window: computing axioms and rules..."
 ####################################################
 SD_SPARQL_UPDATE @axioms/qb_axioms.sparql_update
+SD_SPARQL_UPDATE @axioms/make_bubbles.sparql_update
 
 
 ####################################################
