@@ -89,7 +89,7 @@ exports.parseAccount = async (data, accept) => {
         isVersionOfObject = {}, hasPartObject = {}, output = {}, //my data structure
         account, bubbleGraph; //My subject
 
-        $rdf.parse(accountData, store, base , accept);  // pass base URI
+        $rdf.parse(data, store, base , accept);  // pass base URI
         account = store.any(undefined, RDF("type"), BGO("Account")); //Gets the subject based on Type (it may change)
         bubbleGraph = store.any(undefined, RDF("type"), BGO("BubbleGraph")); //Gets the subject based on Type (it may change)
         
