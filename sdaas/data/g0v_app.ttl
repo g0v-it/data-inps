@@ -12,15 +12,15 @@
 	dct:source resource:esercizio_2014;
 	bgo:um "EUR";
     bgo:partitionOrderedList ( 
-        <accounts#partizione_totale>
+        <accounts#default>
         <accounts#entrate_uscite>
         <accounts#upb>
     )
 .
 
-<accounts#partizione_totale>
-	bgo:partitionSchemeId "partizione_totale" ;
-	dct:title "2017"@it
+<accounts#default>
+	bgo:partitionSchemeId "default" ;
+	dct:title "2014"@it
 .
 	
 <accounts#entrate_uscite>
@@ -29,6 +29,6 @@
 .
 
 <accounts#upb>
-	bgo:partitionSchemeId "per_upb" ;
+	bgo:partitionSchemeId "upb" ;
 	dct:title "upb"
 .
