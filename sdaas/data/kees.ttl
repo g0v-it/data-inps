@@ -22,12 +22,22 @@ resource:welcome a kees:KnowledgeBase;
 	dct:description "This dataset provides information about INPS financial reports expressed in RDF with the g0v fr-ap application profile."@en;
     dct:license <https://creativecommons.org/licenses/by/3.0/>;
 	rdfs:comment "Power by the community edition of  LinkedData.Center SDaaS™ platform."@en;
-	rdfs:comment "Data derived from INPS Open Data © by Istituto Nazionale della Previdenza Sociale."@en;
- 	void:exampleResource resource:ID-2888 ;
- 	void:exampleResource resource:ID-2889 ;
+	rdfs:comment "Data derived from INPS Open Data © by Istituto Nazionale della Previdenza Sociale."@en;	
+ 	void:exampleResource resource:esercizio_2014, resource:ID-2888 , resource:ID-2889 ;
 	void:uriSpace "http://inps.linkeddata.cloud/resource/";
 	dct:subject <https://it.wikipedia.org/wiki/Bilancio_d%27esercizio>;
 	foaf:page <http://data.inps.g0v.it/>
+.
+
+
+resource:esercizio_2014 a dcat:dataSet ;
+    dct:identifier "ID-2888" ;
+	dct:title "Bilancio gestionale 2014 INPS"@it ;
+    dct:description "Dati dell'ultimo bilancio gestionale entrate/uscite pubblicato sul portale open data di INPS"@it ;
+	dct:publisher  resource:Copernicani ;
+	dct:modified "2018-11-25"^^xsd:date ;
+	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dct:source resource:ID_2888, resource:ID_2889
 .
 
 #######################################################
@@ -52,6 +62,10 @@ resource:Copernicani a foaf:Organization;
     foaf:name "Associazione Copernicani"@it
 .
 
+resource:dataset_merge_actity a  prov:Activity;
+	rdfs:comment "Concatenazione di due dataset presenti nel portale open data di INPS"@it;
+	void:used <https://www.inps.it/NuovoportaleINPS/default.aspx?sPathID=%3b0%3b46292%3b46293%3b&lastMenu=46293&iMenu=1&iNodo=46293&p4=2>.
+
 
 #######################################################
 # Catalog
@@ -74,6 +88,7 @@ resource:ID_2888_csv a dcat:Distribution ;
 	dcat:license <https://www.dati.gov.it/content/italian-open-data-license-v20>
 .
 	
+	
 resource:ID_2889 a fr:FinancialReport;
     dct:identifier "ID-2889" ;
 	dct:title       "Bilancio gestionale uscite 2014"@it ;
@@ -86,6 +101,7 @@ resource:ID_2889 a fr:FinancialReport;
 	dcat:accessURL <https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=925> 
 .
 resource:ID_2889_csv a dcat:Distribution ;	
+	dct:publisher   resource:INPS ;
 	dcat:downloadURL <https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=925&scaricadataset=2> ;
 	dcat:license <https://www.dati.gov.it/content/italian-open-data-license-v20>
 .

@@ -1,0 +1,59 @@
+#
+# Default metadata for BubbleGraph
+#
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX bgo: <http://linkeddata.center/lodmap-bgo/v1#>
+PREFIX accounts <https://data.inps.g0v.it/api/v2/accounts#>
+
+INSERT { 
+	?bgo dct:title ?title ; dct:description ?description 
+} WHERE {
+ 	?bgo a bgo:BubbleGraph. 
+ 	OPTIONAL { ?bgo dct:title ?bgo_title ; dct:description ?bgo_description }
+ 	OPTIONAL { ?bgo dct:source ?source . ?source dct:title ?src_title ; dct:description ?src_description }
+ 	BIND( COALESCE(?bgo_title,?src_title, "Account set") AS ?title)
+ 	BIND( COALESCE(?bgo_description,?src_description, "") AS ?description)
+}
+
+;
+
+#
+# Create <accounts#upb> parition schema
+#
+INSERT {
+  accounts:upb bgo:partition [ bgo:label ?partitionLabel; bgo:partitionAmount ?partitionAmount ]
+} WHERE {
+  SELECT DISTINCT ?partitionLabel ( SUM(?amount) AS ?partitionAmount) WHERE  {
+    ?bubble bgo:partitionLabel ?partitionLabel; bgo:amount ?amount.
+    FILTER( ?partitionLabel != "ENTRATE" )
+    FILTER( ?partitionLabel != "USCITE" )
+  } GROUP BY ?partitionLabel
+}
+;
+
+#
+# Create <accounts#upb> parition schema
+#
+INSERT {
+  accounts:upb bgo:partition [ bgo:label ?partitionLabel; bgo:partitionAmount ?partitionAmount ]
+} WHERE {
+  SELECT DISTINCT ?partitionLabel ( SUM(?amount) AS ?partitionAmount) WHERE  {
+    ?bubble bgo:partitionLabel ?partitionLabel; bgo:amount ?amount.
+    FILTER( ?partitionLabel != "ENTRATE" )
+    FILTER( ?partitionLabel != "USCITE" )
+  } GROUP BY ?partitionLabel
+}
+
+;
+
+#
+# Create <accounts#entrate_uscite> parition schema
+#
+INSERT {
+  accounts:entrate_uscite bgo:partition [ bgo:label ?partitionLabel; bgo:partitionAmount ?partitionAmount ]
+} WHERE {
+  SELECT DISTINCT ?partitionLabel ( SUM(?amount) AS ?partitionAmount) WHERE  {
+    ?bubble bgo:partitionLabel ?partitionLabel; bgo:amount ?amount.
+    FILTER( ?partitionLabel = "ENTRATE" || ?partitionLabel = "USCITE" )
+  } GROUP BY ?partitionLabel
+}

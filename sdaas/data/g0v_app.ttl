@@ -9,10 +9,8 @@
 
 
 <accounts#bubbleGraph> a bgo:BubbleGraph ;
-    dct:title "Bilancio INPS"@it ;
-    dct:description "Ultimo bilancio gestionale entrate/uscite pubblicato"@it ;
-    dct:source resource:ID_2888, resource:ID_2889 ;
-    bgo:um "EUR" ;
+	dct:source resource:esercizio_2014;
+	bgo:um "EUR";
     bgo:partitionOrderedList ( 
         <accounts#partizione_totale>
         <accounts#entrate_uscite>
@@ -27,10 +25,10 @@
 	
 <accounts#entrate_uscite>
 	bgo:partitionSchemeId "entrate_uscite" ;
-	dct:title "ENTRATE/USCITE"@it
+	dct:title "entrate/uscite"@it
 .
 
 <accounts#upb>
 	bgo:partitionSchemeId "per_upb" ;
-	dct:title "per UPB"
+	dct:title "upb"
 .
