@@ -96,13 +96,16 @@ exports.parseAccount = async (data, accept) => {
         //Build Simple Params
         let value;
         accountSimpleWordsBGO.forEach((word) => {
-            value = store.any(account, BGO(word)).value;
-            if(word == "amount" || word == "previousValue")
+            value = store.any(account, BGO(word));
+            value = value ? value.value : undefined;
+            if((word == "amount" || word == "previousValue" ) && value)
                 value = parseFloat(value);
             output[word] = value;
         });
         accountSimpleWordsDCT.forEach((word) => {
-            output[word] = store.any(account, DCT(word)).value;
+            value = store.any(account, DCT(word));
+            value = value ? value.value : undefined
+            output[word] = value;
         });
 
         //Partitions partitionLabel
