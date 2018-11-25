@@ -5,12 +5,22 @@ PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX bgo: <http://linkeddata.center/lodmap-bgo/v1#>
 
 
-DESCRIBE ?bgo ?partitionScheme  ?partitionOrderedList ?bubble WHERE {
- 
-  ?bgo a bgo:BubbleGraph ; 
-		bgo:partitionScheme ?partitionScheme ;
-		bgo:partitionOrderedList ?partitionOrderedList . 
-  ?bubble a bgo:Account.
-}
+CONSTRUCT { ?s ?p ?o } WHERE {
+  	{
+	  ?s a bgo:BubbleGraph ; ?p ?o
+    }
+  UNION {
+    ?bgo a bgo:BubbleGraph ; bgo:partitionScheme ?s .
+    ?s ?p ?o
+                     
+  } UNION {
+	 graph <http://inps.linkeddata.cloud/resource/g0v_app> { ?s ?p ?o }
+  } UNION {
+    ?s a bgo:Account; ?p ?o.
+    FILTER( IsLiteral(?o))
+  }
+  
+} 
+
 `
 }
