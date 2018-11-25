@@ -20,7 +20,7 @@ CONSTRUCT { ?s ?p ?o } WHERE {
 	graph <http://inps.linkeddata.cloud/resource/g0v_app> { ?s ?p ?o }
   } UNION {
     ?s a bgo:Account; ?p ?o.
-    FILTER( IsLiteral(?o))
+    FILTER( IsLiteral(?o)  || ?p = rdf:type )
   }
 } 
 
