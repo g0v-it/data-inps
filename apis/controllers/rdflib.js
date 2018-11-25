@@ -40,7 +40,8 @@ exports.parseAccounts = async (data, accept) => {
         //OrderdList treated as a collection with a bunch of element
         //jsonPartition
         output['partitionOrderedList'] = [];
-        store.any(bubbleGraph, BGO("partitionOrderedList")).elements.forEach(node => {
+        //store.any(bubbleGraph, BGO("partitionOrderedList")).elements.forEach(node => {
+        store.each(bubbleGraph, BGO("partitionScheme")).forEach(node => {
             partitionSchemeId = store.any(node, BGO("partitionSchemeId")).value; //Get Partition Schema id to be used later
             json['title'] = store.any(node, DCT("title")).value;
             json['partitions'] = [];
@@ -49,12 +50,12 @@ exports.parseAccounts = async (data, accept) => {
                 //Construnction of object
                 json['partitions'].push({
                     label : store.any(subNode, BGO("label")).value,
-                    partitionAmount : store.any(subNode, BGO("partitionAmount")).value
+                    partitionAmount : parseFloat(store.any(subNode, BGO("partitionAmount")).value)
                 });
             })
             //Putting everything together
             jsonPartitions[partitionSchemeId] = json;
-            output['partitionOrderedList'].push(partitionSchemeId);
+            //output['partitionOrderedList'].push(partitionSchemeId);
             json = {};
         });
         output['partitionScheme'] = jsonPartitions;
@@ -62,8 +63,9 @@ exports.parseAccounts = async (data, accept) => {
         //Finally, the accounts
         accounts.forEach((account) => {
             json['code'] = store.any(account, BGO("code")).value;
+            json['title'] = store.any(account, DCT("title")).value;
             json['amount'] = parseFloat(store.any(account, BGO("amount")).value);
-            json['previousValue'] = parseFloat(store.any(account, BGO("previousValue")).value);
+            json['previousValue'] = store.any(account, BGO("previousValue").value) ? parseFloat(store.any(account, BGO("previousValue").value)) : undefined;
             json['subject'] = store.any(account, DCT("subject")).value;
             json["partitionLabel"] = [];
             store.each(account, BGO("partitionLabel")).forEach((partition) => {
@@ -72,6 +74,7 @@ exports.parseAccounts = async (data, accept) => {
             jsonArray.push(json);
             json = {}; 
         });
+        //console.log(jsonArray);
         output['accounts'] = jsonArray;
 
         resolve(output);

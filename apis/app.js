@@ -10,7 +10,7 @@ let ekkele = require('./controllers/account-controller.js');
 const PORT = 80,
 HOST = 'localhost';
 
-//ekkele.getAccounts();
+
 // App
 const app = express();
 
