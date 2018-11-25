@@ -1,10 +1,10 @@
 //Files
-const config = require('../config.js');
-
+const config = require('../config.js'),
+rdflib = require('rdflib.js');
 //Default values
 const DEFAULT_SCHEMA_ACCOUNTS = "bubbles",
 	DEFAULT_SCHEMA_ACCOUNT = "full",
-	DEFAULT_ACCEPT = "text/csv";
+	DEFAULT_ACCEPT = "text/turtle";
 
 const topPartition = "top_partition_label"
 secondPartition = "second_partition_label";
@@ -18,40 +18,16 @@ querystring = require('querystring');
 
 //#######################################GET_ROUTES################################################
 exports.getAccounts = async (req, res) => {
-	let queryAccounts, queryAccountsMeta, schema, accountsJson, metaJson, outputJson;
-
-	//Fetch Queries
+	let queryAccounts, accountsJson;
 	queryAccounts = require('../queries/get-accounts.js');
-	queryAccountsMeta = require('../queries/get-accounts-meta.js');
-	
-	//Set schema
-	schema = req.params.schema;
-	schema = (schema === undefined) ? DEFAULT_SCHEMA_ACCOUNTS : schema;
-
-	accountsJson = await buildJsonAccountsList(
-		await getQueryResult(config.endpoint, queryAccounts));
-	metaJson = await csv().fromString(
-		await getQueryResult(config.endpoint, queryAccountsMeta));
-	
-	//Build OutputJson
-	outputJson = {};
-
-	outputJson.meta = metaJson[0];
-	outputJson.accounts = accountsJson;
-	res.json(outputJson);
+	accountsJson = await rdflib.parseAccounts(await getQueryResult(config.endpoint, queryAccounts));
+	res.json(accountsJson);
 }
 
 exports.getAccount = async (req, res) => {
-	let queryAccount, schema, outputJson;
-	
-	//Fetch Queries
+	let queryAccount, outputJson;
 	queryAccount = require('../queries/get-account.js')(req.params.id);
-
-	//Set schema
-	schema = req.params.schema;
-	schema = (schema === undefined) ? DEFAULT_SCHEMA_ACCOUNT : schema;
-
-	outputJson = await buildJsonAccount(await getQueryResult(config.endpoint, queryAccount));
+	outputJson = await rdflib.parseAccount(await getQueryResult(config.endpoint, queryAccount));
 	res.json(outputJson);
 }
 
@@ -143,9 +119,6 @@ exports.getFilter = async (req, res) => {
 */
 function getQueryResult(endpoint, query, format = DEFAULT_ACCEPT){
 	return new Promise((resolve, reject) => {
-		//set Format
-		//format = (format === undefined) ? DEFAULT_ACCEPT : format;
-
 		let url = new URL(endpoint),
 		result,
 		options = {
@@ -200,8 +173,8 @@ async function buildJsonAccountsList(data){
 					top_partition: account.top_partition_label,
 					second_partition: account.second_partition_label
 				}
-				account.amount = parseFloat(account.amount);
-				account.last_amount = parseFloat(account.last_amount);
+				account.amount = parseparseFloat(account.amount);
+				account.last_amount = parseparseFloat(account.last_amount);
 				account.top_level = account.top_partition_label;
 				//remove old ones
 				delete account.top_partition_label;
@@ -228,10 +201,10 @@ async function buildJsonAccount(data){
 			output.cds = [];
 
 			json.map((account) => {
-				output.past_values[account.year] = parseFloat(account.history_amount);
+				output.past_values[account.year] = parseparseFloat(account.history_amount);
 				singleCds = {
 					name: account.fact_label,
-					amount: parseFloat(account.fact_amount),
+					amount: parseparseFloat(account.fact_amount),
 				}
 				put = containsObject(singleCds, output.cds);
 				if(!put) {
@@ -243,8 +216,8 @@ async function buildJsonAccount(data){
 				top_partition: output.top_partition_label,
 				second_partition: output.second_partition_label
 			}
-			output.amount = parseFloat(output.amount);
-			output.last_amount = parseFloat(output.last_amount);
+			output.amount = parseparseFloat(output.amount);
+			output.last_amount = parseparseFloat(output.last_amount);
 			output.top_level =  output.top_partition_label;
 			
 			//remove old ones
