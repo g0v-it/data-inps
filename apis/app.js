@@ -5,10 +5,12 @@ CORS = require('./middleware/cors.js'),
 bodyParser = require('body-parser'),
 accountRouter = require('./routes/account-route.js');
 
+let ekkele = require('./controllers/account-controller.js');
 // Constants
 const PORT = 80,
 HOST = 'localhost';
 
+//ekkele.getAccounts();
 // App
 const app = express();
 

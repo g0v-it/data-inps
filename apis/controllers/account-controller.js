@@ -1,6 +1,6 @@
 //Files
 const config = require('../config.js'),
-rdflib = require('rdflib.js');
+rdflib = require('./rdflib.js');
 //Default values
 const DEFAULT_SCHEMA_ACCOUNTS = "bubbles",
 	DEFAULT_SCHEMA_ACCOUNT = "full",
@@ -20,14 +20,14 @@ querystring = require('querystring');
 exports.getAccounts = async (req, res) => {
 	let queryAccounts, accountsJson;
 	queryAccounts = require('../queries/get-accounts.js');
-	accountsJson = await rdflib.parseAccounts(await getQueryResult(config.endpoint, queryAccounts));
+	accountsJson = await rdflib.parseAccounts(await getQueryResult(config.endpoint, queryAccounts), DEFAULT_ACCEPT);
 	res.json(accountsJson);
 }
 
 exports.getAccount = async (req, res) => {
 	let queryAccount, outputJson;
 	queryAccount = require('../queries/get-account.js')(req.params.id);
-	outputJson = await rdflib.parseAccount(await getQueryResult(config.endpoint, queryAccount));
+	outputJson = await rdflib.parseAccount(await getQueryResult(config.endpoint, queryAccount), DEFAULT_ACCEPT);
 	res.json(outputJson);
 }
 
