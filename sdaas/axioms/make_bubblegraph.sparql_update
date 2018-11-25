@@ -3,7 +3,7 @@
 #
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX bgo: <http://linkeddata.center/lodmap-bgo/v1#>
-PREFIX accounts <https://data.inps.g0v.it/api/v2/accounts#>
+PREFIX accounts: <https://data.inps.g0v.it/api/v2/accounts#>
 
 INSERT { 
 	?bgo dct:title ?title ; dct:description ?description 
@@ -18,33 +18,19 @@ INSERT {
 ;
 
 #
-# Create <accounts#upb> parition schema
+# Create <accounts#upb> partition schema
 #
 INSERT {
   accounts:upb bgo:partition [ bgo:label ?partitionLabel; bgo:partitionAmount ?partitionAmount ]
 } WHERE {
   SELECT DISTINCT ?partitionLabel ( SUM(?amount) AS ?partitionAmount) WHERE  {
     ?bubble bgo:partitionLabel ?partitionLabel; bgo:amount ?amount.
-    FILTER( ?partitionLabel != "ENTRATE" )
-    FILTER( ?partitionLabel != "USCITE" )
-  } GROUP BY ?partitionLabel
-}
-;
-
-#
-# Create <accounts#upb> parition schema
-#
-INSERT {
-  accounts:upb bgo:partition [ bgo:label ?partitionLabel; bgo:partitionAmount ?partitionAmount ]
-} WHERE {
-  SELECT DISTINCT ?partitionLabel ( SUM(?amount) AS ?partitionAmount) WHERE  {
-    ?bubble bgo:partitionLabel ?partitionLabel; bgo:amount ?amount.
-    FILTER( ?partitionLabel != "ENTRATE" )
-    FILTER( ?partitionLabel != "USCITE" )
+    FILTER( ?partitionLabel != "ENTRATE" && ?partitionLabel != "USCITE" )
   } GROUP BY ?partitionLabel
 }
 
 ;
+
 
 #
 # Create <accounts#entrate_uscite> parition schema
@@ -57,3 +43,16 @@ INSERT {
     FILTER( ?partitionLabel = "ENTRATE" || ?partitionLabel = "USCITE" )
   } GROUP BY ?partitionLabel
 }
+
+;
+#
+# Every element of a bgo:partitionOrderedList must be also referenced in bgo:partitionScheme
+#
+INSERT {
+    ?bgo bgo:partitionScheme ?partitionScheme
+}
+WHERE {
+    ?bgo bgo:partitionOrderedList/rdf:rest*/rdf:first ?partitionScheme.
+    FILTER NOT EXISTS { ?bgo bgo:partitionScheme ?partitionSchema }
+} 
+
