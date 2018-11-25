@@ -8,7 +8,7 @@ This project aims to create a general smart data management platform to feed a b
 
 **Public resources**
 
-- **api**: https://data.inps.g0v.it/api/v1
+- **api**: https://data.inps.g0v.it/api/v2
 - **SPARQL endpoint**: https://data.budget.g0v.it/sdaas/sparql
 
 
@@ -59,7 +59,7 @@ The router acts as a redirector and as a transparent proxy for all the data mana
 
 - **/** redirects to the project home page (this readme file)
 - **/api/** redirects to api documentation
-- **/api/v1/<api command>*** redirects to api command  (try http://localhost/api/accounts)
+- **/api/v2/<api command>*** redirects to api command  (try http://localhost/api/accounts)
 - **/sdaas/sparql** redirects to sparql endpoint  (try http://localhost/sdaas/sparql)
 
 
@@ -73,7 +73,7 @@ For answers you may not find in here or in the Wiki, avoid posting issues. Feel 
 - data extracted from [INPS Open Data portal](https://www.inps.it/nuovoportaleinps/default.aspx?iIDLink=103) with [IODL](http://www.dati.gov.it/iodl/2.0/) open license
 - the RDF datastore and the SPARQL endpoint is based on the [Blazegraph community edition](https://www.blazegraph.com/)
 - the Smart Data Management Platform was developed by [Enrico Fagnoni](https://github.com/ecow) using the [SDaaS platform by LinkedData.Center](http://LinkedData.Center/)
-- the [g0v-ap]((https://github.com/g0v-it/ap) ontology and the  [LODMAP Bubble Graph Ontology](https://github.com/linkeddatacenter/LODMAP-ontologies/tree/master/BGO) was developed by Enrico Fagnoni @ LinkedData.Center
+- the [g0v fr-ap application profile ](https://github.com/g0v-it/ontologies/tree/master/fr-ap) ontology and the  [LODMAP Bubble Graph Ontology](https://github.com/linkeddatacenter/LODMAP-ontologies/tree/master/BGO) was developed by Enrico Fagnoni @ LinkedData.Center
 - API server was developed by [Yassine Ouahidi](https://github.com/YassineOuahidi)  @ LinkedData.Center and DataChef.Cloud
 
 

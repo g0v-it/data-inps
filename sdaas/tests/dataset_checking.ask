@@ -17,7 +17,7 @@ ASK {
         ?distribution dcat:license  ?license
     }
     
-    # Every finacial report has exactly one associated valid reference period.   
+    # Every financial report has exactly one associated valid reference period.   
     {
         ?ds fr:refPeriod ?refPeriod1.
         ?refPeriod1 time:hasBeginning ?begins; time:hasEnd ?ends

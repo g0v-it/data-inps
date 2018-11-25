@@ -38,7 +38,7 @@ resource:tassonomia_gestionale a skos:ConceptScheme;
 	dct:source <https://github.com/g0v-it/data-inps/tree/master/sdaas/data/src/CLASSIFICAZIONE_DEI_CAPITOLI.xlsx>;
 	dct:creator [ foaf:mbox <mailto:enrico@linkeddata.center> ] ;
 	dct:created "2018-11-21T10:55:15-08:00"^^xsd:dateTime ;
-	dct:modified "2018-11-21T10:55:15-08:00"^^xsd:dateTime ;
+	dct:modified "2018-11-21T10:55:15-08:00"^^xsd:dateTime
 .
 
 
