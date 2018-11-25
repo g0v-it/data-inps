@@ -55,7 +55,7 @@ exports.parseAccounts = async (data, accept) => {
             })
             //Putting everything together
             jsonPartitions[partitionSchemeId] = json;
-            //output['partitionOrderedList'].push(partitionSchemeId);
+            output['partitionOrderedList'].push(partitionSchemeId);
             json = {};
         });
         output['partitionScheme'] = jsonPartitions;
