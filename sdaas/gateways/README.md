@@ -14,6 +14,7 @@ Gateways can be tested stand alone just with any host providing php7; e.g.:
 
 ```
 docker run --rm -ti -v $PWD/.:/app composer bash
+composer install
 php gestionale.php id_ds_entrate < tests/data/entrate.csv
 php gestionale.php id_ds_uscite < tests/data/uscite.csv
 ```

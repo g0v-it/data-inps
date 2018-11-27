@@ -15,8 +15,14 @@ CONSTRUCT {
 		dct:source ?fact ;
 		bgo:amount ?amount ;
 		bgo:version ?year;
-		bgo:partitionLabel ?partitionLabel.
-    ?bubbleGraph bgo:um ?um.
+		bgo:partitionLabel ?partitionLabel ;
+  		bgo:isVersionOf ?historyRec.
+     
+    ?historyRec a bgo:VersionedAmount;  
+    	bgo:version ?historyVersion; 
+    	bgo:amount ?historyAmount .
+    	
+    ?bubbleGraph a bgo:BubbleGraph; bgo:um ?um .
 } WHERE {
    ?bubbleUri a bgo:Account ;
 		bgo:inBubbleGraph ?bubbleGraph;
@@ -27,10 +33,14 @@ CONSTRUCT {
 		bgo:amount ?amount ;
 		bgo:version ?year;
 		bgo:partitionLabel ?partitionLabel.
+  	
+  	OPTIONAL { 
+      ?bubbleUri bgo:isVersionOf ?historyRec .
+      ?historyRec bgo:version ?historyVersion; bgo:amount ?historyAmount
+    }
   
-    ?bubbleGraph a bgo:BubbleGraph ;
-    	bgo:um ?um.
-    # FILTER (?code = "d911dc1293e3c11c547955776f812dcd")
+    ?bubbleGraph bgo:um ?um.
+    # FILTER (?code = "deb6ab43991a693a51b608d95f211273")
     FILTER (?code = "${id}") 
 }
 `})

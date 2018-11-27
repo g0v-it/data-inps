@@ -5,54 +5,65 @@ PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX bgo: <http://linkeddata.center/lodmap-bgo/v1#>
 PREFIX accounts: <https://data.inps.g0v.it/api/v2/accounts#>
 
-INSERT { 
-	?bgo dct:title ?title ; dct:description ?description 
-} WHERE {
- 	?bgo a bgo:BubbleGraph. 
- 	OPTIONAL { ?bgo dct:title ?bgo_title ; dct:description ?bgo_description }
- 	OPTIONAL { ?bgo dct:source ?source . ?source dct:title ?src_title ; dct:description ?src_description }
- 	BIND( COALESCE(?bgo_title,?src_title, "Account set") AS ?title)
- 	BIND( COALESCE(?bgo_description,?src_description, "") AS ?description)
+#
+# Set  Bubble Graph title
+#
+INSERT { ?bgo dct:title ?title } 
+WHERE {
+ 	?bgo a bgo:BubbleGraph ; dct:source/dct:title ?title . 
+ 	
+	FILTER NOT EXISTS { ?bgo dct:title  []}
 }
 
 ;
+
+#
+# Set  Bubble Graph description
+#
+INSERT { ?bgo dct:description ?description } 
+WHERE {
+ 	?bgo a bgo:BubbleGraph ; dct:source/dct:description ?description . 
+ 	
+	FILTER NOT EXISTS { ?bgo dct:description  []}
+}
+
+;
+
 
 #
 # Create <accounts#upb> partition schema
 #
 INSERT {
-  accounts:upb bgo:partition [ bgo:label ?partitionLabel; bgo:partitionAmount ?partitionAmount ]
+  accounts:upb bgo:partition ?partitionUri.
+  ?partitionUri bgo:label ?partitionLabel; bgo:partitionAmount ?partitionAmount.
 } WHERE {
-  SELECT DISTINCT ?partitionLabel ( SUM(?amount) AS ?partitionAmount) WHERE  {
-    ?bubble bgo:partitionLabel ?partitionLabel; bgo:amount ?amount.
-    FILTER( ?partitionLabel != "ENTRATE" && ?partitionLabel != "USCITE" )
-  } GROUP BY ?partitionLabel
+  {
+    SELECT DISTINCT ?partitionLabel ( SUM(?amount) AS ?partitionAmount) WHERE  {
+      ?bubble bgo:partitionLabel ?partitionLabel; bgo:amount ?amount.
+      FILTER( ?partitionLabel != "ENTRATE" && ?partitionLabel != "USCITE" )
+    } GROUP BY ?partitionLabel
+  }
+  BIND( IRI( CONCAT( "https://data.inps.g0v.it/api/v2/accounts#upb_partition_",MD5(STR(?partitionLabel)))) AS ?partitionUri )
 }
+
 
 ;
 
 
 #
-# Create <accounts#entrate_uscite> parition schema
+# Create <accounts#entrate_uscite> partition schema
 #
 INSERT {
-  accounts:entrate_uscite bgo:partition [ bgo:label ?partitionLabel; bgo:partitionAmount ?partitionAmount ]
+  accounts:entrate_uscite bgo:partition  ?partitionUri.
+  ?partitionUri bgo:label ?partitionLabel; bgo:partitionAmount ?partitionAmount.
 } WHERE {
-  SELECT DISTINCT ?partitionLabel ( SUM(?amount) AS ?partitionAmount) WHERE  {
-    ?bubble bgo:partitionLabel ?partitionLabel; bgo:amount ?amount.
-    FILTER( ?partitionLabel = "ENTRATE" || ?partitionLabel = "USCITE" )
-  } GROUP BY ?partitionLabel
+  {
+	  SELECT DISTINCT ?partitionLabel ( SUM(?amount) AS ?partitionAmount) WHERE  {
+	    ?bubble bgo:partitionLabel ?partitionLabel; bgo:amount ?amount.
+	    FILTER( ?partitionLabel = "ENTRATE" || ?partitionLabel = "USCITE" )
+	  } GROUP BY ?partitionLabel
+  }
+  BIND( IRI( CONCAT( "https://data.inps.g0v.it/api/v2/accounts#partition_",STR(?partitionLabel))) AS ?partitionUri ) 
 }
 
-;
-#
-# Every element of a bgo:partitionOrderedList must be also referenced in bgo:partitionScheme
-#
-INSERT {
-    ?bgo bgo:partitionScheme ?partitionScheme
-}
-WHERE {
-    ?bgo bgo:partitionOrderedList/rdf:rest*/rdf:first ?partitionScheme.
-    FILTER NOT EXISTS { ?bgo bgo:partitionScheme ?partitionSchema }
-} 
 

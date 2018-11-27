@@ -51,7 +51,7 @@ INSERT {
   ?upb skos:prefLabel ?partitionLabel1.
   
   BIND( IF( CONTAINS(?notation, "E"),"ENTRATE","USCITE") AS ?partitionLabel2)
-  BIND( MD5(str(?fact)) AS ?code)
+  BIND( MD5(str(?fact)) AS ?code)	
   BIND( IRI( CONCAT("https://data.inps.g0v.it/api/v2/account/",?code,"#data")) AS ?bubbleUri)
   BIND( CONCAT(?partitionLabel1," (",  ?partitionLabel2,")") AS ?subject)
 }
@@ -63,12 +63,14 @@ INSERT {
 #
 
 INSERT {
-  ?account bgo:isVersionOf [ bgo:date ?year; bgo:amount ?amount ]
+  ?account bgo:isVersionOf ?historyRec.
+  ?historyRec a bgo:VersionedAmount; bgo:version ?year; bgo:amount ?amount.
 } WHERE {
 	?account a bgo:Account; dct:source ?fact1 .
     ?fact1 fr:concept/skos:notation ?notation .
     ?fact2 fr:concept/skos:notation ?notation .
     FILTER( ?fact1 != ?fact2 )
-    ?fact2 fr:amount ?amount; fr:refPeriod/time:hasBeginning/interval:ordinalYear ?year ;
+    ?fact2 fr:amount ?amount; fr:refPeriod/time:hasBeginning/interval:ordinalYear ?year .
+  	BIND( IRI( CONCAT( STR(?fact2),"_bh")) AS ?historyRec )
 }
    

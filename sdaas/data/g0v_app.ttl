@@ -9,18 +9,20 @@
 
 
 <accounts#bubbleGraph> a bgo:BubbleGraph ;
-	dct:source resource:esercizio_2014;
+	dct:source resource:ultimo_bilancio_disponibile;
 	bgo:um "EUR";
-    bgo:partitionOrderedList ( 
-        <accounts#partizione_totale>
-        <accounts#entrate_uscite>
+    bgo:partitionScheme 
+        <accounts#default> ,
+        <accounts#entrate_uscite> ,
         <accounts#upb>
-    )
 .
 
-<accounts#partizione_totale>
-	bgo:partitionSchemeId "partizione_totale" ;
-	dct:title "2017"@it
+#
+# NOTE: the partitionSchemeId determines the order of the buttons in the bubble graph.
+#
+<accounts#default>
+	bgo:partitionSchemeId "default" ;
+	dct:title "INPS"@it
 .
 	
 <accounts#entrate_uscite>
@@ -29,6 +31,6 @@
 .
 
 <accounts#upb>
-	bgo:partitionSchemeId "per_upb" ;
+	bgo:partitionSchemeId "upb" ;
 	dct:title "upb"
 .

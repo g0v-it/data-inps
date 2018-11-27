@@ -20,9 +20,10 @@ The data ingestion process is managed by the [LinkedData.Center SDaaS platform](
 the test of the build script requires the sdaas-ce container.
 
 ```
+docker run --rm -ti -v $PWD/gateways:/app composer install --no-dev
 docker run -d -p 9999:8080 -v $PWD/.:/workspace --name kb linkeddatacenter/sdaas-ce
 docker exec -ti kb bash
-apk --no-cache add php7-json
+apk --no-cache add php7-iconv
 sdaas --debug -f build.sdaas --reboot
 exit
 docker rm -f kb

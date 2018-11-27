@@ -1,5 +1,6 @@
-# programma di generazione della tassonomia_gestionale
+# programma di generazione ttl
 
-Da lanciare una tantum per rigenereare il file tassonomia_gestionale.ttl
+Da lanciare una tantum per rigenereare il file tassonomia_gestionale.ttl e catalog.ttl
 
-    php tassonomia_gestionale.php > ../tassonomia_gestionale.ttl
+    php make_tassonomia_gestionale.php > ../tassonomia_gestionale.ttl
+    php make_catalog.php > ../catalog.ttl
