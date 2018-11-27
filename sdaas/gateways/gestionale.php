@@ -37,7 +37,7 @@ function FILTER_SANITIZE_IT_CURRENCY($value)
 
 function FILTER_SANITIZE_CODE($value)
 {
-    $value = preg_replace('/[^1-9EU]/', '', $value);    //remove invalid characters
+    $value = preg_replace('/[^0-9EU]/', '', $value);    //remove invalid characters
     
     return $value;
 }
@@ -72,7 +72,7 @@ foreach( $csv->data as $row => $rawdata) {
     assert($codiceCapitolo && $denominazioneCapitolo && $amount);
     
     echo
-        "resource:fact_$codiceCapitolo a fr:Fact ;" .
+        "resource:{$datasetId}_fact_$codiceCapitolo a fr:Fact ;" .
             "qb:dataSet resource:$datasetId ;" .
             "fr:amount $amount ;" .
             "fr:concept resource:concept_$codiceCapitolo .\n"; 
