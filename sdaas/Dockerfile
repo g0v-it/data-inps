@@ -3,7 +3,7 @@ FROM linkeddatacenter/sdaas-ce:2.1.0
 COPY ./ /tmp/g0v
 
 RUN apk --no-cache add \
-	php7-json
+	php7-iconv
 	
 # start a temporary sdaas instance to rebuild the knowledge base  
 RUN sdaas-start && \

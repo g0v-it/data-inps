@@ -16,7 +16,7 @@ CONSTRUCT {
 		bgo:amount ?amount ;
 		bgo:version ?year;
 		bgo:partitionLabel ?partitionLabel.
-    ?bubbleGraph bgo:um ?um.
+    ?bubbleGraph a bgo:BubbleGraph; bgo:um ?um.
 } WHERE {
    ?bubbleUri a bgo:Account ;
 		bgo:inBubbleGraph ?bubbleGraph;
@@ -28,8 +28,7 @@ CONSTRUCT {
 		bgo:version ?year;
 		bgo:partitionLabel ?partitionLabel.
   
-    ?bubbleGraph a bgo:BubbleGraph ;
-    	bgo:um ?um.
+    ?bubbleGraph bgo:um ?um.
     # FILTER (?code = "d911dc1293e3c11c547955776f812dcd")
     FILTER (?code = "${id}") 
 }

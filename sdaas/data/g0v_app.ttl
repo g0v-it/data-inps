@@ -9,18 +9,20 @@
 
 
 <accounts#bubbleGraph> a bgo:BubbleGraph ;
-	dct:source resource:esercizio_2014;
+	dct:source resource:ultimo_bilancio_disponibile;
 	bgo:um "EUR";
-    bgo:partitionOrderedList ( 
-        <accounts#default>
-        <accounts#entrate_uscite>
+    bgo:partitionScheme 
+        <accounts#default> ,
+        <accounts#entrate_uscite> ,
         <accounts#upb>
-    )
 .
 
+#
+# NOTE: the partitionSchemeId determines the order of the buttons in the bubble graph.
+#
 <accounts#default>
 	bgo:partitionSchemeId "default" ;
-	dct:title "2014"@it
+	dct:title "INPS"@it
 .
 	
 <accounts#entrate_uscite>

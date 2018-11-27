@@ -23,21 +23,10 @@ resource:welcome a kees:KnowledgeBase;
     dct:license <https://creativecommons.org/licenses/by/3.0/>;
 	rdfs:comment "Power by the community edition of  LinkedData.Center SDaaS™ platform."@en;
 	rdfs:comment "Data derived from INPS Open Data © by Istituto Nazionale della Previdenza Sociale."@en;	
- 	void:exampleResource resource:esercizio_2014, resource:ID-2888 , resource:ID-2889 ;
+ 	void:exampleResource resource:esercizio_2017, resource:ID-2888 , resource:ID-2889 ;
 	void:uriSpace "http://inps.linkeddata.cloud/resource/";
 	dct:subject <https://it.wikipedia.org/wiki/Bilancio_d%27esercizio>;
 	foaf:page <http://data.inps.g0v.it/>
-.
-
-
-resource:esercizio_2014 a dcat:dataSet ;
-    dct:identifier "ID-2888" ;
-	dct:title "Bilancio gestionale 2014 INPS"@it ;
-    dct:description "Dati dell'ultimo bilancio gestionale entrate/uscite pubblicato sul portale open data di INPS"@it ;
-	dct:publisher  resource:Copernicani ;
-	dct:modified "2018-11-25"^^xsd:date ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
-	dct:source resource:ID_2888, resource:ID_2889
 .
 
 #######################################################
@@ -65,60 +54,4 @@ resource:Copernicani a foaf:Organization;
 resource:dataset_merge_actity a  prov:Activity;
 	rdfs:comment "Concatenazione di due dataset presenti nel portale open data di INPS"@it;
 	void:used <https://www.inps.it/NuovoportaleINPS/default.aspx?sPathID=%3b0%3b46292%3b46293%3b&lastMenu=46293&iMenu=1&iNodo=46293&p4=2>.
-
-
-#######################################################
-# Catalog
-#######################################################
-
-
-resource:ID_2888 a fr:FinancialReport;
-    dct:identifier "ID-2888" ;
-	dct:title       "Bilancio gestionale entrate 2014"@it ;
-	dct:publisher   resource:INPS ;
-	dct:modified      "2017-03-04"^^xsd:date ;
-	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2014-01-01T00:00:00/P1Y> ;
-	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
-	dcat:accessURL <https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=924> ;
-	dcat:distribution resource:ID_2888_csv
-.
-resource:ID_2888_csv a dcat:Distribution ;
-	dcat:downloadURL <https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=924&scaricadataset=2> ;
-	dcat:license <https://www.dati.gov.it/content/italian-open-data-license-v20>
-.
-	
-	
-resource:ID_2889 a fr:FinancialReport;
-    dct:identifier "ID-2889" ;
-	dct:title       "Bilancio gestionale uscite 2014"@it ;
-	dct:publisher   resource:INPS ;
-	dct:modified      "2017-03-04"^^xsd:date ;
-	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2014-01-01T00:00:00/P1Y> ;
-	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
-	dcat:distribution resource:ID_2889_csv ;
-	dcat:accessURL <https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=925> 
-.
-resource:ID_2889_csv a dcat:Distribution ;	
-	dct:publisher   resource:INPS ;
-	dcat:downloadURL <https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=925&scaricadataset=2> ;
-	dcat:license <https://www.dati.gov.it/content/italian-open-data-license-v20>
-.
-
-resource:ds_tassonomia_gestionale a dcat:Dataset;
-        dct:description  "Tassonomia delle voci del bilancio INPS"@it ;
-        dct:identifier   "tassonomia" ;
-        dct:modified	 "2018-11-15T10:55:01Z"^^xsd:dateTime;
-        dct:publisher    resource:MEF ;
-        dct:title        "Tassonomia voci di bilancio"@it ;
-        dcat:distribution    resource:tassonomia_gestionale_ttl 
-.
-resource:tassonomia_gestionale_ttl a  dcat:Distribution ;
-        dct:format    "text/csv" ;
-        dcat:downloadURL <https://github.com/g0v-it/data-inps/tree/master/sdaas/data/tassonomia.ttl> ;
-        dcat:license      <http://creativecommons.org/licenses/by/3.0> 
-.
-
-
 

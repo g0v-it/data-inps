@@ -7,18 +7,27 @@ GRAPH="http://inps.linkeddata.cloud/resource"
 SD_LOG  "Loading external resources..."
 ####################################################
 SD_LEARN http://publications.europa.eu/mdr/resource/authority/currency/skos/currencies-skos.rdf
-SD_LEARN http://reference.data.gov.uk/id/gregorian-interval/2014-01-01T00:00:00/P1Y
 
 
 ####################################################
 SD_LOG  "Starting learning window: loading facts. This will take a while..."
 ####################################################
 SD_LEARN urn:sdaas:config "data/kees.ttl"
+SD_LEARN $GRAPH/catalog "data/catalog.ttl"
 SD_LEARN $GRAPH/g0v_app "data/g0v_app.ttl"
 SD_LEARN $GRAPH/tassonomia_gestionale "data/tassonomia_gestionale.ttl"
-SD_LEARN $GRAPH/ID-2888 "https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=924&scaricadataset=2" "|in|out|.ttl|iconv -f 'windows-1252' -t 'UTF-8' - |php7 gateways/gestionale.php ID_2888"
-SD_LEARN $GRAPH/ID-2889 "https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=925&scaricadataset=2" "|in|out|.ttl|iconv -f 'windows-1252' -t 'UTF-8' - |php7 gateways/gestionale.php ID_2889"
 
+
+SD_LEARN http://reference.data.gov.uk/id/gregorian-interval/2014-01-01T00:00:00/P1Y
+SD_LEARN $GRAPH/ID-2888 "https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=924&scaricadataset=2" "|in|out|.ttl|php7 gateways/gestionale.php ID_2888"
+SD_LEARN $GRAPH/ID-2889 "https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=925&scaricadataset=2" "|in|out|.ttl|php7 gateways/gestionale.php ID_2889"
+
+for year in '2015' '2016' '2017' ; do
+	SD_LEARN http://reference.data.gov.uk/id/gregorian-interval/${year}-01-01T00:00:00/P1Y
+	for label in "entrate" "uscite"; do		
+		SD_LEARN $GRAPH/bilancio_${label}_${year} "data/GESTIONALE ${label^^} $year.csv" "|in|out|.ttl|php7 gateways/gestionale.php bilancio_${label}_${year}"
+	done	
+done
 
 ####################################################
 SD_LOG  "Starting reasoning window: computing axioms and rules..."
@@ -26,6 +35,7 @@ SD_LOG  "Starting reasoning window: computing axioms and rules..."
 SD_SPARQL_UPDATE @axioms/qb_axioms.sparql_update
 SD_SPARQL_UPDATE @axioms/make_bubbles.sparql_update
 SD_SPARQL_UPDATE @axioms/make_bubblegraph.sparql_update
+
 
 
 ####################################################
