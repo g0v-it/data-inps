@@ -73,4 +73,21 @@ INSERT {
     ?fact2 fr:amount ?amount; fr:refPeriod/time:hasBeginning/interval:ordinalYear ?year .
   	BIND( IRI( CONCAT( STR(?fact2),"_bh")) AS ?historyRec )
 }
-   
+
+;
+
+#
+# Create previousValue
+#
+INSERT { ?account bgo:previousValue  ?lastAmount }
+WHERE {
+  {
+		SELECT DISTINCT ?account ( MAX(?year) AS ?last_year )  WHERE {
+			?account a bgo:Account; bgo:isVersionOf ?historyRec .
+			?historyRec bgo:version ?year
+		} GROUP BY ?account
+
+  }
+  ?account bgo:isVersionOf ?historyRec.
+  ?historyRec bgo:version ?last_year; bgo:amount ?lastAmount
+}

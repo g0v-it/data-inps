@@ -15,6 +15,7 @@ CONSTRUCT {
 		dct:source ?fact ;
 		bgo:amount ?amount ;
 		bgo:version ?year;
+		bgo:previousValue ?previousValue ;
 		bgo:partitionLabel ?partitionLabel ;
   		bgo:isVersionOf ?historyRec.
      
@@ -34,6 +35,7 @@ CONSTRUCT {
 		bgo:version ?year;
 		bgo:partitionLabel ?partitionLabel.
   	
+  	OPTIONAL { ?bubbleUri bgo:previousValue ?previousValue }
   	OPTIONAL { 
       ?bubbleUri bgo:isVersionOf ?historyRec .
       ?historyRec bgo:version ?historyVersion; bgo:amount ?historyAmount
