@@ -6,14 +6,15 @@ const DEFAULT_SCHEMA_ACCOUNTS = "bubbles",
 	DEFAULT_SCHEMA_ACCOUNT = "full",
 	DEFAULT_ACCEPT = "text/turtle";
 
-const topPartition = "top_partition_label"
-secondPartition = "second_partition_label";
+const partition1 = "partition1"
+partition2 = "partition2";
 
 
 //Modules
 const http = require('http'),
 {URL} = require('url'),
 csv = require('csvtojson'),
+zip = require('lz-string'),
 querystring = require('querystring');
 
 //#######################################GET_ROUTES################################################
@@ -62,54 +63,23 @@ exports.getStats = async (req, res) => {
 
 }
 
-
-//#######################################POST_ROUTES#################################################
-exports.filter = async (req, res) => {
-	let topQueryFilter, secondQueryFilter, result, top_filter, second_filter,
-	filter = req.body;
-
-
-	result = {};
-	//Params
-	let top_partition = filter.top_partition.join('|'),
-	second_partition = filter.second_partition.join('|');
-
-	//Get queries
-	topQueryFilter = require('../queries/filter.js')(top_partition, second_partition, topPartition);
-	secondQueryFilter = require('../queries/filter.js')(top_partition, second_partition, secondPartition);
-
-	//get Top and second filter
-	top_filter = await buildJsonFilter(await getQueryResult(config.endpoint, topQueryFilter), topPartition);
-	second_filter = await buildJsonFilter(await getQueryResult(config.endpoint, secondQueryFilter), secondPartition);
-
-	//output
-	result[topPartition] = top_filter;
-	result[secondPartition] = second_filter;
-	res.send(result);
-}
-
 exports.getFilter = async (req, res) => {
-	let topQueryFilter, secondQueryFilter, result, top_filter, second_filter,
-	filter = req.body;
-
-
-	result = {};
-	//Params
-	let top_partition = filter.top_partition.join('|'),
-	second_partition = filter.second_partition.join('|');
-
-	//Get queries
-	topQueryFilter = require('../queries/filter.js')(top_partition, second_partition, topPartition);
-	secondQueryFilter = require('../queries/filter.js')(top_partition, second_partition, secondPartition);
-
-	//get Top and second filter
-	top_filter = await buildJsonFilter(await getQueryResult(config.endpoint, topQueryFilter), topPartition);
-	second_filter = await buildJsonFilter(await getQueryResult(config.endpoint, secondQueryFilter), secondPartition);
-
-	//output
-	result[topPartition] = top_filter;
-	result[secondPartition] = second_filter;
-	res.send(result);
+	let filters = req.query.filters;
+	filters = JSON.parse(zip.decompressFromBase64(filters));
+	//Prepare filters
+	let filter1 = filters[Object.keys(filters)[0]].join('|');
+	let filter2 = filters[Object.keys(filters)[1]].join('|');
+	//prepare queries
+	let query1 = require('../queries/filter.js')(filter1, filter2, partition1);
+	let query2 = require('../queries/filter.js')(filter1, filter2, partition2);
+	//prepare data
+	let object1 = await buildJsonFilter(await getQueryResult(config.endpoint, query1, 'text/csv'), partition1);
+	let object2 = await buildJsonFilter(await getQueryResult(config.endpoint, query2, 'text/csv'), partition2);
+	//prepare result
+	let result = {};
+	result[Object.keys(filters)[0]] = object1;
+	result[Object.keys(filters)[1]] = object2;
+	res.json(result);
 }
 
 
@@ -142,6 +112,7 @@ function getQueryResult(endpoint, query, format = DEFAULT_ACCEPT){
 
 			res.on('end', ()=> {
 				console.log('No more data in response');
+				//console.log(result);
 				resolve(result);
 			});
 
@@ -255,6 +226,7 @@ function containsObject(obj, list) {
 async function buildJsonFilter(data, group){
 	return new Promise(async (resolve, reject) =>{
 		try{
+			console.log(data);
 			let output, result = await csv().fromString(data);
 			
 			output = {};

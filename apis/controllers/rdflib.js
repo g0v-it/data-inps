@@ -84,6 +84,7 @@ exports.parseAccounts = async (data, accept) => {
 
 exports.parseAccount = async (data, accept) => {
     return new Promise(async (resolve, reject) =>{
+        //resolve(data);
         let store = $rdf.graph(),
         base = 'https://data.inps.g0v.it/api/v2/account',
         isVersionOfObject = {}, hasPartObject = {}, output = {}, //my data structure

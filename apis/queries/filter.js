@@ -1,19 +1,22 @@
 //get filter
 
-module.exports = (top_partition_label, second_partition_label, group_label) => {
+module.exports = (first, second, groupBy) => {
 	return ({
 		query : `
-		PREFIX : <http://data.budget.g0v.it/g0v-ap-api/v1#>
-		SELECT ?${group_label} (SUM (?account_amount) AS ?amount)
+		PREFIX dct: <http://purl.org/dc/terms/> 
+		PREFIX bgo: <http://linkeddata.center/lodmap-bgo/v1#>
+
+		SELECT ?${groupBy} (SUM (?account_amount) AS ?amount)
 		WHERE {
-     		?accountUri a :ReferenceAccount;
-                   :amount ?account_amount;
-                   :topPartitionLabel ?top_partition_label;
-                   :secondPartitionLabel ?second_partition_label.
-     
-  			FILTER regex(?top_partition_label, "${top_partition_label}")
-  			FILTER regex(?second_partition_label, "${second_partition_label}")
-		} GROUP BY ?${group_label} 
-	`})
+		  ?accountUri a bgo:Account ;
+		                bgo:amount ?account_amount ;
+		                bgo:partitionLabel ?partition1 ;
+		                bgo:partitionLabel ?partition2 .
+		  FILTER regex(?partition1, "${first}")
+		  FILTER regex(?partition2, "${second}")
+		  FILTER (?partition1 != ?partition2)
+		} GROUP BY ?${groupBy}
+	`
+})
 }
 
