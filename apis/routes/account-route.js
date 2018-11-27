@@ -9,6 +9,6 @@ router.get('/filter', controller.getFilter);
 router.get('/account/:id/:schema?', controller.getAccount);
 router.get('/partition_labels' , controller.getPartitionLabels);
 
-router.post('/filter', controller.filter);
+// router.post('/filter', controller.filter);
 
 module.exports = router;
