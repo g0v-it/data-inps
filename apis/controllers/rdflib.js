@@ -66,7 +66,7 @@ exports.parseAccounts = async (data, accept) => {
             json['code'] = store.any(account, BGO("code")).value;
             json['title'] = store.any(account, DCT("title")).value;
             json['amount'] = parseFloat(store.any(account, BGO("amount")).value);
-            json['previousValue'] = store.any(account, BGO("previousValue").value) ? parseFloat(store.any(account, BGO("previousValue").value)) : undefined;
+            json['previousValue'] = store.any(account, BGO("previousValue")) ? parseFloat(store.any(account, BGO("previousValue")).value) : undefined;
             json['subject'] = store.any(account, DCT("subject")).value;
             json["partitionLabel"] = [];
             store.each(account, BGO("partitionLabel")).forEach((partition) => {
