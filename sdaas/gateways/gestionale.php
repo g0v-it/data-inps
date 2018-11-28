@@ -27,17 +27,31 @@ function FILTER_SANITIZE_TURTLE_STRING($value)
  */
 function FILTER_SANITIZE_IT_CURRENCY($value)
 {
-    $value = preg_replace('/\s/', '', $value);    //remove spaces
-    $value = preg_replace('/\./', '', $value);    // remove dots
-    $value = preg_replace('/,/', '.', $value);    // substitute ',' with '.'
+    $dotPos = strrpos($value, '.');
+    $commaPos = strrpos($value, ',');
+    $separatorIsComma = (($commaPos > $dotPos) && $commaPos);
+    
+    // format like 1.121.345,200 moved to 1121345.200 
+    if($separatorIsComma) {
+        $value = preg_replace('/\./', '', $value);    // remove dots
+        $value = preg_replace('/,/', '.', $value);    // substitute ',' with '.'
+    }
+    
+    $value = preg_replace('/[^\d\.]/', '', $value);    // remove anything except digits and dot
+    
+    assert( preg_match('/^\d*\.?\d*$/', $value), "expected a float or empty value, found: <$value>" );
     
     return floatval($value);
 }
 
-
+/**
+ * code must be like 1U1209017 or 1E1209017
+ */
 function FILTER_SANITIZE_CODE($value)
 {
-    $value = preg_replace('/[^0-9EU]/', '', $value);    //remove invalid characters
+    $value = preg_replace('/[^\dEU]/', '', $value);    //remove invalid characters
+    
+    assert( preg_match('/^\d[EU]\d{7}$/', $value), "unexpected code format for CodiceCapitolo" );
     
     return $value;
 }
@@ -49,39 +63,33 @@ echo "@prefix skos: <http://www.w3.org/2004/02/skos/core#> .\n";
 echo "@prefix qb: <http://purl.org/linked-data/cube#> .\n";
 echo "@prefix resource: <http://inps.linkeddata.cloud/resource/> .\n";
 
-
 $csv = new ParseCsv\Csv();
 $csv->encoding('ISO-8859-1', 'UTF-8');
 $csv->delimiter = ";";
+$csv->fields = [null,'capitolo', 'descrizione', null, null,null,null,'amount'];
 $csv->parse(stream_get_contents(STDIN));
 //print_r($csv->data);exit;
 foreach( $csv->data as $row => $rawdata) {
-    $codiceCapitolo = FILTER_SANITIZE_CODE($rawdata['Codice Capitolo']);
-    if(!$codiceCapitolo) {
-        echo "# WARNING: invalid code detected at row $row ({$rawdata['Codice Capitolo']}).\n";
-        continue;
-    }
-    $denominazioneCapitolo = FILTER_SANITIZE_TURTLE_STRING($rawdata[
-        isset($rawdata['Denominazione Capitolo'])?'Denominazione Capitolo':'Descrizione Capitolo'
-    ]);
-    $sign = $codiceCapitolo[1]=='E'?'':'-';
-    $amount = $sign.FILTER_SANITIZE_IT_CURRENCY($rawdata[
-        isset($rawdata['Totale impegni'])?'Totale impegni':'Totale accertamenti'
-    ]);
     
-    assert($codiceCapitolo && $denominazioneCapitolo && $amount);
+    $codiceCapitolo = FILTER_SANITIZE_CODE($rawdata['capitolo']);
+    $denominazioneCapitolo = FILTER_SANITIZE_TURTLE_STRING($rawdata['descrizione']);
+    
+    // le uscite sono memorizzate come valori negativi
+    $sign = $codiceCapitolo[1]=='E'?'':'-';
+    $amount = $sign . FILTER_SANITIZE_IT_CURRENCY($rawdata['amount']);
     
     echo
-        "resource:{$datasetId}_fact_$codiceCapitolo a fr:Fact ;" .
+        "resource:{$datasetId}_row_$row a fr:Fact ;" .
             "qb:dataSet resource:$datasetId ;" .
             "fr:amount $amount ;" .
             "fr:concept resource:concept_$codiceCapitolo .\n"; 
-    $codiceCategoria = substr($codiceCapitolo, 0, 6);
+    $cUriCategoria = 'resource:concept_' . substr($codiceCapitolo, 0, 6);
+    $cUriCapitolo = 'resource:concept_' . $codiceCapitolo;
     echo
-        "resource:concept_$codiceCapitolo a skos:Concept ;" .
+        "$cUriCapitolo a skos:Concept ;" .
             "skos:notation \"$codiceCapitolo\" ;" .
             "skos:prefLabel \"$denominazioneCapitolo\"@it ;" .
-            "skos:broader resource:concept_$codiceCategoria ;".
+            "skos:broader $cUriCategoria ;".
             "skos:inScheme resource:tassonomia_gestionale .\n" .
-        "resource:concept_$codiceCategoria skos:narrower resource:concept_$codiceCapitolo .\n" ;         
+        "$cUriCategoria skos:narrower $cUriCapitolo .\n" ;         
 }
