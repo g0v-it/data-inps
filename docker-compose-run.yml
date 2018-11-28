@@ -12,11 +12,3 @@ services:
       - "$apiport:80"
     depends_on:
       - "sdaas"
-  router:
-    build: ./router
-    image: copernicani/data-budget-router:$databudgetversion
-    ports:
-      - "$routerport:80"
-    depends_on:
-      - "sdaas"
-      - "api"
