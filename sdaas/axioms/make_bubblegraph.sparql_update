@@ -3,7 +3,7 @@
 #
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX bgo: <http://linkeddata.center/lodmap-bgo/v1#>
-PREFIX accounts: <https://data.inps.g0v.it/api/v2/accounts#>
+PREFIX accounts: <https://data.inps.g0v.it/ldp/accounts#>
 
 #
 # Set  Bubble Graph title
@@ -43,7 +43,7 @@ INSERT {
       FILTER( ?partitionLabel != "ENTRATE" && ?partitionLabel != "USCITE" )
     } GROUP BY ?partitionLabel
   }
-  BIND( IRI( CONCAT( "https://data.inps.g0v.it/api/v2/accounts#upb_partition_",MD5(STR(?partitionLabel)))) AS ?partitionUri )
+  BIND( IRI( CONCAT( "https://data.inps.g0v.it/ldp/accounts#upb_partition_",MD5(STR(?partitionLabel)))) AS ?partitionUri )
 }
 
 
@@ -63,7 +63,7 @@ INSERT {
 	    FILTER( ?partitionLabel = "ENTRATE" || ?partitionLabel = "USCITE" )
 	  } GROUP BY ?partitionLabel
   }
-  BIND( IRI( CONCAT( "https://data.inps.g0v.it/api/v2/accounts#partition_",STR(?partitionLabel))) AS ?partitionUri ) 
+  BIND( IRI( CONCAT( "https://data.inps.g0v.it/ldp/accounts#partition_",STR(?partitionLabel))) AS ?partitionUri ) 
 }
 
 

@@ -33,25 +33,25 @@ exports.getAccount = async (req, res) => {
 }
 
 
-exports.getPartitionLabels =  async (req, res) => {
-	//Variables
-	let queriesPartitionLabels, topPartitionLabelsJson, secondPartitionLabelsJson, outputJson;
-
-	queriesPartitionLabels = require('../queries/get-partition-labels.js');
-	
-	//Get the lables
-	topPartitionLabelsJson = await csv().fromString(
-		await getQueryResult(config.endpoint, queriesPartitionLabels.top_partition_labels));
- 	secondPartitionLabelsJson = await csv().fromString(
-		await getQueryResult(config.endpoint, queriesPartitionLabels.second_partition_labels));
-
- 	//Build the json
- 	outputJson = {};
- 	outputJson.top_partition = topPartitionLabelsJson;
- 	outputJson.second_partition = secondPartitionLabelsJson;
-
- 	res.json(outputJson);
-}
+// exports.getPartitionLabels =  async (req, res) => {
+//	//Variables
+//	let queriesPartitionLabels, topPartitionLabelsJson, secondPartitionLabelsJson, outputJson;
+//
+//	queriesPartitionLabels = require('../queries/get-partition-labels.js');
+//	
+//	//Get the lables
+//	topPartitionLabelsJson = await csv().fromString(
+//		await getQueryResult(config.endpoint, queriesPartitionLabels.top_partition_labels));
+// 	secondPartitionLabelsJson = await csv().fromString(
+//		await getQueryResult(config.endpoint, queriesPartitionLabels.second_partition_labels));
+//
+// 	//Build the json
+// 	outputJson = {};
+// 	outputJson.top_partition = topPartitionLabelsJson;
+// 	outputJson.second_partition = secondPartitionLabelsJson;
+//
+// 	res.json(outputJson);
+//}
 
 exports.getStats = async (req, res) => {
 	let queryStats, result;

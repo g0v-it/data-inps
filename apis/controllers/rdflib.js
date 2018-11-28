@@ -20,7 +20,7 @@ let accountSimpleWordsBGO = [
 exports.parseAccounts = async (data, accept) => {
     return new Promise(async (resolve, reject) =>{
         let store = $rdf.graph(),
-        base = 'https://data.inps.g0v.it/api/v2',
+        base = 'https://data.inps.g0v.it/ldp',
         bubbleGraph, accounts, partitions, //My subjects
         output = {}, json = {}, jsonPartitions = {}, jsonArray = [], partitionSchemeId; //My data Structures
         
@@ -86,7 +86,7 @@ exports.parseAccount = async (data, accept) => {
     return new Promise(async (resolve, reject) =>{
         //resolve(data);
         let store = $rdf.graph(),
-        base = 'https://data.inps.g0v.it/api/v2/account',
+        base = 'https://data.inps.g0v.it/ldp/account',
         isVersionOfObject = {}, hasPartObject = {}, output = {}, //my data structure
         account, bubbleGraph; //My subject
 
@@ -139,8 +139,8 @@ exports.parseAccount = async (data, accept) => {
 }
 
 function getUri(code){
-    //return "http://lodmap-bgo.example.com/api/v1/account/" + code;
-    //return "http://lodmap-bgo.example.com/api/v1/account" + "/" + code
+    //return "http://lodmap-bgo.example.com/ldp/account/" + code;
+    //return "http://lodmap-bgo.example.com/ldp/account" + "/" + code
     return code;
 }
 

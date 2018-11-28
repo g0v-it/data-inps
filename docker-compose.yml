@@ -3,10 +3,10 @@ services:
   sdaas:
     build: ./sdaas
     ports:
-      - "$sdaasport:8080"
+      - "29311:8080"
   api:
     build: ./apis
     ports:
-      - "$apiport:80"
+      - "29312:80"
     depends_on:
       - "sdaas"

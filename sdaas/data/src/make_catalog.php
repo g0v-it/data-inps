@@ -85,7 +85,7 @@ resource:tassonomia_gestionale_ttl a  dcat:Distribution ;
 foreach( ["2015", "2016", "2017"] as $year ) {
     foreach( ['entrate', 'uscite'] as $label ) {
         $title = "Bilancio gestionale $label $year" ;
-        $fileName = urlencode(strtoupper("GESTIONALE $label $year")) ;
+        $fileName = strtoupper("GESTIONALE%20$label%20$year")) ;
         $downloadURL = "https://github.com/g0v-it/data-inps/tree/master/sdaas/data/{$fileName}.csv";
         $id = "bilancio_{$label}_{$year}";
         $cUri = "resource:$id";

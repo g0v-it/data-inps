@@ -23,11 +23,11 @@
 #
 resource:ultimo_bilancio_disponibile a dcat:dataSet ;
     dct:identifier "esercizio_2017" ;
-	dct:title "Bilancio gestionale 2017 INPS"@it ;
-    dct:description "Dati dell'ultimo bilancio gestionale entrate/uscite pubblicato da INPS"@it ;
+	dct:title "Consuntivo Finanziario 2017"@it ;
+    dct:description "Dati relativi all'ultimo consuntivo finanziario pubblicato da INPS"@it ;
 	dct:publisher  resource:Copernicani ;
 	dct:modified "2018-11-27"^^xsd:date ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
 	dct:source resource:bilancio_entrate_2017, resource:bilancio_uscite_2017
 .
 
@@ -40,7 +40,7 @@ resource:ID_2888 a fr:FinancialReport;
 	dct:modified      "2017-03-04"^^xsd:date ;
 	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2014-01-01T00:00:00/P1Y> ;
 	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
 	dcat:accessURL <https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=924> ;
 	dcat:distribution resource:ID_2888_csv
 .
@@ -57,7 +57,7 @@ resource:ID_2889 a fr:FinancialReport;
 	dct:modified      "2017-03-04"^^xsd:date ;
 	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2014-01-01T00:00:00/P1Y> ;
 	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
 	dcat:distribution resource:ID_2889_csv ;
 	dcat:accessURL <https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=925> 
 .
@@ -88,15 +88,15 @@ resource:bilancio_entrate_2015 a fr:FinancialReport;
 	dct:publisher resource:INPS ;
 	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2015-01-01T00:00:00/P1Y> ;
 	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
 	dcat:distribution resource:bilancio_entrate_2015_csv 
 .
 resource:bilancio_entrate_2015_csv a dcat:Distribution ;	
-	dcat:downloadURL <https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE+ENTRATE+2015.csv> ;
+	dcat:downloadURL <https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE%20ENTRATE%202015.csv> ;
 	dcat:license <https://www.dati.gov.it/content/italian-open-data-license-v20>;
     
 .
-<https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE+ENTRATE+2015.csv> dct:source <https://mail.google.com/mail/u/0?ik=cb29cb291d&view=om&permmsgid=msg-f%3A1618217983817212046>.
+<https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE%20ENTRATE%202015.csv> dct:source <https://mail.google.com/mail/u/0?ik=cb29cb291d&view=om&permmsgid=msg-f%3A1618217983817212046>.
 
 resource:bilancio_uscite_2015 a fr:FinancialReport;
     dct:identifier "bilancio_uscite_2015" ;
@@ -104,15 +104,15 @@ resource:bilancio_uscite_2015 a fr:FinancialReport;
 	dct:publisher resource:INPS ;
 	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2015-01-01T00:00:00/P1Y> ;
 	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
 	dcat:distribution resource:bilancio_uscite_2015_csv 
 .
 resource:bilancio_uscite_2015_csv a dcat:Distribution ;	
-	dcat:downloadURL <https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE+USCITE+2015.csv> ;
+	dcat:downloadURL <https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE%20USCITE%202015.csv> ;
 	dcat:license <https://www.dati.gov.it/content/italian-open-data-license-v20>;
     
 .
-<https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE+USCITE+2015.csv> dct:source <https://mail.google.com/mail/u/0?ik=cb29cb291d&view=om&permmsgid=msg-f%3A1618217983817212046>.
+<https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE%20USCITE%202015.csv> dct:source <https://mail.google.com/mail/u/0?ik=cb29cb291d&view=om&permmsgid=msg-f%3A1618217983817212046>.
 
 resource:bilancio_entrate_2016 a fr:FinancialReport;
     dct:identifier "bilancio_entrate_2016" ;
@@ -120,15 +120,15 @@ resource:bilancio_entrate_2016 a fr:FinancialReport;
 	dct:publisher resource:INPS ;
 	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2016-01-01T00:00:00/P1Y> ;
 	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
 	dcat:distribution resource:bilancio_entrate_2016_csv 
 .
 resource:bilancio_entrate_2016_csv a dcat:Distribution ;	
-	dcat:downloadURL <https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE+ENTRATE+2016.csv> ;
+	dcat:downloadURL <https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE%20ENTRATE%202016.csv> ;
 	dcat:license <https://www.dati.gov.it/content/italian-open-data-license-v20>;
     
 .
-<https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE+ENTRATE+2016.csv> dct:source <https://mail.google.com/mail/u/0?ik=cb29cb291d&view=om&permmsgid=msg-f%3A1618217983817212046>.
+<https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE%20ENTRATE%202016.csv> dct:source <https://mail.google.com/mail/u/0?ik=cb29cb291d&view=om&permmsgid=msg-f%3A1618217983817212046>.
 
 resource:bilancio_uscite_2016 a fr:FinancialReport;
     dct:identifier "bilancio_uscite_2016" ;
@@ -136,15 +136,15 @@ resource:bilancio_uscite_2016 a fr:FinancialReport;
 	dct:publisher resource:INPS ;
 	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2016-01-01T00:00:00/P1Y> ;
 	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
 	dcat:distribution resource:bilancio_uscite_2016_csv 
 .
 resource:bilancio_uscite_2016_csv a dcat:Distribution ;	
-	dcat:downloadURL <https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE+USCITE+2016.csv> ;
+	dcat:downloadURL <https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE%20USCITE%202016.csv> ;
 	dcat:license <https://www.dati.gov.it/content/italian-open-data-license-v20>;
     
 .
-<https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE+USCITE+2016.csv> dct:source <https://mail.google.com/mail/u/0?ik=cb29cb291d&view=om&permmsgid=msg-f%3A1618217983817212046>.
+<https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE%20USCITE%202016.csv> dct:source <https://mail.google.com/mail/u/0?ik=cb29cb291d&view=om&permmsgid=msg-f%3A1618217983817212046>.
 
 resource:bilancio_entrate_2017 a fr:FinancialReport;
     dct:identifier "bilancio_entrate_2017" ;
@@ -152,15 +152,15 @@ resource:bilancio_entrate_2017 a fr:FinancialReport;
 	dct:publisher resource:INPS ;
 	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2017-01-01T00:00:00/P1Y> ;
 	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
 	dcat:distribution resource:bilancio_entrate_2017_csv 
 .
 resource:bilancio_entrate_2017_csv a dcat:Distribution ;	
-	dcat:downloadURL <https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE+ENTRATE+2017.csv> ;
+	dcat:downloadURL <https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE%20ENTRATE%202017.csv> ;
 	dcat:license <https://www.dati.gov.it/content/italian-open-data-license-v20>;
     
 .
-<https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE+ENTRATE+2017.csv> dct:source <https://mail.google.com/mail/u/0?ik=cb29cb291d&view=om&permmsgid=msg-f%3A1618217983817212046>.
+<https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE%20ENTRATE%202017.csv> dct:source <https://mail.google.com/mail/u/0?ik=cb29cb291d&view=om&permmsgid=msg-f%3A1618217983817212046>.
 
 resource:bilancio_uscite_2017 a fr:FinancialReport;
     dct:identifier "bilancio_uscite_2017" ;
@@ -168,12 +168,12 @@ resource:bilancio_uscite_2017 a fr:FinancialReport;
 	dct:publisher resource:INPS ;
 	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2017-01-01T00:00:00/P1Y> ;
 	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
 	dcat:distribution resource:bilancio_uscite_2017_csv 
 .
 resource:bilancio_uscite_2017_csv a dcat:Distribution ;	
-	dcat:downloadURL <https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE+USCITE+2017.csv> ;
+	dcat:downloadURL <https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE%20USCITE%202017.csv> ;
 	dcat:license <https://www.dati.gov.it/content/italian-open-data-license-v20>;
     
 .
-<https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE+USCITE+2017.csv> dct:source <https://mail.google.com/mail/u/0?ik=cb29cb291d&view=om&permmsgid=msg-f%3A1618217983817212046>.
+<https://github.com/g0v-it/data-inps/tree/master/sdaas/data/GESTIONALE%20USCITE%202017.csv> dct:source <https://mail.google.com/mail/u/0?ik=cb29cb291d&view=om&permmsgid=msg-f%3A1618217983817212046>.
