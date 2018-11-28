@@ -50,10 +50,7 @@ function FILTER_SANITIZE_IT_CURRENCY($value)
 function FILTER_SANITIZE_CODE($value)
 {
     $value = preg_replace('/[^\dEU]/', '', $value);    //remove invalid characters
-    
-    assert( preg_match('/^\d[EU]\d{7}$/', $value), "unexpected code format for CodiceCapitolo" );
-    
-    return $value;
+    return preg_match('/^\d[EU]\d{7}$/', $value)?$value:false;
 }
 
 
@@ -70,8 +67,11 @@ $csv->fields = [null,'capitolo', 'descrizione', null, null,null,null,'amount'];
 $csv->parse(stream_get_contents(STDIN));
 //print_r($csv->data);exit;
 foreach( $csv->data as $row => $rawdata) {
-    
     $codiceCapitolo = FILTER_SANITIZE_CODE($rawdata['capitolo']);
+    if(!$codiceCapitolo){ 
+        echo "# Ignored empty row $row. \n";
+        continue;
+    }
     $denominazioneCapitolo = FILTER_SANITIZE_TURTLE_STRING($rawdata['descrizione']);
     
     // le uscite sono memorizzate come valori negativi
