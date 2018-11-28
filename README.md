@@ -26,7 +26,7 @@ This picture shows the components interactions:
 
 The platform deploy requires a stack of some services (e.g. docker containers):
 
-![stack](doc/gstack.png)
+![stack](doc/stack.png)
 
 The platform is shipped with a [Docker](https://docker.com) setup that makes it easy to get a containerized development
 environment up and running. If you do not already have Docker on your computer, [it's the right time to install it](https://docs.docker.com/install/).
