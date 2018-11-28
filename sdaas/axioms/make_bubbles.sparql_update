@@ -79,7 +79,7 @@ INSERT {
 #
 # Create previousValue
 #
-INSERT { ?account bgo:previousValue  ?lastAmount }
+INSERT { ?account bgo:previousValue ?lastAmount }
 WHERE {
   {
 		SELECT DISTINCT ?account ( MAX(?year) AS ?last_year )  WHERE {
