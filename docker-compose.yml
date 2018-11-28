@@ -10,10 +10,3 @@ services:
       - "$apiport:80"
     depends_on:
       - "sdaas"
-  router:
-    build: ./router
-    ports:
-      - "$routerport:80"
-    depends_on:
-      - "sdaas"
-      - "api"

@@ -6,7 +6,7 @@ A simple smart data management platform to feed http://inps.g0v.it/ web applicat
 
 This project aims to create a general smart data management platform to feed a budget visualization application based on W3C Semantic Web standards.
 
-**Public resources**
+**Reference implementation:**
 
 - **api**: https://data.inps.g0v.it/api/v2
 - **SPARQL endpoint**: https://data.budget.g0v.it/sdaas/sparql
@@ -18,8 +18,7 @@ The project contains the following logical components:
 
 - **sdaas** (smart data as a service):  the data management platform core providing a RDF store, a [SPARQL endpoint](https://www.w3.org/TR/sparql11-overview), a data ingestion engine, a set of gateways to transform raw data in linked data and a build script that populates the RDF store. See files and docs in [sdaas directory](sdaas/README.md)
 - a set of **apis** that query the SPARQL endpoint and produce json data with a schema suitable to be used with the [BubbleGraph Component](). See files and docs in [apis directory](apis/README.md)
-- a **router** that provides redirects and caching to the platform services.
- 
+
 This picture shows the components interactions:
 
 ![architecture](doc/architecture.png)
@@ -41,9 +40,8 @@ This starts the following services
 
 | Name        | Description                                                   | Port(s) 
 | ----------- | ------------------------------------------------------------- | ------- 
-| router      | proxy cache server                                            | 80      
-| sdaas       | a server that manages the datastore and the ingestion engine  | 8889    
-| api         | a server that manages the web-budget api                      | 8081   
+| sdaas       | a server that manages the datastore and the ingestion engine  | 29311    
+| api         | a server that manages the web-budget api                      | 29312   
 
 
 The first time you start the containers, Docker downloads and builds images for you. It will take some time, but don't worry
@@ -52,16 +50,18 @@ this is done only once. Starting servers will then be lightning fast
 To see the container's logs, run `docker-compose logs -f`
 
 
-### Entry points 
+### Production deployment 
 
+For production deployment a reverse proxy server, with caching capability is required. 
 
-The router acts as a redirector and as a transparent proxy for all the data management platform services. It provides following entry points:
+It must provide following public points:
 
 - **/** redirects to the project home page (this readme file)
-- **/api/** redirects to api documentation
-- **/api/v2/<api command>*** redirects to api command  (try http://localhost/api/accounts)
-- **/sdaas/sparql** redirects to sparql endpoint  (try http://localhost/sdaas/sparql)
+- **/api/** redirects to api documentation (file README.md in api dir)
+- **/api/v2/* *** redirects to api container 
+- **/sdaas/sparql** redirects to sparql endpoint of sdaas container
 
+The proxy server must also manage https rpotocol and certificates.
 
 ## Support
 
@@ -73,7 +73,7 @@ For answers you may not find in here or in the Wiki, avoid posting issues. Feel 
 - data extracted from [INPS Open Data portal](https://www.inps.it/nuovoportaleinps/default.aspx?iIDLink=103) with [IODL](http://www.dati.gov.it/iodl/2.0/) open license
 - the RDF datastore and the SPARQL endpoint is based on the [Blazegraph community edition](https://www.blazegraph.com/)
 - the Smart Data Management Platform was developed by [Enrico Fagnoni](https://github.com/ecow) using the [SDaaS platform by LinkedData.Center](http://LinkedData.Center/)
-- the [g0v fr-ap application profile ](https://github.com/g0v-it/ontologies/tree/master/fr-ap) ontology and the  [LODMAP Bubble Graph Ontology](https://github.com/linkeddatacenter/LODMAP-ontologies/tree/master/BGO) was developed by Enrico Fagnoni @ LinkedData.Center
+- the [g0v fr-ap application profile ](https://github.com/g0v-it/ontologies/tree/master/fr-ap) and the  [LODMAP Bubble Graph Ontology](https://github.com/linkeddatacenter/LODMAP-ontologies/tree/master/BGO) was developed by Enrico Fagnoni @ LinkedData.Center
 - API server was developed by [Yassine Ouahidi](https://github.com/YassineOuahidi)  @ LinkedData.Center and DataChef.Cloud
 
 
