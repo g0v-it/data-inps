@@ -64,7 +64,8 @@ exports.getStats = async (req, res) => {
 }
 
 exports.getFilter = async (req, res) => {
-	let filters = req.query.filters;
+	let filters = req.params.filters;
+
 	filters = JSON.parse(zip.decompressFromBase64(filters));
 	//Prepare filters
 	let filter1 = filters[Object.keys(filters)[0]].join('|');
@@ -79,6 +80,7 @@ exports.getFilter = async (req, res) => {
 	let result = {};
 	result[Object.keys(filters)[0]] = object1;
 	result[Object.keys(filters)[1]] = object2;
+	console.log(result);
 	res.json(result);
 }
 
@@ -112,7 +114,6 @@ function getQueryResult(endpoint, query, format = DEFAULT_ACCEPT){
 
 			res.on('end', ()=> {
 				console.log('No more data in response');
-				//console.log(result);
 				resolve(result);
 			});
 
@@ -226,7 +227,6 @@ function containsObject(obj, list) {
 async function buildJsonFilter(data, group){
 	return new Promise(async (resolve, reject) =>{
 		try{
-			console.log(data);
 			let output, result = await csv().fromString(data);
 			
 			output = {};
