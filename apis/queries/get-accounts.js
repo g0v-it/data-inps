@@ -16,10 +16,7 @@ CONSTRUCT { ?s ?p ?o } WHERE {
   UNION {
     ?bgo a bgo:BubbleGraph. ?bgo bgo:partitionScheme/bgo:partition ?s .
     ?s ?p ?o
-  }  
-#UNION {
-#	graph <http://inps.linkeddata.cloud/resource/g0v_app> { ?s ?p ?o }
-#  } 
+  } 
   UNION {
     ?s a bgo:Account; ?p ?o.
     FILTER( IsLiteral(?o)  || ?p = rdf:type )

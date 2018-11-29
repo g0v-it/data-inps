@@ -79,7 +79,7 @@ foreach( $csv->data as $row => $rawdata) {
     $amount = $sign . FILTER_SANITIZE_IT_CURRENCY($rawdata['amount']);
     
     echo
-        "resource:{$datasetId}_row_$row a fr:Fact ;" .
+        "resource:{$datasetId}_G$row a fr:Fact ;" .
             "qb:dataSet resource:$datasetId ;" .
             "fr:amount $amount ;" .
             "fr:concept resource:concept_$codiceCapitolo .\n"; 

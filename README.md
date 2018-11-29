@@ -1,20 +1,20 @@
 ![copernicani](https://copernicani.it/wp-content/uploads/cropped-logo_orizzontale_trasparente-1-e1525161268864.png)
 
-# g0v-inps
+# g0v data-inps
 
-A simple smart data management platform to feed http://inps.g0v.it/ web application. 
+A simple smart data management platform to feed the http://inps.g0v.it/ web application. 
 
 This project aims to create a general smart data management platform to feed a budget visualization application based on W3C Semantic Web standards.
 
 **Reference implementation:**
 
-- **api**: https://data.inps.g0v.it/api/v2
-- **SPARQL endpoint**: https://data.budget.g0v.it/sdaas/sparql
+- **api endpoint**: https://data.inps.g0v.it/ldp
+- **SPARQL endpoint**: https://data.budget.g0v.it/sparql
 
 
 ## Development
 
-The project contains the following logical components:
+The project contains the two logical components:
 
 - **sdaas** (smart data as a service):  the data management platform core providing a RDF store, a [SPARQL endpoint](https://www.w3.org/TR/sparql11-overview), a data ingestion engine, a set of gateways to transform raw data in linked data and a build script that populates the RDF store. See files and docs in [sdaas directory](sdaas/README.md)
 - a set of **apis** that query the SPARQL endpoint and produce json data with a schema suitable to be used with the [BubbleGraph Component](). See files and docs in [apis directory](apis/README.md)
@@ -33,9 +33,13 @@ environment up and running. If you do not already have Docker on your computer, 
 
 clone this project, open a terminal, and navigate to the directory of this repository. Copy the env.dist file in .env (`cp env.dist .env`), edit .env file according your needs. Do not save the .env file in the repository.
 
-To start all services using [Docker Compose](https://docs.docker.com/compose/) type: `docker-compose up -d`
+To start all services using [Docker Compose](https://docs.docker.com/compose/) type: 
 
-This starts the following services
+```
+docker-compose up
+```
+
+This starts locally the following services
 
 
 | Name        | Description                                                   | Port(s) 
@@ -44,24 +48,25 @@ This starts the following services
 | api         | a server that manages the web-budget api                      | 29312   
 
 
+Try http://localhost:29311/sdaas to access blazegraph workbench
+Try http://localhost:29312/ to test api endpoint
+
 The first time you start the containers, Docker downloads and builds images for you. It will take some time, but don't worry
 this is done only once. Starting servers will then be lightning fast
 
-To see the container's logs, run `docker-compose logs -f`
 
 
 ### Production deployment 
 
 For production deployment a reverse proxy server, with caching capability is required. 
 
-It must provide following public points:
+The reverse proxy should provide following public points:
 
-- **/** redirects to the project home page (this readme file)
-- **/api/** redirects to api documentation (file README.md in api dir)
-- **/api/v2/* *** redirects to api container 
-- **/sdaas/sparql** redirects to sparql endpoint of sdaas container
+- **/** redirects to the project home page (i.e. this readme file)
+- **/ldp/{*} *** redirects to api container 
+- **/sparql** redirects to sparql endpoint of sdaas container
 
-The proxy server must also manage https rpotocol and certificates.
+The revers proxy server must also manage SSL protocol and certificates.
 
 ## Support
 

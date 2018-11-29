@@ -15,6 +15,7 @@ INSERT {
 		bgo:inBubbleGraph ?bgo;
 		bgo:code ?code ;
 		dct:title ?title ;
+		dct:description ?description ;
 		dct:subject ?subject ;
 		dct:source ?fact ;
 		bgo:amount ?amount ;
@@ -44,7 +45,7 @@ INSERT {
   	skos:notation ?notation; 
   	skos:prefLabel ?title 
   .
-  ?categoria skos:broader ?capitolo .
+  ?categoria skos:broader ?capitolo; skos:prefLabel ?descrizioneCategoria .
   
   ?capitolo skos:broader ?upb .
   
@@ -52,8 +53,14 @@ INSERT {
   
   BIND( IF( CONTAINS(?notation, "E"),"ENTRATE","USCITE") AS ?partitionLabel2)
   BIND( MD5(str(?fact)) AS ?code)	
-  BIND( IRI( CONCAT("https://data.inps.g0v.it/api/v2/account/",?code,"#data")) AS ?bubbleUri)
+  BIND( IRI( CONCAT("https://data.inps.g0v.it/ldp/account/",?code,"#data")) AS ?bubbleUri)
   BIND( CONCAT(?partitionLabel1," (",  ?partitionLabel2,")") AS ?subject)
+  BIND( CONCAT(
+  			"Sezione ", ?partitionLabel2, ". Capitolo di spesa ", ?notation,
+   	 		" appartenete alla categoria <em>", ?descrizioneCategoria, 
+   	 		"</em>. Parte della UPB <em>", ?partitionLabel1, "</em>."
+   	 	) AS ?description )
+    
 }
 
 ;

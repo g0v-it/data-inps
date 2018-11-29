@@ -5,7 +5,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix bgo: <http://linkeddata.center/lodmap-bgo/v1#> .
 @prefix resource: <http://inps.linkeddata.cloud/resource/> .
-@base <https://data.inps.g0v.it/api/v2/> .
+@base <https://data.inps.g0v.it/ldp/> .
 
 
 <accounts#bubbleGraph> a bgo:BubbleGraph ;
