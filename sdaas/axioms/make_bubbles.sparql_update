@@ -57,8 +57,8 @@ INSERT {
   BIND( CONCAT(?partitionLabel1," (",  ?partitionLabel2,")") AS ?subject)
   BIND( CONCAT(
   			"Sezione ", ?partitionLabel2, ". Capitolo di spesa ", ?notation,
-   	 		" appartenete alla categoria <em>", ?descrizioneCategoria, 
-   	 		"</em>. Parte della UPB <em>", ?partitionLabel1, "</em>."
+   	 		" appartenete alla categoria '", ?descrizioneCategoria, 
+   	 		"'. Parte della UPB '", ?partitionLabel1, "'."
    	 	) AS ?description )
     
 }
