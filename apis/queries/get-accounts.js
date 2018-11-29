@@ -24,7 +24,8 @@ CONSTRUCT { ?s ?p ?o } WHERE {
     	dct:title
     	bgo:amount
     	bgo:previousValue
-    	dct:subject 
+    	dct:subject
+    	bgo:partitionLabel
     }
     ?s a bgo:Account; ?p ?o
   }
