@@ -11,6 +11,7 @@ CONSTRUCT {
 		bgo:inBubbleGraph ?bubbleGraph;
 		bgo:code ?code ;
 		dct:title ?title ;
+		dct:description ?description ;
 		dct:subject ?subject ;
 		dct:source ?fact ;
 		bgo:amount ?amount ;
@@ -29,9 +30,10 @@ CONSTRUCT {
 		bgo:inBubbleGraph ?bubbleGraph;
 		bgo:code ?code ;
 		dct:title ?title ;
+		dct:description ?description ;
 		dct:subject ?subject ;
 		dct:source ?fact ;
-		bgo:amount ?amount ;
+		bgo:amount ?amount ;	
 		bgo:version ?year;
 		bgo:partitionLabel ?partitionLabel.
   	
