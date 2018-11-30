@@ -23,8 +23,8 @@
 #
 resource:ultimo_bilancio_disponibile a dcat:dataSet ;
     dct:identifier "esercizio_2017" ;
-	dct:title "Consuntivo Finanziario 2017"@it ;
-    dct:description "Dati relativi all'ultimo consuntivo finanziario pubblicato da INPS"@it ;
+	dct:title "Bilancio Consuntivo Finanziario 2017"@it ;
+    dct:description "Dati relativi all'ultimo bilancio consuntivo finanziario pubblicato da INPS"@it ;
 	dct:publisher  resource:Copernicani ;
 	dct:modified "2018-11-27"^^xsd:date ;
 	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
