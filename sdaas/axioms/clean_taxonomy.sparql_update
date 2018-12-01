@@ -1,0 +1,26 @@
+##
+## Remove duplicate prefLabel in taxonomy
+##  Just the last defined prefLabel is preserved
+##
+PREFIX fr: <http://linkeddata.center/botk-fr/v1#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX interval: <http://reference.data.gov.uk/def/intervals/>
+PREFIX time: <http://www.w3.org/2006/time#>
+
+DELETE {
+	GRAPH ?inGraph { ?concept skos:prefLabel ?label }
+} WHERE {
+  {
+    SELECT DISTINCT ?concept (MAX(?refPeriod) AS ?lastUpdate)   WHERE {
+        GRAPH ?g {?concept a skos:Concept; skos:notation ?notation; skos:prefLabel ?label  }
+              ?g fr:refPeriod ?refPeriod
+    } GROUP BY ?concept
+  }
+  
+  GRAPH ?inGraph { ?concept a skos:Concept; skos:prefLabel ?label }
+  ?inGraph fr:refPeriod ?refPeriod.
+  ?refPeriod time:hasBeginning/interval:ordinalYear ?year.
+  
+  ?lastUpdate time:hasBeginning/interval:ordinalYear ?lastUpdateYear.
+  FILTER( ?year < ?lastUpdateYear)
+}

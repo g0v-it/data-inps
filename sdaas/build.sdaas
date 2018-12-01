@@ -33,6 +33,7 @@ done
 SD_LOG  "Starting reasoning window: computing axioms and rules..."
 ####################################################
 SD_SPARQL_UPDATE @axioms/qb_axioms.sparql_update
+SD_SPARQL_UPDATE @axioms/clean_taxonomy.sparql_update
 SD_SPARQL_UPDATE @axioms/make_bubbles.sparql_update
 SD_SPARQL_UPDATE @axioms/make_bubblegraph.sparql_update
 
