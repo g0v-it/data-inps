@@ -54,7 +54,8 @@ INSERT {
   BIND( IF( CONTAINS(?notation, "E"),"ENTRATE","USCITE") AS ?partitionLabel2)
   BIND( MD5(str(?fact)) AS ?code)	
   BIND( IRI( CONCAT("https://data.inps.g0v.it/ldp/account/",?code,"#data")) AS ?bubbleUri)
-  BIND( CONCAT(?partitionLabel1," (",  ?partitionLabel2,")") AS ?subject)
+  #BIND( CONCAT(?partitionLabel1," (",  ?partitionLabel2,")") AS ?subject)
+  BIND( CONCAT(?descrizioneCategoria," (",  ?partitionLabel2,")") AS ?subject)
   BIND( CONCAT(
   			"Sezione ", ?partitionLabel2, ". Capitolo di spesa ", ?notation,
    	 		" appartenete alla categoria '", ?descrizioneCategoria, 
