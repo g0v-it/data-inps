@@ -61,7 +61,7 @@ echo "@prefix qb: <http://purl.org/linked-data/cube#> .\n";
 echo "@prefix resource: <http://inps.linkeddata.cloud/resource/> .\n";
 
 $csv = new ParseCsv\Csv();
-$csv->encoding('ISO-8859-1', 'UTF-8');
+//$csv->encoding('ISO-8859-1', 'UTF-8');
 $csv->delimiter = ";";
 $csv->fields = [null,'capitolo', 'descrizione', null, null,null,null,'amount'];
 $csv->parse(stream_get_contents(STDIN));
