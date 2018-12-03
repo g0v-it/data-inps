@@ -23,7 +23,7 @@
 #
 resource:ultimo_bilancio_disponibile a dcat:dataSet ;
     dct:identifier "esercizio_2017" ;
-	dct:title "Bilancio Consuntivo Finanziario Gestionale 2017"@it ;
+	dct:title "Consuntivo Finanziario Gestionale 2017"@it ;
     dct:description "Dati dell'ultimo bilancio consuntivo finanziario gestionale entrate/uscite pubblicato da INPS"@it ;
 	dct:publisher  resource:Copernicani ;
 	dct:modified "2018-11-27"^^xsd:date ;
