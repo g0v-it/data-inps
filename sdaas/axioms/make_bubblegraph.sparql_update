@@ -4,6 +4,9 @@
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX bgo: <http://linkeddata.center/lodmap-bgo/v1#>
 PREFIX accounts: <https://data.inps.g0v.it/ldp/accounts#>
+PREFIX resource: <http://inps.linkeddata.cloud/resource/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX fr: <http://linkeddata.center/botk-fr/v1#>
 
 #
 # Set  Bubble Graph title
@@ -40,7 +43,7 @@ INSERT {
   {
     SELECT DISTINCT ?partitionLabel ( SUM(?amount) AS ?partitionAmount) WHERE  {
       ?bubble bgo:partitionLabel ?partitionLabel; bgo:amount ?amount.
-      FILTER( ?partitionLabel != "ENTRATE" && ?partitionLabel != "USCITE" )
+      resource:tassonomia_gestionale skos:hasTopConcept/skos:prefLabel ?partitionLabel
     } GROUP BY ?partitionLabel
   }
   BIND( IRI( CONCAT( "https://data.inps.g0v.it/ldp/accounts#upb_partition_",MD5(STR(?partitionLabel)))) AS ?partitionUri )
@@ -66,4 +69,23 @@ INSERT {
   BIND( IRI( CONCAT( "https://data.inps.g0v.it/ldp/accounts#partition_",STR(?partitionLabel))) AS ?partitionUri ) 
 }
 
+
+;
+
+
+#
+# Create <accounts#categorie> partition schema
+#
+INSERT {
+  accounts:categorie bgo:partition ?partitionUri.
+  ?partitionUri bgo:label ?partitionLabel; bgo:partitionAmount ?partitionAmount.
+} WHERE {
+  {
+    SELECT  ?partitionLabel  ( SUM(?amount) AS ?partitionAmount)  WHERE  {
+      ?bubble bgo:partitionLabel ?partitionLabel; bgo:amount ?amount; dct:source/fr:concept ?concept.
+      ?concept skos:inScheme resource:tassonomia_gestionale; skos:broader/skos:prefLabel ?partitionLabel.
+    } GROUP BY ?partitionLabel
+  }
+  BIND( IRI( CONCAT( "https://data.inps.g0v.it/ldp/accounts#cat_partition_",MD5(STR(?partitionLabel)))) AS ?partitionUri )
+}
 

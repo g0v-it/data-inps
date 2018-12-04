@@ -20,7 +20,7 @@ INSERT {
 		dct:source ?fact ;
 		bgo:amount ?amount ;
 		bgo:version ?year;
-		bgo:partitionLabel ?partitionLabel1, ?partitionLabel2
+		bgo:partitionLabel ?partitionLabel1, ?partitionLabel2, ?descrizioneCategoria
 } WHERE {
 
   

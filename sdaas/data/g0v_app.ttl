@@ -14,6 +14,7 @@
     bgo:partitionScheme 
         <accounts#default> ,
         <accounts#entrate_uscite> ,
+        <accounts#categorie> ,
         <accounts#upb>
 .
 
@@ -26,11 +27,16 @@
 .
 	
 <accounts#entrate_uscite>
-	bgo:partitionSchemeId "entrate_uscite" ;
+	bgo:partitionSchemeId "p1_entrate_uscite" ;
 	dct:title "entrate/uscite"@it
 .
 
 <accounts#upb>
-	bgo:partitionSchemeId "upb" ;
+	bgo:partitionSchemeId "p3_upb" ;
 	dct:title "upb"
+.
+
+<accounts#categorie>
+	bgo:partitionSchemeId "p2_categorie" ;
+	dct:title "categorie"
 .
