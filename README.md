@@ -39,17 +39,20 @@ To start all services using [Docker Compose](https://docs.docker.com/compose/) t
 docker-compose up
 ```
 
-This starts locally the following services
+This starts locally the following services:
 
 
 | Name        | Description                                                   | Port(s) 
 | ----------- | ------------------------------------------------------------- | ------- 
 | sdaas       | a server that manages the datastore and the ingestion engine  | 29311    
-| api         | a server that manages the web-budget api                      | 29312   
+| api         | a server that manages the web-budget api                      | 29312 
+| lodview     | a LODVIEW server to navigate linked data                      | 29319  
 
 
 Try http://localhost:29311/sdaas to access blazegraph workbench
 Try http://localhost:29312/ to test api endpoint
+Try http://localhost:29314/welcome to navigate linked data with a configured lodview server
+
 
 The first time you start the containers, Docker downloads and builds images for you. It will take some time, but don't worry
 this is done only once. Starting servers will then be lightning fast
