@@ -7,7 +7,8 @@ const DEFAULT_SCHEMA_ACCOUNTS = "bubbles",
 	DEFAULT_ACCEPT = "text/turtle";
 
 const partition1 = "partition1"
-partition2 = "partition2";
+partition2 = "partition2",
+partition3 = "partition3";
 
 
 //Modules
@@ -70,16 +71,20 @@ exports.getFilter = async (req, res) => {
 	//Prepare filters
 	let filter1 = filters[Object.keys(filters)[0]].join('|');
 	let filter2 = filters[Object.keys(filters)[1]].join('|');
+	let filter3 = filters[Object.keys(filters)[2]].join('|');
 	//prepare queries
-	let query1 = require('../queries/filter.js')(filter1, filter2, partition1);
-	let query2 = require('../queries/filter.js')(filter1, filter2, partition2);
+	let query1 = require('../queries/filter.js')(filter1, filter2, filter3, partition1);
+	let query2 = require('../queries/filter.js')(filter1, filter2, filter3, partition2);
+	let query3 = require('../queries/filter.js')(filter1, filter2, filter3, partition3);
 	//prepare data
 	let object1 = await buildJsonFilter(await getQueryResult(config.endpoint, query1, 'text/csv'), partition1);
 	let object2 = await buildJsonFilter(await getQueryResult(config.endpoint, query2, 'text/csv'), partition2);
+	let object3 = await buildJsonFilter(await getQueryResult(config.endpoint, query3, 'text/csv'), partition3);
 	//prepare result
 	let result = {};
 	result[Object.keys(filters)[0]] = object1;
 	result[Object.keys(filters)[1]] = object2;
+	result[Object.keys(filters)[2]] = object3;
 	console.log(result);
 	res.json(result);
 }

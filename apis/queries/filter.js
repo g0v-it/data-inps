@@ -1,6 +1,6 @@
 //get filter
 
-module.exports = (first, second, groupBy) => {
+module.exports = (first, second, third, groupBy) => {
 	return ({
 		query : `
 		PREFIX dct: <http://purl.org/dc/terms/> 
@@ -11,10 +11,14 @@ module.exports = (first, second, groupBy) => {
 		  ?accountUri a bgo:Account ;
 		                bgo:amount ?account_amount ;
 		                bgo:partitionLabel ?partition1 ;
-		                bgo:partitionLabel ?partition2 .
+		                bgo:partitionLabel ?partition2 ;
+		                bgo:partitionLabel ?partition3 .
 		  FILTER regex(?partition1, "${first}")
 		  FILTER regex(?partition2, "${second}")
+		  FILTER regex(?partition3, "${third}")
 		  FILTER (?partition1 != ?partition2)
+		  FILTER (?partition1 != ?partition3)
+		  FILTER (?partition2 != ?partition3)
 		} GROUP BY ?${groupBy}
 	`
 })
