@@ -52,7 +52,8 @@ exports.parseAccounts = async (data, accept) => {
                     label : store.any(subNode, BGO("label")).value,
                     partitionAmount : parseFloat(store.any(subNode, BGO("partitionAmount")).value)
                 });
-            })
+            });
+            json['partitions'] = json['partitions'].sort((a,b) => (a.partitionAmount > b.partitionAmount) ? 1 : ((b.label > a.label) ? -1 : 0));
             //Putting everything together
             jsonPartitions[partitionSchemeId] = json;
             output['partitionOrderedList'].push(partitionSchemeId);

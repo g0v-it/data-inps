@@ -6,10 +6,9 @@ const DEFAULT_SCHEMA_ACCOUNTS = "bubbles",
 	DEFAULT_SCHEMA_ACCOUNT = "full",
 	DEFAULT_ACCEPT = "text/turtle";
 
-const partition1 = "partition1"
-partition2 = "partition2",
-partition3 = "partition3";
-
+const partition1 = "p1_entrate_uscite"
+partition2 = "p2_categorie",
+partition3 = "p3_upb";
 
 //Modules
 const http = require('http'),
@@ -66,12 +65,12 @@ exports.getStats = async (req, res) => {
 
 exports.getFilter = async (req, res) => {
 	let filters = req.params.filters;
-
 	filters = JSON.parse(zip.decompressFromBase64(filters));
 	//Prepare filters
-	let filter1 = filters[Object.keys(filters)[0]].join('|');
-	let filter2 = filters[Object.keys(filters)[1]].join('|');
-	let filter3 = filters[Object.keys(filters)[2]].join('|');
+	let filter1 = filters[partition1].join('|');
+	let filter2 = filters[partition2].join('|');
+	let filter3 = filters[partition3].join('|');
+
 	//prepare queries
 	let query1 = require('../queries/filter.js')(filter1, filter2, filter3, partition1);
 	let query2 = require('../queries/filter.js')(filter1, filter2, filter3, partition2);
@@ -82,10 +81,11 @@ exports.getFilter = async (req, res) => {
 	let object3 = await buildJsonFilter(await getQueryResult(config.endpoint, query3, 'text/csv'), partition3);
 	//prepare result
 	let result = {};
-	result[Object.keys(filters)[0]] = object1;
-	result[Object.keys(filters)[1]] = object2;
-	result[Object.keys(filters)[2]] = object3;
-	console.log(result);
+
+	result[partition1] = object1;
+	result[partition2] = object2;
+	result[partition3] = object3;
+
 	res.json(result);
 }
 
@@ -236,7 +236,7 @@ async function buildJsonFilter(data, group){
 			
 			output = {};
 			result.map(d => {
-				output[d[group]] = d.amount;
+				output[d[group]] = parseFloat(d.amount);
 			})
 
 			resolve(output);
