@@ -10,3 +10,16 @@ services:
       - "29312:80"
     depends_on:
       - "sdaas"
+  lodview:
+    image: linkeddatacenter/lodview
+    ports:
+      - "29319:8080"
+    environment:
+      - LODVIEW_URISPACE=http://inps.linkeddata.cloud/resource/
+      - LODVIEW_URISPACEPREFIX=inps 
+      - LODVIEW_SPARQLENDPOINT=http://sdaas:8080/sdaas/sparql
+      - LODVIEW_HOMEURL=https://github.com/g0v-it/data-inps
+      - LODVIEW_DATALICENSE=Contiene dati provenienti da INPS.
+      - LODMAP_HOME_TITLE=Welcome to INPS g0v knowledge base
+    depends_on:
+      - "sdaas"
