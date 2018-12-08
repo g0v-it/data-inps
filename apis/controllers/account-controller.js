@@ -33,26 +33,6 @@ exports.getAccount = async (req, res) => {
 }
 
 
-// exports.getPartitionLabels =  async (req, res) => {
-//	//Variables
-//	let queriesPartitionLabels, topPartitionLabelsJson, secondPartitionLabelsJson, outputJson;
-//
-//	queriesPartitionLabels = require('../queries/get-partition-labels.js');
-//	
-//	//Get the lables
-//	topPartitionLabelsJson = await csv().fromString(
-//		await getQueryResult(config.endpoint, queriesPartitionLabels.top_partition_labels));
-// 	secondPartitionLabelsJson = await csv().fromString(
-//		await getQueryResult(config.endpoint, queriesPartitionLabels.second_partition_labels));
-//
-// 	//Build the json
-// 	outputJson = {};
-// 	outputJson.top_partition = topPartitionLabelsJson;
-// 	outputJson.second_partition = secondPartitionLabelsJson;
-//
-// 	res.json(outputJson);
-//}
-
 exports.getStats = async (req, res) => {
 	let queryStats, result;
 
@@ -139,92 +119,6 @@ function getQueryResult(endpoint, query, format = DEFAULT_ACCEPT){
 }
 
 
-async function buildJsonAccountsList(data){
-	return new Promise(async (resolve, reject) =>{
-		try{
-			let output = await csv().fromString(data);
-			output.map(account => {
-				//Set new tags
-				//top_partition_label second_partition_label
-				account.partitions = {
-					top_partition: account.top_partition_label,
-					second_partition: account.second_partition_label
-				}
-				account.amount = parseparseFloat(account.amount);
-				account.last_amount = parseparseFloat(account.last_amount);
-				account.top_level = account.top_partition_label;
-				//remove old ones
-				delete account.top_partition_label;
-				delete account.second_partition_label;
-			});
-			resolve(output);
-			
-		}catch (e){
-			reject(e);
-		}
-	});
-}
-
-async function buildJsonAccount(data){
-	return new Promise(async (resolve, reject) =>{
-		try{
-			let json, output, singleCds, put;
-
-			json = await csv().fromString(data);
-			output = json[0];
-
-			output.past_values= {};
-			output.partitions = {};
-			output.cds = [];
-
-			json.map((account) => {
-				output.past_values[account.year] = parseparseFloat(account.history_amount);
-				singleCds = {
-					name: account.fact_label,
-					amount: parseparseFloat(account.fact_amount),
-				}
-				put = containsObject(singleCds, output.cds);
-				if(!put) {
-					output.cds.push(singleCds);	
-    			}
-			});
-
-			output.partitions = {
-				top_partition: output.top_partition_label,
-				second_partition: output.second_partition_label
-			}
-			output.amount = parseparseFloat(output.amount);
-			output.last_amount = parseparseFloat(output.last_amount);
-			output.top_level =  output.top_partition_label;
-			
-			//remove old ones
-			delete output.history_amount;
-			delete output.year;
-			delete output.top_partition_label;
-			delete output.second_partition_label;
-
-			//remove capitoli di spesa
-			delete output.fact_uri;
-			delete output.fact_label;
-			delete output.fact_amount;
-
-
-			resolve(output);
-		
-		}catch (e){
-			reject(e);
-		}	
-	});
-}
-
-function containsObject(obj, list) {
-	for (let i = 0; i < list.length; i++) {
-		if(list[i].name.localeCompare(obj.name) == 0){
-			return true;
-		}
-	}
-    return false;
-}
 
 /**
 	* @group must be one of the const values @topPartition @secondPartition
