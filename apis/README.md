@@ -108,7 +108,50 @@ returns data in format suitable to be used with LODMAP2D Bubble AccountDetails c
 ```
 
 
-### GET /filter
+### GET /filter/{filtersid}
+
+It calculates partitions total taking into account a filter in {filtersid}.
+
+{filtersid}  is a string that is compressed with zlib an encoded with base64 that contains required filter in the form of (here sintax) e.g. `here example` producing something like:
+
+```json
+{  
+   "p1_entrate_uscite":{  
+      "USCITE":-428142366474.04
+   },
+   "p2_categorie":{  
+      "Uscite per prestazioni istituzionali":-312149179257.54,
+      "Uscite aventi natura di partite di giro":-65435115413.92,
+      "Rimborsi di anticipazioni passive":-18307000000,
+      "Poste correttive e compensative di entrate correnti":-15149221355.23,
+      "Concessioni di crediti e anticipazioni":-7650017625.07,
+      "Trasferimenti passivi":-5320196700.41,
+      "Oneri per il personale in attività di servizio":-1652741837.77,
+      "Uscite non classificabili in altre voci":-876634375.79,
+      "Uscite per l'acquisto di beni di consumo e di servizio":-565374646.44,
+      "Oneri per il personale in quiescenza":-287180065.97,
+      "Partecipazioni e acquisto di valori mobiliari":-199000000,
+      "Oneri tributari":-192457713.22,
+      "Acquisizione di immobilizzazioni tecniche":-157172753.13,
+      "Indennità di anzianità e similari al personale cessato dal servizio":-94429185.6,
+      "Estinzione debiti diversi":-83274490.41,
+      "Oneri finanziari":-16079086.09,
+      "Acquisizione beni di uso durevole e opere immobiliari":-4048234.88,
+      "Uscite per gli organi dell'Ente":-3243732.57
+   },
+   "p3_upb":{  
+      "Pensioni":-277997312201.81,
+      "Altre strutture di Direzione Generale":-86791528179.56,
+      "Prestazioni a sostegno del reddito":-43648651463.14,
+      "UPB Entrate":-16236765265.96,
+      "Risorse Umane":-2370288250.45,
+      "Risorse Strumentali":-1097821113.12
+   }
+}
+```
+
+
+
 
 TBD
 
