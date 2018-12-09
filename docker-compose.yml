@@ -11,7 +11,7 @@ services:
     depends_on:
       - "sdaas"
   lodview:
-    image: linkeddatacenter/lodview
+    image: linkeddatacenter/lodview:1.0.2
     ports:
       - "29319:8080"
     environment:
@@ -21,5 +21,6 @@ services:
       - LODVIEW_HOMEURL=https://github.com/g0v-it/data-inps
       - LODVIEW_DATALICENSE=Contiene dati provenienti da INPS.
       - LODMAP_HOME_TITLE=Welcome to INPS g0v knowledge base
+      - LODVIEW_PUBLICURLPREFIX=https://data.inps.g0v.it/lodview/
     depends_on:
       - "sdaas"
