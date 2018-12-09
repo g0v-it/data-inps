@@ -17,41 +17,47 @@
 @prefix resource: <http://inps.linkeddata.cloud/resource/> .
 	
 resource:welcome a kees:KnowledgeBase;
-    void:sparqlEndpoint <https://data.inps.g0v.it/sdaas/sparql> ;
+    void:sparqlEndpoint <https://data.inps.g0v.it/sparql> ;
 	dct:title "Welcome to inps.g0v.it knowledge base"@en; 
-	dct:description "This dataset provides information about INPS financial reports expressed in RDF with the g0v fr-ap application profile."@en;
+	dct:description "Contiene la conoscenza sui fatti riportati nei bilanci finanziari consolidati di INPS dal 2014. "@it;
+	dct:publisher resource:Copernicani;
+	dct:creator resource:sdaas_v1;
+	dct:contributor resource:Inps; 
+	prov:wasDerivedFrom <https://www.inps.it/nuovoportaleinps/default.aspx?sPathID=%3b0%3b46292%3b46293%3b&lastMenu=46293&iMenu=1&iNodo=46293&p4=2>;
     dct:license <https://creativecommons.org/licenses/by/3.0/>;
-	rdfs:comment "Power by the community edition of  LinkedData.Center SDaaS™ platform."@en;
-	rdfs:comment "Data derived from INPS Open Data © by Istituto Nazionale della Previdenza Sociale."@en;	
- 	void:exampleResource resource:esercizio_2017, resource:ID-2888 , resource:ID-2889 ;
+	rdfs:comment "La conoscenza è formalizzata attraverso Linked Data RDF e serve per alimentare l'applicazione http://inps.g0v.it/. Per maggiori dettagli sulle ontologie e sugli strumenti utilizzati vedi https://github.com/g0v-it/data-inps."@it;	
+	rdfs:comment "Contiene dati ricavati dal portale INPS Open Data © by Istituto Nazionale della Previdenza Sociale."@it;	
+	rdfs:comment "La base della conoscenza è stata costruita utilizzando la piattaforma SDaaS™ di LinkedData.Center "@it;
+ 	void:exampleResource resource:ultimo_bilancio_disponibile ;
 	void:uriSpace "http://inps.linkeddata.cloud/resource/";
-	dct:subject <https://it.wikipedia.org/wiki/Bilancio_d%27esercizio>;
-	foaf:page <http://data.inps.g0v.it/>
+	dct:subject <http://it.dbpedia.org/resource/Rendiconto_finanziario>;
+	void:vocabulary <https://github.com/g0v-it/ontologies/tree/master/fr-ap>, <https://github.com/linkeddatacenter/kees>; 
+	foaf:page <https://github.com/g0v-it/data-inps>
 .
 
 #######################################################
 # Individuals
 #######################################################
-resource:uscite_theme a skos:Concept;
-	skos:prefLabel "Uscite"@it
-.
-
-resource:entrate_theme a skos:Concept;
-	skos:prefLabel "Entrate"@it
-.
-
 
 resource:INPS a foaf:Organization; 
+	dct:title "INPS";
+	dct:description "Istituto Nazionale Previdenza Sociale";
     foaf:homepage <http://www.inps.it/>;
+    foaf:depiction <https://www.inps.it/nuovoportaleinps/modelliNuovo/assets/img/logo-inps-pos.png>;   
     foaf:name "Istituto Nazionale della Previdenza Sociale"@it
 .
 
 resource:Copernicani a foaf:Organization; 
+	dct:title "Associazione Copernicani";
+	dct:description "Siamo un’associazione indipendente di studenti, lavoratori, imprenditori, docenti, ricercatori e politici che hanno deciso di trasformare le proprie idee in azioni."@it;
     foaf:homepage <https://copernicani.it/>;
-    foaf:name "Associazione Copernicani"@it
+    foaf:name "Associazione Copernicani"@it;
+    foaf:depiction <https://copernicani.it/wp-content/uploads/cropped-logo_orizzontale_trasparente-1-e1525161268864.png>
 .
 
-resource:dataset_merge_actity a  prov:Activity;
-	rdfs:comment "Concatenazione di due dataset presenti nel portale open data di INPS"@it;
-	void:used <https://www.inps.it/NuovoportaleINPS/default.aspx?sPathID=%3b0%3b46292%3b46293%3b&lastMenu=46293&iMenu=1&iNodo=46293&p4=2>.
-
+resource:sddas_v1 a foaf:Agent; 
+	dct:title "SDaaS™ platform by LinkedData.Center (community edition v 1.0.0)";
+	dct:description "Smart Data as a Sevice (SDaaS™) è una piattaforma software per rendere i dati intelligenti prodotta in Italia da LinkedData.Center."@it;
+    foaf:homepage <https://it.linkeddata.center/p/sdaas/>;
+    foaf:name "SDaaS™ by LinkedData.Center v1.0.0"@it
+.
