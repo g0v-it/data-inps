@@ -20,9 +20,9 @@ resource:welcome a kees:KnowledgeBase;
     void:sparqlEndpoint <https://data.inps.g0v.it/sparql> ;
 	dct:title "Welcome to inps.g0v.it knowledge base"@en; 
 	dct:description "Contiene la conoscenza sui fatti riportati nei bilanci finanziari consolidati di INPS dal 2014. "@it;
-	dct:publisher resource:Copernicani;
-	dct:creator resource:sdaas_v1;
-	dct:contributor resource:Inps; 
+	dct:publisher resource:Copernicani ;
+	dct:creator resource:SDaaS ;
+	dct:contributor resource:INPS ; 
 	prov:wasDerivedFrom <https://www.inps.it/nuovoportaleinps/default.aspx?sPathID=%3b0%3b46292%3b46293%3b&lastMenu=46293&iMenu=1&iNodo=46293&p4=2>;
     dct:license <https://creativecommons.org/licenses/by/3.0/>;
 	rdfs:comment "La conoscenza è formalizzata attraverso Linked Data RDF e serve per alimentare l'applicazione http://inps.g0v.it/. Per maggiori dettagli sulle ontologie e sugli strumenti utilizzati vedi https://github.com/g0v-it/data-inps."@it;	
@@ -44,7 +44,7 @@ resource:INPS a foaf:Organization;
 	dct:description "Istituto Nazionale Previdenza Sociale";
     foaf:homepage <http://www.inps.it/>;
     foaf:depiction <https://www.inps.it/nuovoportaleinps/modelliNuovo/assets/img/logo-inps-pos.png>;   
-    foaf:name "Istituto Nazionale della Previdenza Sociale"@it
+    foaf:name "Istituto Nazionale Previdenza Sociale"@it
 .
 
 resource:Copernicani a foaf:Organization; 
@@ -55,9 +55,11 @@ resource:Copernicani a foaf:Organization;
     foaf:depiction <https://copernicani.it/wp-content/uploads/cropped-logo_orizzontale_trasparente-1-e1525161268864.png>
 .
 
-resource:sddas_v1 a foaf:Agent; 
-	dct:title "SDaaS™ platform by LinkedData.Center (community edition v 1.0.0)";
-	dct:description "Smart Data as a Sevice (SDaaS™) è una piattaforma software per rendere i dati intelligenti prodotta in Italia da LinkedData.Center."@it;
+resource:SDaaS a foaf:Agent; 
+	dct:title "SDaaS platform by LinkedData.Center (community edition v 1.0.0)";
+	dct:description "Smart Data as a Sevice (SDaaS) è una piattaforma software prodotta da LinkedData.Center ."@it;
     foaf:homepage <https://it.linkeddata.center/p/sdaas/>;
-    foaf:name "SDaaS™ by LinkedData.Center v1.0.0"@it
+    foaf:name "SDaaS by LinkedData.Center"@it;
+    foaf:depiction <http://linkeddata.center/resources/v4/logo/Logo-colori-trasp_oriz-640x220.png>
+    
 .
