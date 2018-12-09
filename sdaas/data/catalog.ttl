@@ -27,8 +27,9 @@ resource:ultimo_bilancio_disponibile a dcat:dataSet ;
     dct:description "Dati dell'ultimo bilancio consuntivo finanziario gestionale entrate/uscite pubblicato da INPS"@it ;
 	dct:publisher  resource:Copernicani ;
 	dct:modified "2018-11-27"^^xsd:date ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
-	dct:source resource:bilancio_entrate_2017, resource:bilancio_uscite_2017
+	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
+	dct:source resource:bilancio_entrate_2017, resource:bilancio_uscite_2017;
+	dct:isReferencedBy resource:welcome
 .
 
 
@@ -39,7 +40,7 @@ resource:bilancio_entrate_2014 a fr:FinancialReport;
 	dct:modified      "2017-03-04"^^xsd:date ;
 	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2014-01-01T00:00:00/P1Y> ;
 	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
 	dcat:accessURL <https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=924> ;
 	dcat:distribution resource:ID_2888_csv
 .
@@ -56,7 +57,7 @@ resource:bilancio_uscite_2014 a fr:FinancialReport;
 	dct:modified      "2017-03-04"^^xsd:date ;
 	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2014-01-01T00:00:00/P1Y> ;
 	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
 	dcat:distribution resource:ID_2889_csv ;
 	dcat:accessURL <https://www.inps.it/NuovoportaleINPS/default.aspx?itemdir=46772&ifaccettaargomento=51&ifaccettaperiodo=72&iiddataset=925> 
 .
@@ -87,7 +88,7 @@ resource:bilancio_entrate_2015 a fr:FinancialReport;
 	dct:publisher resource:INPS ;
 	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2015-01-01T00:00:00/P1Y> ;
 	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
 	dcat:distribution resource:bilancio_entrate_2015_csv 
 .
 resource:bilancio_entrate_2015_csv a dcat:Distribution ;	
@@ -103,7 +104,7 @@ resource:bilancio_uscite_2015 a fr:FinancialReport;
 	dct:publisher resource:INPS ;
 	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2015-01-01T00:00:00/P1Y> ;
 	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
 	dcat:distribution resource:bilancio_uscite_2015_csv 
 .
 resource:bilancio_uscite_2015_csv a dcat:Distribution ;	
@@ -119,7 +120,7 @@ resource:bilancio_entrate_2016 a fr:FinancialReport;
 	dct:publisher resource:INPS ;
 	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2016-01-01T00:00:00/P1Y> ;
 	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
 	dcat:distribution resource:bilancio_entrate_2016_csv 
 .
 resource:bilancio_entrate_2016_csv a dcat:Distribution ;	
@@ -135,7 +136,7 @@ resource:bilancio_uscite_2016 a fr:FinancialReport;
 	dct:publisher resource:INPS ;
 	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2016-01-01T00:00:00/P1Y> ;
 	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
 	dcat:distribution resource:bilancio_uscite_2016_csv 
 .
 resource:bilancio_uscite_2016_csv a dcat:Distribution ;	
@@ -151,7 +152,7 @@ resource:bilancio_entrate_2017 a fr:FinancialReport;
 	dct:publisher resource:INPS ;
 	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2017-01-01T00:00:00/P1Y> ;
 	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
 	dcat:distribution resource:bilancio_entrate_2017_csv 
 .
 resource:bilancio_entrate_2017_csv a dcat:Distribution ;	
@@ -167,7 +168,7 @@ resource:bilancio_uscite_2017 a fr:FinancialReport;
 	dct:publisher resource:INPS ;
 	fr:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2017-01-01T00:00:00/P1Y> ;
 	sdmx-attribute:unitMeasure <http://publications.europa.eu/resource/authority/currency/EUR> ;
-	dcat:theme <https://dbpedia.org/resource/Financial_statement> ;
+	dcat:theme <http://it.dbpedia.org/resource/Rendiconto_finanziario> ;
 	dcat:distribution resource:bilancio_uscite_2017_csv 
 .
 resource:bilancio_uscite_2017_csv a dcat:Distribution ;	

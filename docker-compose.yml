@@ -17,7 +17,7 @@ services:
     environment:
       - LODVIEW_URISPACE=http://inps.linkeddata.cloud/resource/
       - LODVIEW_URISPACEPREFIX=inps 
-      - LODVIEW_SPARQLENDPOINT=http://sdaas:8080/sdaas/sparql
+      - LODVIEW_SPARQLENDPOINT=https://data.inps.g0v.it/sparql
       - LODVIEW_HOMEURL=https://github.com/g0v-it/data-inps
       - LODVIEW_DATALICENSE=Contiene dati provenienti da INPS.
       - LODMAP_HOME_TITLE=Welcome to INPS g0v knowledge base
