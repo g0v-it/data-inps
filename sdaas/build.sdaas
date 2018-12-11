@@ -29,6 +29,10 @@ for year in '2014' '2015' '2016' '2017' ; do
 	done	
 done
 
+for upb in '1' '2' '3' '4' '5' '8' ; do
+	SD_LEARN $GRAPH/descrizione_categorie_UPB${upb} "data/descrizione_categorie_UPB${upb}.csv" "|in|out|.ttl|php7 gateways/categorie.php"
+done
+
 ####################################################
 SD_LOG  "Starting reasoning window: computing axioms and rules..."
 ####################################################

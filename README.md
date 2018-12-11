@@ -84,12 +84,14 @@ For answers you may not find in here or in the Wiki, avoid posting issues. Feel 
 - the [g0v fr-ap application profile ](https://github.com/g0v-it/ontologies/tree/master/fr-ap) and the  [LODMAP Bubble Graph Ontology](https://github.com/linkeddatacenter/LODMAP-ontologies/tree/master/BGO) was developed by Enrico Fagnoni @ LinkedData.Center
 - API server was developed by [Yassine Ouahidi](https://github.com/YassineOuahidi)  @ LinkedData.Center and DataChef.Cloud
 
-
 Thanks to all project contributors, to the [Copernicani community](https://copernicani.it/) and to the [g0v asia community](http://g0v.asia) for ideas and support.
+
+
+The URI dereferencing platform is derived from the [LODView project](https://github.com/dvcama/LodView)
 
 
 ## License
 
-
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
+
 

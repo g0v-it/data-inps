@@ -1,6 +1,7 @@
 ##################################
 # Test fr-ap Financtial report constraints
 ################################## 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX fr: <http://linkeddata.center/botk-fr/v1#>
 PREFIX qb: <http://purl.org/linked-data/cube#>
 PREFIX time: <http://www.w3.org/2006/time#>
@@ -28,6 +29,7 @@ ASK {
     {
         ?concept1 skos:prefLabel ?label; skos:notation ?notation.
     }
+    
     
 }
     

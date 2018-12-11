@@ -1,6 +1,7 @@
 #
 # Create a bubble (without previousValue)
 #
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX fr: <http://linkeddata.center/botk-fr/v1#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
 PREFIX dct: <http://purl.org/dc/terms/>
@@ -15,12 +16,11 @@ INSERT {
 		bgo:inBubbleGraph ?bgo;
 		bgo:code ?code ;
 		dct:title ?title ;
-		dct:description ?description ;
 		dct:subject ?subject ;
 		dct:source ?fact ;
 		bgo:amount ?amount ;
 		bgo:version ?year;
-		bgo:partitionLabel ?partitionLabel1, ?partitionLabel2, ?descrizioneCategoria
+		bgo:partitionLabel ?partitionLabel1, ?partitionLabel2, ?nomeCategoria
 } WHERE {
 
   
@@ -45,7 +45,7 @@ INSERT {
   	skos:notation ?notation; 
   	skos:prefLabel ?title 
   .
-  ?categoria skos:broader ?capitolo; skos:prefLabel ?descrizioneCategoria .
+  ?categoria skos:broader ?capitolo; skos:prefLabel ?nomeCategoria .
   
   ?capitolo skos:broader ?upb .
   
@@ -54,14 +54,19 @@ INSERT {
   BIND( IF( CONTAINS(?notation, "E"),"ENTRATE","USCITE") AS ?partitionLabel2)
   BIND( MD5(str(?fact)) AS ?code)	
   BIND( IRI( CONCAT("https://data.inps.g0v.it/ldp/account/",?code,"#data")) AS ?bubbleUri)
-  #BIND( CONCAT(?partitionLabel1," (",  ?partitionLabel2,")") AS ?subject)
-  BIND( CONCAT(?descrizioneCategoria," (",  ?partitionLabel2,")") AS ?subject)
-  BIND( CONCAT(
-  			"Sezione ", ?partitionLabel2, ". Capitolo di spesa ", ?notation,
-   	 		" appartenete alla categoria '", ?descrizioneCategoria, 
-   	 		"'. Parte della UPB '", ?partitionLabel1, "'."
-   	 	) AS ?description )
-    
+  BIND( CONCAT(?nomeCategoria," (",  ?partitionLabel2,")") AS ?subject)
+}
+
+;
+
+
+#
+#  Creazione commenti
+#
+
+INSERT { ?bubbleUri dct:description ?description} 
+WHERE {
+ 	?bubbleUri a bgo:Account ; dct:source/fr:concept/skos:broader/rdfs:comment ?description.
 }
 
 ;
