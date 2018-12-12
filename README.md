@@ -2,9 +2,8 @@
 
 # g0v data-inps
 
-A simple smart data management platform to feed the http://inps.g0v.it/ web application. 
+A simple *Smart Data Management Platform* to feed the http://inps.g0v.it/ web application. 
 
-This project aims to create a general smart data management platform to feed a budget visualization application based on W3C Semantic Web standards.
 
 **Reference implementation:**
 
@@ -24,19 +23,17 @@ This picture shows the components interactions:
 ![architecture](doc/architecture.png)
 
 
-The platform deploy requires a stack of some services (e.g. docker containers):
+To deploy the platform deploy a stack of some services is required:
 
 ![stack](doc/stack.png)
 
 The platform is shipped with a [Docker](https://docker.com) setup that makes it easy to get a containerized development
 environment up and running. If you do not already have Docker on your computer, [it's the right time to install it](https://docs.docker.com/install/).
 
-clone this project, open a terminal, and navigate to the directory of this repository. Copy the env.dist file in .env (`cp env.dist .env`), edit .env file according your needs. Do not save the .env file in the repository.
-
 To start all services using [Docker Compose](https://docs.docker.com/compose/) type: 
 
 ```
-docker-compose up
+docker-compose up -d
 ```
 
 This starts locally the following services:
@@ -46,30 +43,50 @@ This starts locally the following services:
 | ----------- | ------------------------------------------------------------- | ------- 
 | sdaas       | a server that manages the datastore and the ingestion engine  | 29311    
 | api         | a server that manages the web-budget api                      | 29312 
-| lodview     | a LODVIEW server to navigate linked data                      | 29319  
+| lodview     | a LODVIEW server to navigate linked data(see note)            | 29319  
 
 
 Try http://localhost:29311/sdaas to access blazegraph workbench
 Try http://localhost:29312/ to test api endpoint
-Try http://localhost:29314/welcome to navigate linked data with a configured lodview server
+Try http://localhost:29314/ to navigate linked data with a pre configured lodview server
 
+Note that in the default configuration, lodeview is attached to the *official* enpoint 
+(i.e. https://data.inps.g0v.it), not on the local sdaas instance. To test it locally type:
+
+```
+MYNETWORK=data-inps_default # check the network name with docker network ls
+docker run -d --name lodview  \
+	-p 9090:8080 \
+	--net $MYNETWORK \
+	-e LODVIEW_PUBLICURLPREFIX=auto \
+	-e LODVIEW_URISPACE=http://inps.linkeddata.cloud/resource/ \
+      -e LODVIEW_SPARQLENDPOINT=http://sdaas:8080/sdaas/sparql \
+	linkeddatacenter/lodview 
+```
+
+and try accessing http://localhost:9090/welcome
 
 The first time you start the containers, Docker downloads and builds images for you. It will take some time, but don't worry
 this is done only once. Starting servers will then be lightning fast
 
+To shudown the platform type: 
 
+```
+docker-compose down
+```
 
 ### Production deployment 
 
-For production deployment a reverse proxy server, with caching capability is required. 
+For production deployment a reverse proxy server, with caching capability is strongly suggested. 
 
 The reverse proxy should provide following public points:
 
-- **/** redirects to the project home page (i.e. this readme file)
-- **/ldp/{*} *** redirects to api container 
+- **/** redirects to lodview server
+- **/ldp/ *** redirects to api container 
 - **/sparql** redirects to sparql endpoint of sdaas container
 
-The revers proxy server must also manage SSL protocol and certificates.
+The revers proxy server should also manage SSL protocol and certificates and cache all
+/ldp calls
 
 ## Support
 
@@ -80,12 +97,11 @@ For answers you may not find in here or in the Wiki, avoid posting issues. Feel 
 
 - data extracted from [INPS Open Data portal](https://www.inps.it/nuovoportaleinps/default.aspx?iIDLink=103) with [IODL](http://www.dati.gov.it/iodl/2.0/) open license
 - the RDF datastore and the SPARQL endpoint is based on the [Blazegraph community edition](https://www.blazegraph.com/)
-- the Smart Data Management Platform was developed by [Enrico Fagnoni](https://github.com/ecow) using the [SDaaS platform by LinkedData.Center](http://LinkedData.Center/)
+- the Smart Data Management Platform was developed by [LinkedData.Center](http://LinkedData.Center/)
 - the [g0v fr-ap application profile ](https://github.com/g0v-it/ontologies/tree/master/fr-ap) and the  [LODMAP Bubble Graph Ontology](https://github.com/linkeddatacenter/LODMAP-ontologies/tree/master/BGO) was developed by Enrico Fagnoni @ LinkedData.Center
 - API server was developed by [Yassine Ouahidi](https://github.com/YassineOuahidi)  @ LinkedData.Center and DataChef.Cloud
 
 Thanks to all project contributors, to the [Copernicani community](https://copernicani.it/) and to the [g0v asia community](http://g0v.asia) for ideas and support.
-
 
 The URI dereferencing platform is derived from the [LODView project](https://github.com/dvcama/LodView)
 
