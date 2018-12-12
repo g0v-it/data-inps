@@ -21,7 +21,7 @@ services:
       - LODVIEW_HOMEURL=https://github.com/g0v-it/data-inps
       - LODVIEW_DATALICENSE=Contiene dati provenienti da INPS.
       - LODMAP_HOME_TITLE=Welcome to INPS g0v knowledge base
-      - LODVIEW_PUBLICURLPREFIX=https://data.inps.g0v.it/lodview/
+      - LODVIEW_PUBLICURLPREFIX=https://data.inps.g0v.it/
       - LODEVIEW_HEADERLOGO=https://avatars3.githubusercontent.com/u/42692153?s=80
       - "LODVIEW_DATALICENSE=Dati estratti dal portale Open Data di <a href='https://www.inps.it/' target='_blank'><img style='vertical-align: middle' width='48' src='https://www.inps.it/nuovoportaleinps/modelliNuovo/assets/img/logo-inps-pos.png'></a> con licenza <a href='http://www.dati.gov.it/iodl/2.0/' target='_blank'>Italian Open Data License v2.0</a>"
     depends_on:
