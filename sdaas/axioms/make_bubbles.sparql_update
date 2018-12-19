@@ -1,5 +1,5 @@
 #
-# Create a bubble
+# Create bubbles from a Financial Report facts
 #
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX fr: <http://linkeddata.center/botk-fr/v1#>
