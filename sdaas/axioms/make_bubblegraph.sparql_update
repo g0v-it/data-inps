@@ -9,7 +9,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX fr: <http://linkeddata.center/botk-fr/v1#>
 
 #
-# Set  Bubble Graph title
+# Set  Bubble Graph title from source dataset
 #
 INSERT { ?bgo dct:title ?title } 
 WHERE {
@@ -21,7 +21,7 @@ WHERE {
 ;
 
 #
-# Set  Bubble Graph description
+# Set  Bubble Graph description from source dataset
 #
 INSERT { ?bgo dct:description ?description } 
 WHERE {
