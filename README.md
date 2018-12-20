@@ -55,7 +55,7 @@ This starts locally the following services:
 
 Try http://localhost:29311/sdaas to access blazegraph workbench
 Try http://localhost:29312/ to test api endpoint
-Try http://localhost:29314/ to navigate linked data with a pre configured lodview server
+Try http://localhost:29319/ to navigate linked data with a pre configured lodview server
 
 Note that in the default configuration, lodeview is attached to the *reference* enpoint 
 (i.e. https://data.inps.g0v.it), not on the local sdaas instance. To test it locally type:
