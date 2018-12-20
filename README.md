@@ -15,8 +15,8 @@ A simple *Smart Data Management Platform* to feed the http://inps.g0v.it/ web ap
 
 The project contains the two logical components:
 
-- **sdaas** (smart data as a service):  the data management platform core providing a RDF store, a [SPARQL endpoint](https://www.w3.org/TR/sparql11-overview), a data ingestion engine, a set of gateways to transform raw data in linked data and a build script that populates the RDF store. See files and docs in [sdaas directory](sdaas/README.md)
-- a set of **apis** that query the SPARQL endpoint and produce json data with a schema suitable to be used with the [BubbleGraph Component](). See files and docs in [apis directory](apis/README.md)
+- **sdaas** (smart data as a service):  the data management platform core providing a RDF store, a [SPARQL endpoint](https://www.w3.org/TR/sparql11-overview), a data ingestion engine, a set of gateways to transform raw data in linked data and a build script that populates the RDF store. See files and docs in [sdaas directory](sdaas)
+- a set of **apis** that query the SPARQL endpoint and produce json data with a schema suitable to be used with the BubbleGraph Component. See files and docs in [apis directory](apis)
 
 This picture shows the components interactions:
 
