@@ -1,6 +1,6 @@
 ##
-## Remove duplicate prefLabel in taxonomy
-##  For concepts with the same notation, just most recently defined prefLabel is preserved
+## Remove duplicate prefLabel in taxonomy:
+##  for concepts with the same notation, just most recently defined prefLabel is preserved
 ##
 PREFIX fr: <http://linkeddata.center/botk-fr/v1#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
