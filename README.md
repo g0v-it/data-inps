@@ -7,16 +7,23 @@ A simple *Smart Data Management Platform* to feed the http://inps.g0v.it/ web ap
 
 **Reference implementation:**
 
-- **api endpoint**: https://data.inps.g0v.it/ldp
-- **SPARQL endpoint**: https://data.budget.g0v.it/sparql
+- **API endpoint**: https://data.inps.g0v.it/ldp
+- **SPARQL endpoint**: https://data.inps.g0v.it/sparql
+- **Linked Data browser**: https://data.inps.g0v.it/welcome 
 
 
 ## Development
 
-The project contains the two logical components:
+The project contains the two "core" logical components:
 
 - **sdaas** (smart data as a service):  the data management platform core providing a RDF store, a [SPARQL endpoint](https://www.w3.org/TR/sparql11-overview), a data ingestion engine, a set of gateways to transform raw data in linked data and a build script that populates the RDF store. See files and docs in [sdaas directory](sdaas)
 - a set of **apis** that query the SPARQL endpoint and produce json data with a schema suitable to be used with the BubbleGraph Component. See files and docs in [apis directory](apis)
+
+Beside these, two optional other components may be used to complete the system:
+
+- **LODMAP** server: a linked data browser to navigate the RDF store
+- a **router** that provides a single acces point to all other services with caching and ssl features
+
 
 This picture shows the components interactions:
 
@@ -50,7 +57,7 @@ Try http://localhost:29311/sdaas to access blazegraph workbench
 Try http://localhost:29312/ to test api endpoint
 Try http://localhost:29314/ to navigate linked data with a pre configured lodview server
 
-Note that in the default configuration, lodeview is attached to the *official* enpoint 
+Note that in the default configuration, lodeview is attached to the *reference* enpoint 
 (i.e. https://data.inps.g0v.it), not on the local sdaas instance. To test it locally type:
 
 ```
@@ -85,7 +92,7 @@ The reverse proxy should provide following public points:
 - **/ldp/ *** redirects to api container 
 - **/sparql** redirects to sparql endpoint of sdaas container
 
-The revers proxy server should also manage SSL protocol and certificates and cache all
+The reverse proxy server should also manage SSL protocol and certificates and cache all
 /ldp calls
 
 ## Support
