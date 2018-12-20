@@ -36,9 +36,17 @@ done
 ####################################################
 SD_LOG  "Starting reasoning window: computing axioms and rules..."
 ####################################################
+
+## Ensure data that cube rules fulfilleded
 SD_SPARQL_UPDATE @axioms/qb_axioms.sparql_update
+
+## Ensure data that restrictions on taxonomies are fulfilleded
 SD_SPARQL_UPDATE @axioms/clean_taxonomy.sparql_update
+
+## create bubbles from financial facts
 SD_SPARQL_UPDATE @axioms/make_bubbles.sparql_update
+
+## create the bubble set
 SD_SPARQL_UPDATE @axioms/make_bubblegraph.sparql_update
 
 
