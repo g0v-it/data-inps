@@ -2,18 +2,22 @@
 
 This project contains all needed for setting up and update a knowledge base ready to be used by the inps.g0v.it application.
 
-The knowledge base is built around the [g0v application profile](https://github.com/g0v-it/ontologies/tree/master/fr-ap) and  [LODMAP Bubble Graph Ontology](https://github.com/linkeddatacenter/LODMAP-ontologies/tree/master/v1/bgo)
+The knowledge base is built around the [g0v application profile](https://github.com/g0v-it/ontologies/tree/master/fr-ap) and  [LODMAP Bubble Graph Ontology](https://github.com/linkeddatacenter/LODMAP-ontologies/tree/master/v1/bgo):
+
+- the g0v application profile is used to describe the semantic of a financial report
+- the Bubble Graph Ontology is used to describe the graphical objects that reprensent financial report components
 
 The data ingestion process is managed by the [LinkedData.Center SDaaS platform](https://linkeddata.center/p/sdaas) (community edition).
 
 
 ## knowledge base build process:
 
-- to edit local rdf files in the *data* directory
-- to develop the *gateways* for transforming web resources in linked data. See [gateways doc.](gateways/README.md)
-- to write *axioms* and rules to generate new data. See [axioms doc.](axioms/README.md)
-- to edit the *build script* that drives the data ingestion process.
-- to run sdaas
+- edit local rdf files in the *data* directory providing static metadata (titles, taxonomies, welcome links, etc. etc.)
+- develop the *gateways* for transforming raw data about financial report in linked data according the g0v application profile. See [gateways doc.](gateways/README.md)
+- write *axioms* and rules to cleanup financial data.
+- write axioms and rules to link financial data to the graphical objects.
+- edit the *build script* that drives the whole data ingestion process.
+- run sdaas
 
 ### debugging the build script
 
@@ -51,6 +55,7 @@ The resulting container will provide a readonly distribution of the whole knowle
 - the **build.sdaas** file is a script to populate the knowledge base from scratch. It requires sdaas platform community edition 2.0+
 - the **axioms** directory contains rules to be processed during reasoning windows.
 - the **data** directory contains local data files
+- the **data/src** directory contains some helper that were used to produce some ttl files.
 - the **gateways** directory contains the code to transform raw data in linked data
 - the **.cache** temporary directory that contains logs and debugging info. Not saved in repo.
 
