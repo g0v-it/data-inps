@@ -10,7 +10,7 @@ PREFIX sdmx-attribute:	<http://purl.org/linked-data/sdmx/2009/attribute#>
 ASK {
     ?obs a fr:Fact.
 
-    # Every fr:Fact has exactly one associated finacial report.
+    # Every fr:Fact has exactly one associated financial report.
     {
         ?obs qb:dataSet ?dataset1.
         ?dataset1 a fr:FinancialReport.

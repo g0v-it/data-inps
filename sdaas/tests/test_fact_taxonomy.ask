@@ -12,7 +12,7 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 ASK {
     ?scheme a skos:ConceptScheme.
 
-    # No duplicated concepts in facts of the same financtial report
+    # No duplicated concepts in facts of the same financial report
     {
         ?fact1 a fr:Fact ; fr:concept ?concept1; qb:dataSet ?fr.
         ?fact2 a fr:Fact ; fr:concept ?concept2; qb:dataSet ?fr.
