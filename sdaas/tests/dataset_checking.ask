@@ -11,7 +11,7 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 ASK {
     ?ds a fr:FinancialReport.
 
-    # Every finacial report has a distribution and a license
+    # Every financial report has a distribution and a license
     {
         ?ds dcat:distribution ?distribution.
         ?distribution dcat:license  ?license
@@ -26,7 +26,7 @@ ASK {
     }
     
  
-    # Every finacial report exactly  unitMeasure attribute .    
+    # Every financial report exactly  unitMeasure attribute .    
     {
         ?ds sdmx-attribute:unitMeasure ?unit1 .
         ?unit1 skos:inScheme <http://publications.europa.eu/resource/authority/currency>;
