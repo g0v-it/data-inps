@@ -1,4 +1,4 @@
-![copernicani](https://copernicani.it/wp-content/uploads/cropped-logo_orizzontale_trasparente-1-e1525161268864.png)
+![copernicani](doc/copernicani-logo.png)
 
 # g0v data-inps
 
