@@ -4,7 +4,7 @@ This project contains all needed for setting up and update a knowledge base read
 
 The knowledge base is built around the [g0v application profile](https://github.com/g0v-it/ontologies/tree/master/fr-ap) and  [LODMAP Bubble Graph Ontology](https://github.com/linkeddatacenter/LODMAP-ontologies/tree/master/v1/bgo):
 
-- the g0v application profile is used to describe the semantic of a financial report
+- the g0v-fr application profile is used to describe the semantic of a financial report
 - the Bubble Graph Ontology is used to describe the graphical objects that reprensent financial report components
 
 The data ingestion process is managed by the [LinkedData.Center SDaaS platform](https://linkeddata.center/p/sdaas) (community edition).

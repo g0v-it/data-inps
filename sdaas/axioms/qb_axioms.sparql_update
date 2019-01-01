@@ -19,10 +19,10 @@ WHERE {
 ## AXIOM: inherit the unit attribute in Fact from the dataset, if missing
 ##
 
-INSERT { ?fact fr:unit ?unit} 
+INSERT { ?fact sdmx-attribute:unitMeasure ?unit} 
 WHERE {  
 	?fact a fr:Fact; qb:dataSet/sdmx-attribute:unitMeasure ?unit.
 	
-	FILTER NOT EXISTS {?fact fr:unit []}
+	FILTER NOT EXISTS {?fact fsdmx-attribute:unitMeasure []}
 }
 
