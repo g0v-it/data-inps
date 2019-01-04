@@ -23,6 +23,6 @@ INSERT { ?fact sdmx-attribute:unitMeasure ?unit}
 WHERE {  
 	?fact a fr:Fact; qb:dataSet/sdmx-attribute:unitMeasure ?unit.
 	
-	FILTER NOT EXISTS {?fact fsdmx-attribute:unitMeasure []}
+	FILTER NOT EXISTS {?fact sdmx-attribute:unitMeasure []}
 }
 
