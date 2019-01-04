@@ -6,8 +6,7 @@ GRAPH="http://inps.linkeddata.cloud/resource"
 ####################################################
 SD_LOG  "Loading external resources..."
 ####################################################
-SD_LEARN http://publications.europa.eu/mdr/resource/authority/currency/skos/currencies-skos.rdf
-
+SD_LEARN http://publications.europa.eu/resource/authority/currency/EUR
 
 ####################################################
 SD_LOG  "Starting learning window: loading facts. This will take a while..."
