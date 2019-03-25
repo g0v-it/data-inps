@@ -20,7 +20,7 @@ The project contains the two "core" logical components:
 
 Beside these, two optional components may be needed to complete a production system:
 
-- **LODMAP** server: a linked data browser to navigate the RDF store;
+- **LODVIEW** server: a linked data browser to navigate the RDF store;
 - a **router** that provides a single acces point to all other services with caching and ssl features.
 
 This picture shows the components interactions:
